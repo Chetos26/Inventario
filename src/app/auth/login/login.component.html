@@ -1,1 +1,44 @@
-<p>login works!</p>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-6 d-flex align-items-center justify-content-center vh-100">
+      <div class="col-md-8">
+        <div class="card shadow">
+          <div class="card-header text-center">
+            <img src="../../../assets/images/planificacion.jpg" alt="Logo de la aplicación" style="max-width: 250px;">
+          </div>
+          <div class="card-body">
+            <form>
+              <!-- Email -->
+              <div class="form-group">
+                <label for="email">Correo electrónico</label>
+                <input name="email" type="email" class="form-control" id="email" placeholder="Ingrese su correo electrónico">
+                <div class="error-message" *ngIf="email.invalid && email.touched">
+                </div>
+              </div>
+
+              <!-- Contraseña -->
+              <div class="form-group">
+                <label for="password">Contraseña</label>
+                <input name="password" id="password" type="password" class="form-control" placeholder="Ingrese su contraseña">
+                <div class="error-message" *ngIf="password.invalid && password.touched">
+                </div>
+              </div>
+              <br>
+              <!-- Botón de Logueo -->
+              <div class="text-center">
+                <button (click)="onLogins()" type="submit" class="btn btn-dark" value="Ingresar">Ingresar</button>
+              </div>
+              <!-- Mensaje de error al presionar el botón -->
+              <div class="text-center mt-3" *ngIf="formInvalid && formSubmitted">
+                <p class="error-message">Por favor, complete todos los campos.</p>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6 bg-image" style="background-image: url('../../../assets/images/login.jpg'); background-size: cover; background-position: center;">
+    </div>
+  </div>
+</div>
+
