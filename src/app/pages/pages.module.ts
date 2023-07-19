@@ -7,6 +7,7 @@ import { UsersComponent } from './users/users.component';
 import { RouterModule } from '@angular/router';
 import { PagesRoutingModule } from './pages-routing.module';
 import { PagesComponent } from './pages.component';
+import { SharedModule } from '../shared/shared.module';
 
 
 
@@ -22,6 +23,7 @@ import { PagesComponent } from './pages.component';
     CommonModule,
     RouterModule,
     PagesRoutingModule,
+    SharedModule,
   ]
 })
 export class PagesModule { }

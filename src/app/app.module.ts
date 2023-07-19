@@ -26,7 +26,6 @@ import { SharedModule } from './shared/shared.module';
     PagesRoutingModule,
     AuthModule,
     PagesModule,
-    SharedModule,
     AppRoutingModule
   ],
   providers: [],
