@@ -11,3 +11,7 @@
   background-color: #1f65cf; /* Nuevo color de fondo en tono celeste (#00ccff) */
   color: rgb(255, 255, 255); /* Color del texto del botón (opcional) */
 }
+
+.logo {
+  cursor: pointer;
+}
