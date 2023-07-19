@@ -19,7 +19,7 @@ export class LoginComponent implements OnInit {
   formInvalid = false; // Track if the form is invalid
 
   user: UserAuthModel = {
-    email: '',
+    username: '',
     contrasenia: ''
   };
 
@@ -46,7 +46,7 @@ export class LoginComponent implements OnInit {
     console.log()
 
     if (emailValue && passwordValue) {
-      this.user.email = emailValue;
+      this.user.username = emailValue;
       this.user.contrasenia = passwordValue;
 
       this.authService.login(this.user).subscribe(

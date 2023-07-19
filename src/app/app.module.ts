@@ -28,7 +28,7 @@ import { SharedModule } from './shared/shared.module';
     PagesModule,
     AppRoutingModule
   ],
-  providers: [CookieService],
+  providers: [/*CookieService*/],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

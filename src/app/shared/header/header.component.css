@@ -1,0 +1,13 @@
+.logo{
+  height: 40px;
+  width: 100px;
+}
+
+.navbar{
+  background-color: #175E8E;
+}
+
+.btn-outline-primary {
+  background-color: #1f65cf; /* Nuevo color de fondo en tono celeste (#00ccff) */
+  color: rgb(255, 255, 255); /* Color del texto del botón (opcional) */
+}

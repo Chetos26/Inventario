@@ -1,6 +1,6 @@
 export interface UserModel {
   id: string;
-  nickname: string;
+  username: string;
   contrasenia: string;
 }
 
