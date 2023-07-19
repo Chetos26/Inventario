@@ -6,11 +6,13 @@ import { HardwareComponent } from './hardware/hardware.component';
 import { UsersComponent } from './users/users.component';
 import { RouterModule } from '@angular/router';
 import { PagesRoutingModule } from './pages-routing.module';
+import { PagesComponent } from './pages.component';
 
 
 
 @NgModule({
   declarations: [
+    PagesComponent,
     HardwareComponent,
     UsersComponent,
     RegisterHardwareComponent,
