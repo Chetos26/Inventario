@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Routes } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
 import { HardwareComponent } from './hardware/hardware.component';
 import { RegisterHardwareComponent } from './register-hardware/register-hardware.component';
 import { PagesComponent } from './pages.component';
@@ -20,9 +20,8 @@ const routes: Routes = [
 ]
 
 @NgModule({
-  declarations: [],
-  imports: [
-    CommonModule
-  ]
+  imports: [RouterModule.forChild(routes)],
+  providers: [AuthGuard],
+  exports: [RouterModule]
 })
 export class PagesRoutingModule { }

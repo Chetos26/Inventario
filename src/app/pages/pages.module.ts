@@ -4,6 +4,8 @@ import { RegisterHardwareComponent } from './register-hardware/register-hardware
 import { UsersRegisterComponent } from './users-register/users-register.component';
 import { HardwareComponent } from './hardware/hardware.component';
 import { UsersComponent } from './users/users.component';
+import { RouterModule } from '@angular/router';
+import { PagesRoutingModule } from './pages-routing.module';
 
 
 
@@ -15,7 +17,9 @@ import { UsersComponent } from './users/users.component';
     UsersRegisterComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    RouterModule,
+    PagesRoutingModule,
   ]
 })
 export class PagesModule { }
