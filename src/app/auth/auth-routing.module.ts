@@ -5,7 +5,7 @@ import { LoginGuard } from '../guards/login.guard';
 import { LoginComponent } from './login/login.component';
 
 const routes: Routes = [
-  {path: 'login',canActivate:[LoginGuard], component:LoginComponent}
+  {path: 'login',/*canActivate:[LoginGuard],*/ component:LoginComponent}
 ]
 
 @NgModule({
