@@ -22,7 +22,7 @@ import { AuthRoutingModule } from './auth/auth-routing.module';
     AuthRoutingModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [CookieService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
