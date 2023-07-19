@@ -7,10 +7,12 @@ import { PagesComponent } from './pages.component';
 import { UsersComponent } from './users/users.component';
 import { UsersRegisterComponent } from './users-register/users-register.component';
 import { AuthGuard } from '../guards/auth.guard';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 const routes: Routes = [
   {path:"pages", /*canActivate:[AuthGuard],*/ component: PagesComponent,
   children:[
+    {path: "", component: DashboardComponent},
     {path:"hardware", /*canActivate:[AuthGuard],*/ component: HardwareComponent},
     {path:"hardware-register", /*canActivate:[AuthGuard],*/ component: RegisterHardwareComponent},
     {path:"users", /*canActivate:[AuthGuard],*/ component: UsersComponent},

@@ -1,0 +1,14 @@
+.bg-image {
+  background-image: url('https://acumbamail.com/blog/wp-content/uploads/2021/06/Que_es_una_auditoria_de_marketing.jpg');
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+}
+
+.container {
+  height: 100%;
+}
+
+.welcome-text {
+  color: white;
+}

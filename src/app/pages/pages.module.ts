@@ -8,6 +8,7 @@ import { RouterModule } from '@angular/router';
 import { PagesRoutingModule } from './pages-routing.module';
 import { PagesComponent } from './pages.component';
 import { SharedModule } from '../shared/shared.module';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 
 
@@ -17,7 +18,8 @@ import { SharedModule } from '../shared/shared.module';
     HardwareComponent,
     UsersComponent,
     RegisterHardwareComponent,
-    UsersRegisterComponent
+    UsersRegisterComponent,
+    DashboardComponent
   ],
   imports: [
     CommonModule,
