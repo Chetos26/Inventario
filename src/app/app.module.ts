@@ -12,6 +12,9 @@ import { HardwareComponent } from './pages/hardware/hardware.component';
 import { RegisterComponent } from './auth/register/register.component';
 import { LoginComponent } from './auth/login/login.component';
 import { AuthRoutingModule } from './auth/auth-routing.module';
+import { PagesRoutingModule } from './pages/pages-routing.module';
+import { AuthModule } from './auth/auth.module';
+import { PagesModule } from './pages/pages.module';
 
 @NgModule({
   declarations: [
@@ -20,6 +23,9 @@ import { AuthRoutingModule } from './auth/auth-routing.module';
   imports: [
     BrowserModule,
     AuthRoutingModule,
+    PagesRoutingModule,
+    AuthModule,
+    PagesModule,
     AppRoutingModule
   ],
   providers: [],
