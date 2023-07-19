@@ -9,12 +9,12 @@ import { UsersRegisterComponent } from './users-register/users-register.componen
 import { AuthGuard } from '../guards/auth.guard';
 
 const routes: Routes = [
-  {path:"pages", canActivate:[AuthGuard], component: PagesComponent,
+  {path:"pages", /*canActivate:[AuthGuard],*/ component: PagesComponent,
   children:[
-    {path:"hardware", canActivate:[AuthGuard], component: HardwareComponent},
-    {path:"hardware-register", canActivate:[AuthGuard], component: RegisterHardwareComponent},
-    {path:"users", canActivate:[AuthGuard], component: UsersComponent},
-    {path:"users-register", canActivate:[AuthGuard], component: UsersRegisterComponent},
+    {path:"hardware", /*canActivate:[AuthGuard],*/ component: HardwareComponent},
+    {path:"hardware-register", /*canActivate:[AuthGuard],*/ component: RegisterHardwareComponent},
+    {path:"users", /*canActivate:[AuthGuard],*/ component: UsersComponent},
+    {path:"users-register", /*canActivate:[AuthGuard],*/ component: UsersRegisterComponent},
   ]
 }
 ]
