@@ -21,15 +21,15 @@ export class RegisterHardwareComponent {
     })
   }
 
-  hardware: CreateHardwareDto = {
+  /*hardware: CreateHardwareDto = {
     categoria: '',
-    usuario: '',
+    usuario: ,
     sn: '',
     marca: '',
     os: '',
     procesador: '',
     ram: ''
-  }
+  }*/
 
   registerHardware(hardware: CreateHardwareDto) {
     console.log(hardware)
