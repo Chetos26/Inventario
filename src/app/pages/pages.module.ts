@@ -9,6 +9,7 @@ import { PagesRoutingModule } from './pages-routing.module';
 import { PagesComponent } from './pages.component';
 import { SharedModule } from '../shared/shared.module';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { CategoriesComponent } from './categories/categories.component';
 
 
 
@@ -19,7 +20,8 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     UsersComponent,
     RegisterHardwareComponent,
     UsersRegisterComponent,
-    DashboardComponent
+    DashboardComponent,
+    CategoriesComponent
   ],
   imports: [
     CommonModule,

@@ -8,6 +8,7 @@ import { UsersComponent } from './users/users.component';
 import { UsersRegisterComponent } from './users-register/users-register.component';
 import { AuthGuard } from '../guards/auth.guard';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { CategoriesComponent } from './categories/categories.component';
 
 const routes: Routes = [
   {path:"pages", /*canActivate:[AuthGuard],*/ component: PagesComponent,
@@ -15,6 +16,7 @@ const routes: Routes = [
     {path: "", component: DashboardComponent},
     {path:"hardware", /*canActivate:[AuthGuard],*/ component: HardwareComponent},
     {path:"hardware-register", /*canActivate:[AuthGuard],*/ component: RegisterHardwareComponent},
+    {path: "categories", /*canActivate:[AuthGuard],*/component: CategoriesComponent},
     {path:"users", /*canActivate:[AuthGuard],*/ component: UsersComponent},
     {path:"users-register", /*canActivate:[AuthGuard],*/ component: UsersRegisterComponent},
   ]
