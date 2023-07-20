@@ -28,7 +28,8 @@ export class RegisterHardwareComponent {
     marca: '',
     os: '',
     procesador: '',
-    ram: ''
+    ram: '',
+    qr: '',
   }*/
 
   registerHardware(hardware: CreateHardwareDto) {

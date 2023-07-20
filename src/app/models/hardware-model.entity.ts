@@ -8,6 +8,7 @@ export interface HardwareModel {
   os: string;
   procesador:  string;
   ram: string;
+  qr: string;
   usuario: UsersModel;
   categoria: CategoryModel;
 }

@@ -59,7 +59,8 @@ export class HardwareComponent {
        procesador: '',
        ram: '',
        categoria: '',
-       usuario: ''
+       usuario: '',
+       qr: '',
      }
 
      updateHardware(hardware: UpdateHardwareDto) {
