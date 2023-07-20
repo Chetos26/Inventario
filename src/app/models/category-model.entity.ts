@@ -1,9 +1,9 @@
 export interface CategoryModel {
-  id: string;
+  id_c: string;
   nombre_c: string;
 }
 
-export interface CreateCategoryModel extends  Omit<CategoryModel, 'id'>{
+export interface CreateCategoryModel extends  Omit<CategoryModel, 'id_c'>{
 }
 
 export interface UpdateCategoryModel extends Partial<CategoryModel>{
