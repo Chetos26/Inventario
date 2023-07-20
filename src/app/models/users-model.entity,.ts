@@ -1,5 +1,5 @@
 export interface UsersModel {
-  id: string;
+  id_u: string;
   foto: string;
   nombre: string;
   apellido: string;
@@ -7,9 +7,9 @@ export interface UsersModel {
   email: string;
 }
 
-export interface CreateUsersModel extends  Omit<UsersModel, 'id'>{
+export interface CreateUsersModel extends  Omit<UsersModel, 'id_u'>{
 }
 
 export interface UpdateUsersModel extends Partial<UsersModel>{
-  id: string;
+  id_u: string;
 }

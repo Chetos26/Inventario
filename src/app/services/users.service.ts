@@ -12,7 +12,7 @@ import {
 })
 export class UsersService {
 
-  readonly API_URL: string = "http://localhost:5000/user";
+  readonly API_URL: string = "";
 
   constructor(private httpClient: HttpClient) { }
 
@@ -21,7 +21,7 @@ export class UsersService {
     return this.httpClient.get<UsersModel[]>(url);
     //obejeto.metodo
   }
-  getOne(id: UsersModel['id']):Observable<UsersModel> {//solo devuelve un objeto
+  getOne(id: UsersModel['id_u']):Observable<UsersModel> {//solo devuelve un objeto
     const url = `${this.API_URL}/${id}`;
     return this.httpClient.get<UsersModel>(url);
   }
@@ -30,11 +30,11 @@ export class UsersService {
     return this.httpClient.post<UsersModel>(url, user)
   }
 
-  update(id: UsersModel['id'], user: UpdateUsersModel):Observable<UsersModel> {
+  update(id: UsersModel['id_u'], user: UpdateUsersModel):Observable<UsersModel> {
     const url = `${this.API_URL}/${id}`;
     return this.httpClient.put<UsersModel>(url, user);//devuelve un observable de tipo UserModel
   }
-  destroy(id: UsersModel['id']):Observable<any> {
+  destroy(id: UsersModel['id_u']):Observable<any> {
     const url = `${this.API_URL}/${id}`;
     return this.httpClient.delete<any>(url).pipe(map((response: { rta: boolean; }) => {
     //objeto.atributo.metodo(delete)
