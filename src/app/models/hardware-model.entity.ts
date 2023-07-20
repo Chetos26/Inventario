@@ -12,9 +12,8 @@ export interface HardwareModel {
   categoria: CategoryModel;
 }
 
-export interface CreateHardwareDto extends Omit<HardwareModel,'id_h'|'usuario'|'categoria'>{
-  categoria: string
-  usuario: string
+export interface CreateHardwareDto extends Omit<HardwareModel,'id_h'>{
+
 }
 
 export interface UpdateHardwareDto extends Omit<HardwareModel, 'categoria'| 'usuario'> {
