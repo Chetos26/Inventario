@@ -13,8 +13,8 @@ body{
 
 .icon{
   position: absolute; /* Posiciona el contenedor de icono fijo en la pantalla */
-  top: 15%; /* Coloca el contenedor en el centro vertical de la pantalla */
-  right: 25px; /* Espacio desde el lado derecho */
+  top: 12%; /* Coloca el contenedor en el centro vertical de la pantalla */
+  right: 8px; /* Espacio desde el lado derecho */
   transform: translateY(-50%); /* Centra verticalmente el contenedor */
   z-index: 9999; /* Asegura que el icono se muestre encima del contenido */
   cursor: pointer;
