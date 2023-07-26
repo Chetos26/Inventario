@@ -2,31 +2,41 @@
     <div class="container">
         <div class="row pt-4">
 
+          <div class="d-flex justify-content-between">
             <form class="d-flex input-group w-auto">
-                <input
-                  type="search"
-                  class="form-control"
-                  placeholder="Type query"
-                  aria-label="Search"
-                  
+              <input
+                type="search"
+                class="form-control"
+                placeholder="Type query"
+                aria-label="Search"
+              />
+              <button
+                class="btn btn-outline-primary"
+                type="button"
+                data-mdb-ripple-color="dark"
+              >
+                Search
+              </button>
+            </form>
+
+            <button class="btn btn-primary" type="button">
+              Agregar
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                fill="currentColor"
+                class="bi bi-plus-circle-fill"
+                viewBox="0 0 16 16"
+              >
+                <path
+                  d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z"
                 />
-                <button
-                  class="btn btn-outline-primary"
-                  type="button"
-                  data-mdb-ripple-color="dark"
-                >
-                  Search
-                </button>
-              </form>
+              </svg>
+            </button>
+          </div>
 
-            <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                <button class="btn btn-primary me-md-2" type="button">Agregar <svg xmlns="http://www.w3.org/2000/svg"
-                        width="16" height="16" fill="currentColor" class="bi bi-plus-circle-fill" viewBox="0 0 16 16">
-                        <path
-                            d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z" />
-                    </svg></button>
 
-            </div>
             <div class="col-lg-4 col-sm-6 py-2">
 
                 <!-- card -->
@@ -65,7 +75,7 @@
 
                             <small class="text-muted p-t-30 db">Tipo de almacenamiento:</small>
                             <h6 class="text-justify">SSD</h6>
-                            
+
                         </details>
                         <div class="d-flex justify-content-center">
                             <div class="mr-2 p-3">
