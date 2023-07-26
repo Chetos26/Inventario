@@ -3,12 +3,15 @@ import { UsersModel } from "./users-model.entity,";
 
 export interface HardwareModel {
   id_h: string;
+  foto: string;
+  monitor_sn: string;
+  teclado: boolean;
+  mouse: boolean;
   sn: string;
   marca:  string;
-  os: string;
   procesador:  string;
   ram: string;
-  qr: string;
+  sala:string;
   usuario: UsersModel;
   categoria: CategoryModel;
 }
