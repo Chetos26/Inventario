@@ -21,7 +21,8 @@ export class UsersRegisterComponent {
     nombre: '',
     apellido: '',
     telf: '',
-    email: ''
+    email: '',
+    cargo: ''
   }
 
   registerUsers(users: CreateUsersModel) {

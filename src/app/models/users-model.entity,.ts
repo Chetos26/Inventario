@@ -1,6 +1,7 @@
 export interface UsersModel {
   id_u: string;
   foto: string;
+  cargo: string;
   nombre: string;
   apellido: string;
   telf: string;
