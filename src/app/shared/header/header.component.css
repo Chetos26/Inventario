@@ -15,3 +15,37 @@
 .logo {
   cursor: pointer;
 }
+
+
+/* search.component.scss */
+
+.d-flex {
+  display: flex;
+  justify-content: center;
+  
+}
+
+.search-form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.search-input {
+  width: 300px;
+  margin-right: 10px;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+}
+
+.search-button {
+  padding: 8px 16px;
+  font-size: 16px;
+  border: 1px solid #007bff;
+  border-radius: 4px;
+  background-color: #007bff;
+  color: #fff;
+  cursor: pointer;
+}

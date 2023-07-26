@@ -1,90 +1,113 @@
-<div class="d-flex p-5  bootstrap snippets bootdey">
-  <div class="col-md-3">
-      <div class="widget widget-blog">
-          <div class="widget-blog-cover">
-              <img src="https://www.bootdey.com/image/400x200/FFB6C1/000000" alt="">
+<div class="container">
+    <div class="container">
+        <div class="row pt-4">
+
+          <div class="d-flex justify-content-between">
+            <form class="d-flex input-group w-auto">
+              <input
+                type="search"
+                class="form-control"
+                placeholder="Inicie su búsqueda"
+                aria-label="Buscar"
+              />
+              <button
+                class="btn btn-outline-primary"
+                type="button"
+                data-mdb-ripple-color="dark"
+              >
+                Buscar
+              </button>
+            </form>
+
+            <button class="btn btn-primary" type="button" [routerLink]="['/pages/hardware-register']">
+              Agregar
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                fill="currentColor"
+                class="bi bi-plus-circle-fill"
+                viewBox="0 0 16 16"
+              >
+                <path
+                  d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z"
+                />
+              </svg>
+            </button>
           </div>
-          <div class="widget-blog-author">
-              <div class="widget-blog-author-image">
-                  <img src="https://bootdey.com/img/Content/user_1.jpg" alt="">
-              </div>
-              <div class="widget-blog-author-info">
-                  <h5 class="m-t-0 m-b-1">Serhiy Navin</h5>
-                  <p class="text-muted m-0 f-s-11">Front End Designer</p>
-              </div>
-          </div>
-          <div class="widget-blog-content">
-              <h5>Lorem ipsum dolor sit amec adipiscing elit.</h5>
-              <p>
-                  Nulla condimentum sodales urna, at consequat urna laoreet non. Aenean id porttitor odio, id elementum augue. Donec rhoncus semper mi.
-              </p>
-          </div>
-      </div>
-  </div>
-  <div class="col-md-3">
-      <div class="widget widget-blog">
-          <div class="widget-blog-cover">
-              <img src="https://www.bootdey.com/image/400x200/87CEFA/000000" alt="">
-          </div>
-          <div class="widget-blog-author">
-              <div class="widget-blog-author-image">
-                  <img src="https://bootdey.com/img/Content/user_2.jpg" alt="">
-              </div>
-              <div class="widget-blog-author-info">
-                  <h5 class="m-t-0 m-b-1">Serhiy Navin</h5>
-                  <p class="text-muted m-0 f-s-11">Front End Designer</p>
-              </div>
-          </div>
-          <div class="widget-blog-content">
-              <h5>Lorem ipsum dolor sit amec adipiscing elit.</h5>
-              <p>
-                  Nulla condimentum sodales urna, at consequat urna laoreet non. Aenean id porttitor odio, id elementum augue. Donec rhoncus semper mi.
-              </p>
-          </div>
-      </div>
-  </div>
-  <div class="col-md-3">
-      <div class="widget widget-blog">
-          <div class="widget-blog-cover">
-              <img src="https://www.bootdey.com/image/400x200/FF7F50/000000" alt="">
-          </div>
-          <div class="widget-blog-author">
-              <div class="widget-blog-author-image">
-                  <img src="https://bootdey.com/img/Content/user_3.jpg" alt="">
-              </div>
-              <div class="widget-blog-author-info">
-                  <h5 class="m-t-0 m-b-1">Serhiy Navin</h5>
-                  <p class="text-muted m-0 f-s-11">Front End Designer</p>
-              </div>
-          </div>
-          <div class="widget-blog-content">
-              <h5>Lorem ipsum dolor sit amec adipiscing elit.</h5>
-              <p>
-                  Nulla condimentum sodales urna, at consequat urna laoreet non. Aenean id porttitor odio, id elementum augue. Donec rhoncus semper mi.
-              </p>
-          </div>
-      </div>
-  </div>
-  <div class="col-md-3">
-      <div class="widget widget-blog">
-          <div class="widget-blog-cover">
-              <img src="https://www.bootdey.com/image/400x200/20B2AA/000000" alt="">
-          </div>
-          <div class="widget-blog-author">
-              <div class="widget-blog-author-image">
-                  <img src="https://bootdey.com/img/Content/user_6.jpg" alt="">
-              </div>
-              <div class="widget-blog-author-info">
-                  <h5 class="m-t-0 m-b-1">Serhiy Navin</h5>
-                  <p class="text-muted m-0 f-s-11">Front End Designer</p>
-              </div>
-          </div>
-          <div class="widget-blog-content">
-              <h5>Lorem ipsum dolor sit amec adipiscing elit.</h5>
-              <p>
-                  Nulla condimentum sodales urna, at consequat urna laoreet non. Aenean id porttitor odio, id elementum augue. Donec rhoncus semper mi.
-              </p>
-          </div>
-      </div>
-  </div>
-</div>
+
+
+            <div class="col-lg-4 col-sm-6 py-2">
+
+                <!-- card -->
+                <div class="card h-100">
+                    <div class="card-img-top">
+                        <img src="https://www.apple.com/newsroom/images/product/imac/standard/Apple_imac-magickeyboardnum-magicmouse2-macos-wallpaper_08042020_big.jpg.large.jpg"
+                            class="img-fluid mx-auto d-block" alt="card image 1">
+                    </div>
+                    <div class="widget-blog-author">
+                        <div class="widget-blog-author-image">
+                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR-XHbhDY5ZwNVcHm8z3sdNy_CU3HzTgrdIOw&usqp=CAU"
+                                alt="">
+                        </div>
+                        <div class="widget-blog-author-info">
+                            <h5 class="text-muted m-0 f-s-11">NoteBook HP</h5>
+                        </div>
+                        <small class="text-muted">Encargado:</small>
+                        <a href="users">
+                            <h6 class="text-justify">Ruben Zabala</h6>
+                        </a>
+                        <small class="text-muted">Numero de serie:</small>
+                        <h6 class="text-justify">1756011698</h6>
+                        <small class="text-muted">Marca:</small>
+                        <h6 class="text-justify">Hp</h6>
+                        <details class="text-muted">
+                            <small class="text-muted">Procesador:</small>
+                            <h6 class="text-justify">Core i5</h6>
+
+                            <p id="desplegar" style="display:none;"></p>
+
+                            <small class="text-muted p-t-30 db">Memoria Ram:</small>
+                            <h6 class="text-justify">2 GB</h6>
+
+                            <small class="text-muted p-t-30 db">Almacenamiento:</small>
+                            <h6 class="text-justify">1 TB</h6>
+
+                            <small class="text-muted p-t-30 db">Tipo de almacenamiento:</small>
+                            <h6 class="text-justify">SSD</h6>
+
+                        </details>
+                        <div class="d-flex justify-content-center">
+                            <div class="mr-2 p-3">
+                                <button type="button" class="btn btn-success">Editar</button>
+                            </div>
+                            <div class="ml-2 p-3">
+                                <button type="button" class="btn btn-danger">Eliminar</button>
+                            </div>
+
+                        </div>
+                        <div class="d-flex justify-content-center align-items-center">
+                        </div>
+                    </div>
+                </div>
+                <!-- card -->
+
+            </div>
+            <div class="col-lg-4 col-sm-6 py-2">
+
+
+
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row pt-4">
+                <div class="col-lg-4 col-sm-6 py-2">
+
+                    <!-- card -->
+
+                </div>
+
+            </div>
+        </div>
+    </div>

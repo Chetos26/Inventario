@@ -55,12 +55,15 @@ export class HardwareComponent {
        id_h: '',
        sn: '',
        marca: '',
-       os: '',
        procesador: '',
        ram: '',
        categoria: '',
        usuario: '',
-       qr: '',
+       foto: '',
+       monitor_sn: '',
+       teclado: false,
+       mouse: false,
+       sala: ''
      }
 
      updateHardware(hardware: UpdateHardwareDto) {
