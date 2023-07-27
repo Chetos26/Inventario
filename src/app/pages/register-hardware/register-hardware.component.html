@@ -18,17 +18,22 @@
               </select>
             </div>
 
+            <div class="mb-3">
+              <label for="sn" class="form-label">Numero de Serie Monitor:</label>
+              <input name="m_sn" type="text" class="form-control" id="sn">
+            </div>
+
             <div class="container">
               <div class="row">
                 <div class="col-md-6">
                   <div class="mb-3">
                     <label class="form-label">Mouse:</label>
                     <div class="form-check">
-                      <input class="form-check-input" type="radio" name="nombre" id="siMouse" value="si">
-                      <label class="form-check-label" for="siNombre">Sí</label>
+                      <input class="form-check-input" type="radio" name="siMouse" id="siMouse" value="si">
+                      <label class="form-check-label" for="siNombre" name="mouse">Sí</label>
                     </div>
                     <div class="form-check">
-                      <input class="form-check-input" type="radio" name="nombre" id="noMouse" value="no">
+                      <input class="form-check-input" type="radio" name="noMouse" id="noMouse" value="no">
                       <label class="form-check-label" for="noNombre">No</label>
                     </div>
                   </div>
@@ -37,12 +42,12 @@
                   <div class="mb-3">
                     <label class="form-label">Teclado:</label>
                     <div class="form-check">
-                      <input class="form-check-input" type="radio" name="apellido" id="siApellido" value="si">
-                      <label class="form-check-label" for="siApellido">Sí</label>
+                      <input class="form-check-input" type="radio" name="siTeclado" id="siTeclado" value="si">
+                      <label class="form-check-label" for="siTeclado" na>Sí</label>
                     </div>
                     <div class="form-check">
-                      <input class="form-check-input" type="radio" name="apellido" id="noApellido" value="no">
-                      <label class="form-check-label" for="noApellido">No</label>
+                      <input class="form-check-input" type="radio" name="noTeclado" id="noTeclado" value="no">
+                      <label class="form-check-label" for="noTeclado">No</label>
                     </div>
                   </div>
                 </div>
@@ -55,20 +60,20 @@
             </div>
             <div class="mb-3">
               <label for="marca" class="form-label">Marca:</label>
-              <input type="text" class="form-control" id="marca">
+              <input type="text" class="form-control" id="marca" name="marca">
             </div>
             <div class="mb-3">
               <label for="procesador" class="form-label">Procesador:</label>
-              <textarea rows="2" class="form-control" maxlength="100"></textarea>
+              <textarea rows="2" class="form-control" maxlength="100" name="procesador"></textarea>
             </div>
             <div class="mb-3">
               <label for="ram" class="form-label">RAM:</label>
-              <textarea rows="2" class="form-control" maxlength="100"></textarea>
+              <textarea rows="2" class="form-control" maxlength="100" name="ram"></textarea>
             </div>
 
             <div class="mb-3">
               <label for="sala" class="form-label">Sala:</label>
-              <select class="form-control">
+              <select class="form-control" name="sala">
                 <option>Medialab</option>
                 <option>Oficina1</option>
                 <option>Auditorio</option>
@@ -77,10 +82,8 @@
 
             <div class="mb-3">
               <label for="sala" class="form-label">Usuario:</label>
-              <select class="form-control">
-                <option>Rubén Zabala</option>
-                <option>Oficina1</option>
-                <option>Auditorio</option>
+              <select class="form-control" name="sala" [(ngModel)]="users.nombre_u">
+                <option></option>
               </select>
             </div>
 
