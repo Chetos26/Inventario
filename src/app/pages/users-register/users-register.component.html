@@ -7,29 +7,29 @@
           <form>
             <div class="mb-3">
               <label for="foto" class="form-label">Foto</label>
-              <input type="file" class="form-control" id="foto">
+              <input name="foto" type="file" class="form-control" id="foto" [(ngModel)]="users.foto">
             </div>
             <div class="mb-3">
               <label for="cargo" class="form-label">Cargo</label>
-              <input type="text" class="form-control" id="cargo">
+              <input name="cargo" type="text" class="form-control" id="cargo" [(ngModel)]="users.cargo">
             </div>
             <div class="mb-3">
               <label for="nombre" class="form-label">Nombre</label>
-              <input type="text" class="form-control" id="nombre">
+              <input name="nombre" type="text" class="form-control" id="nombre" [(ngModel)]="users.nombre_u">
             </div>
             <div class="mb-3">
               <label for="apellido" class="form-label">Apellido</label>
-              <input type="text" class="form-control" id="apellido">
+              <input name="apellido" type="text" class="form-control" id="apellido" [(ngModel)]="users.apellido_u">
             </div>
             <div class="mb-3">
               <label for="telf" class="form-label">Teléfono</label>
-              <input type="tel" class="form-control" id="telf">
+              <input name="tel" type="text" class="form-control" class="form-control" id="telf" [(ngModel)]="users.telf">
             </div>
             <div class="mb-3">
               <label for="email" class="form-label">Correo electrónico</label>
-              <input type="email" class="form-control" id="email">
+              <input name="email" type="text" class="form-controlemail" class="form-control" id="email" [(ngModel)]="users.email">
             </div>
-            <button type="submit" class="btn btn-primary">Enviar</button>
+            <button type="submit" class="btn btn-primary" (click)="registerUsers()" name="registrar">Register</button>
           </form>
         </div>
       </div>

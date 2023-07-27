@@ -38,8 +38,8 @@ export class UsersComponent implements OnInit {
   usersModel: UpdateUsersModel = {
     foto: '',
     cargo: '',
-    nombre: '',
-    apellido: '',
+    nombre_u: '',
+    apellido_u: '',
     telf: '',
     email: '',
     id_u: ''

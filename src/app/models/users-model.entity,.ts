@@ -2,8 +2,8 @@ export interface UsersModel {
   id_u: string;
   foto: string;
   cargo: string;
-  nombre: string;
-  apellido: string;
+  nombre_u: string;
+  apellido_u: string;
   telf: string;
   email: string;
 }

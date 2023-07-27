@@ -20,15 +20,15 @@ export class HardwareService {
     return this.httpClient.get<HardwareModel>(url);
   }
 
-  createHardware({categoria, ...productData}:CreateHardwareDto): Observable<HardwareModel> {
-    const product = {
-      ...productData,
+  createHardware({categoria, ...hardwareData}:CreateHardwareDto): Observable<HardwareModel> {
+    const hardware = {
+      ...hardwareData,
       categoria:{
-        name_categoria: categoria
+        nombre_c: categoria
       }
     }
     const url = `${this.API_URL}`;
-    return this.httpClient.post<HardwareModel>(url, product);
+    return this.httpClient.post<HardwareModel>(url, hardware);
   }
 
   updateHardware(id: HardwareModel['id_h'],product: UpdateHardwareDto): Observable<HardwareModel> {

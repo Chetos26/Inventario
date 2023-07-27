@@ -16,7 +16,7 @@ export class UserService {
 
   constructor(private httpClient: HttpClient) { }
 
-  getAll():Observable<UserModel[]> {
+  /*getAll():Observable<UserModel[]> {
     const url = `${this.API_URL}`;
     return this.httpClient.get<UserModel[]>(url);
     //obejeto.metodo
@@ -41,5 +41,5 @@ export class UserService {
       return response.rta;
       })
       );
-  }
+  }*/
 }

@@ -18,17 +18,17 @@ export class UsersRegisterComponent {
 
   users: CreateUsersModel={
     foto: '',
-    nombre: '',
-    apellido: '',
+    nombre_u: '',
+    apellido_u: '',
     telf: '',
     email: '',
     cargo: ''
   }
 
-  registerUsers(users: CreateUsersModel) {
-    console.log(users)
+  registerUsers() {
+    console.log(this.users)
     const response = this.usersServices
-      .store(users)
+      .store(this.users)
       .subscribe((response) => {
         console.log(response);
       });
