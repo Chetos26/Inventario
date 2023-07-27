@@ -7,7 +7,7 @@ import { Observable, map } from 'rxjs';
   providedIn: 'root'
 })
 export class HardwareService {
-  readonly API_URL = '';
+  readonly API_URL = 'http://localhost:3000/hardware';
   constructor(private httpClient: HttpClient) { }
 
   getAllHardware(): Observable<HardwareModel[]> {
@@ -20,11 +20,11 @@ export class HardwareService {
     return this.httpClient.get<HardwareModel>(url);
   }
 
-  createHardware({categoria, ...hardwareData}:CreateHardwareDto): Observable<HardwareModel> {
+  createHardware({category, ...hardwareData}:CreateHardwareDto): Observable<HardwareModel> {
     const hardware = {
       ...hardwareData,
       categoria:{
-        nombre_c: categoria
+        nombre_c: category
       }
     }
     const url = `${this.API_URL}`;

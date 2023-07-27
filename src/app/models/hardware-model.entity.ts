@@ -3,7 +3,7 @@ import { UsersModel } from "./users-model.entity,";
 
 export interface HardwareModel {
   id_h: string;
-  foto: string;
+  image: string;
   monitor_sn: string;
   teclado: boolean;
   mouse: boolean;
@@ -12,15 +12,16 @@ export interface HardwareModel {
   procesador:  string;
   ram: string;
   sala:string;
-  usuario: UsersModel;
-  categoria: CategoryModel;
+  users: UsersModel;
+  category: CategoryModel;
 }
 
-export interface CreateHardwareDto extends Omit<HardwareModel,'id_h'>{
-
+export interface CreateHardwareDto extends Omit<HardwareModel,'id_h'| 'category'| 'users'>{
+  category:string;
+  users: string
 }
 
-export interface UpdateHardwareDto extends Omit<HardwareModel, 'categoria'| 'usuario'> {
-  categoria:string;
-  usuario: string
+export interface UpdateHardwareDto extends Omit<HardwareModel, 'category' | 'users'> {
+  category:string;
+  users: string
 }

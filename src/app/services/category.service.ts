@@ -12,7 +12,7 @@ import {
 })
 export class CategoryService {
 
-  readonly API_URL: string = "";
+  readonly API_URL: string = "http://localhost:3000/categories";
 
   constructor(private httpClient: HttpClient) { }
 
