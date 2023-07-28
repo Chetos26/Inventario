@@ -29,11 +29,6 @@ export class HardwareComponent {
 
 
     name_product: string = ''
-    category: CategoryModel[] = []
-    unit_price!: number
-    quantity_available!: number;   //cantidad disponible
-    minimum_amount!: number//cantidad minima
-    stock!: number
 
 
     getHardware(){
