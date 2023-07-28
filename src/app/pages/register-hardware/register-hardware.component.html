@@ -12,7 +12,7 @@
 
             <div class="mb-3">
               <label for="sala" class="form-label">Categorias:</label>
-              <select name="category" class="form-control" [(ngModel)]="hardware.category">
+              <select name="category" class="form-control" [(ngModel)]="hardware.categories">
                 <option *ngFor="let opcion of category" [value]="opcion.id_c"> {{opcion.nombre_c}} </option>
               </select>
             </div>

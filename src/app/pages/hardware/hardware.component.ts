@@ -57,7 +57,7 @@ export class HardwareComponent {
        marca: '',
        procesador: '',
        ram: '',
-       category: '',
+       categories: '',
        users: '',
        image: '',
        monitor_sn: '',

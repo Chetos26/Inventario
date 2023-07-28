@@ -13,15 +13,15 @@ export interface HardwareModel {
   ram: string;
   sala:string;
   users: UsersModel;
-  category: CategoryModel;
+  categories: CategoryModel;
 }
 
-export interface CreateHardwareDto extends Omit<HardwareModel,'id_h'| 'category'| 'users'>{
-  category:string;
+export interface CreateHardwareDto extends Omit<HardwareModel,'id_h'| 'categories'| 'users'>{
+  categories:string;
   users: string
 }
 
-export interface UpdateHardwareDto extends Omit<HardwareModel, 'category' | 'users'> {
-  category:string;
+export interface UpdateHardwareDto extends Omit<HardwareModel, 'categories' | 'users'> {
+  categories:string;
   users: string
 }

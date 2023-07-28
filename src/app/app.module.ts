@@ -15,10 +15,12 @@ import { PagesRoutingModule } from './pages/pages-routing.module';
 import { AuthModule } from './auth/auth.module';
 import { PagesModule } from './pages/pages.module';
 import { SharedModule } from './shared/shared.module';
+import { CategorySearchPipe } from './pipe/category-search.pipe';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    CategorySearchPipe
   ],
   imports: [
     BrowserModule,

@@ -20,12 +20,9 @@ export class HardwareService {
     return this.httpClient.get<HardwareModel>(url);
   }
 
-  createHardware({category, ...hardwareData}:CreateHardwareDto): Observable<HardwareModel> {
+  createHardware({...hardwareData}:CreateHardwareDto): Observable<HardwareModel> {
     const hardware = {
       ...hardwareData,
-      categoria:{
-        nombre_c: category
-      }
     }
     const url = `${this.API_URL}`;
     return this.httpClient.post<HardwareModel>(url, hardware);

@@ -28,7 +28,6 @@ export class RegisterHardwareComponent {
   getCategories():void{
     this.categoryService.getAll().subscribe(data => {
       this.category = data;
-      console.log(data)
     })
   }
 
@@ -39,7 +38,7 @@ export class RegisterHardwareComponent {
   }
 
   hardware: CreateHardwareDto = {
-    category: '',
+    categories: '',
     sn: '',
     procesador: '',
     ram: '',
