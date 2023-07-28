@@ -22,7 +22,7 @@
 .d-flex {
   display: flex;
   justify-content: center;
-  
+
 }
 
 .search-form {
@@ -48,4 +48,38 @@
   background-color: #007bff;
   color: #fff;
   cursor: pointer;
+}
+
+
+/* Estilos para el botón del menú */
+.navbar-toggler {
+  border: none;
+  background-color: transparent;
+  outline: none;
+}
+
+/* Estilos para el ícono del botón del menú */
+.navbar-toggler i {
+  color: #000; /* Color del icono del botón */
+  font-size: 1.5rem; /* Tamaño del icono del botón */
+}
+
+/* Estilos para el menú cuando la pantalla es pequeña */
+@media (max-width: 768px) {
+  .navbar-brand {
+    margin-right: 0;
+  }
+
+  .navbar-toggler {
+    margin-right: 0;
+  }
+
+  .navbar-nav {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .nav-item {
+    margin-bottom: 5px; /* Espacio entre los elementos del menú */
+  }
 }

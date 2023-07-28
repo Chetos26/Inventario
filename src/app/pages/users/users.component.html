@@ -1,14 +1,38 @@
-<!-- Corrección 1: Usa una versión más actualizada de Font Awesome --> 
-<div class="icon">
-    <button class="d-grid gap-2 d-md-flex justify-content-md-end" type="button" class="btn btn-primary" [routerLink]="['/pages/users-register']">
-        <i class="fas fa-plus"></i> Agregar
-      </button>
-</div>
-<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
-
+<!-- Corrección 1: Usa una versión más actualizada de Font Awesome -->
 <div class="container p-4">
     <div class="row">
-        <div class="col-lg-4 col-md-6">
+
+      <div class="d-flex justify-content-between">
+        <form class="d-flex input-group w-auto">
+          <input type="search" class="form-control" placeholder="Inicie su búsqueda" aria-label="Buscar"/>
+          <button
+            class="btn btn-outline-primary"
+            type="button"
+            data-mdb-ripple-color="dark"
+          >
+            Buscar
+          </button>
+        </form>
+
+        <button class="btn btn-primary" type="button" [routerLink]="['/pages/hardware-register']">
+          Agregar
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="16"
+            height="16"
+            fill="currentColor"
+            class="bi bi-plus-circle-fill"
+            viewBox="0 0 16 16"
+          >
+            <path
+              d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z"
+            />
+          </svg>
+        </button>
+      </div>
+
+        <div class="col-lg-4 col-sm-6 py-2">
+
             <div class="card">
                 <div class="card-body text-center">
                     <img src="https://bootdey.com/img/Content/avatar/avatar1.png" class="img-circle" width="150">
@@ -40,12 +64,6 @@
                             <button type="button" class="btn btn-danger">Eliminar</button>
                         </div>
                     </div>
-
-                    
-
-
-
-
                 </div>
             </div>
         </div>
