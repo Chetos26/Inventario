@@ -35,25 +35,21 @@
             <div class="col-lg-4 col-sm-6 py-2">
 
                 <!-- card -->
-                <div class="card h-100">
+                <div class="card h-100" *ngFor="let hardware of hardware">
                     <div class="card-img-top">
                         <img src="https://www.apple.com/newsroom/images/product/imac/standard/Apple_imac-magickeyboardnum-magicmouse2-macos-wallpaper_08042020_big.jpg.large.jpg"
                             class="img-fluid mx-auto d-block" alt="card image 1">
                     </div>
                     <div class="widget-blog-author">
-                        <div class="widget-blog-author-image">
-                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR-XHbhDY5ZwNVcHm8z3sdNy_CU3HzTgrdIOw&usqp=CAU"
-                                alt="">
-                        </div>
                         <div class="widget-blog-author-info">
-                            <h5 class="text-muted m-0 f-s-11">NoteBook HP</h5>
+                            <h5 class="text-muted m-0 f-s-11"> {{hardware.categories}} </h5>
                         </div>
                         <small class="text-muted">Encargado:</small>
                         <a href="users">
-                            <h6 class="text-justify">Ruben Zabala</h6>
+                            <h6 class="text-justify"> {{hardware.users.nombre_u}} {{hardware.users.apellido_u}} </h6>
                         </a>
                         <small class="text-muted">Numero de serie:</small>
-                        <h6 class="text-justify">1756011698</h6>
+                        <h6 class="text-justify"> {{hardware.sn}} </h6>
                         <small class="text-muted">Marca:</small>
                         <h6 class="text-justify">Hp</h6>
                         <details class="text-muted">
