@@ -68,7 +68,7 @@
             </div>
 
             <div class="mb-3">
-              <label for="sala" class="form-label">Usuario:</label>
+              <label for="sala" class="form-label">Encargado:</label>
               <select class="form-control" name="sala" [(ngModel)]="hardware.users">
                 <option *ngFor="let opcion of users" [value]="opcion.id_u"> {{opcion.nombre_u}} </option>
               </select>
