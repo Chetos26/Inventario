@@ -21,8 +21,8 @@ export class UsersService {
     return this.httpClient.get<UsersModel[]>(url);
     //obejeto.metodo
   }
-  getOne(id: UsersModel['id_u']):Observable<UsersModel> {//solo devuelve un objeto
-    const url = `${this.API_URL}/${id}`;
+  getOne(id_u: UsersModel['id_u']):Observable<UsersModel> {//solo devuelve un objeto
+    const url = `${this.API_URL}/${id_u}`;
     return this.httpClient.get<UsersModel>(url);
   }
   store(user: CreateUsersModel):Observable<UsersModel> {//no se usaran todos o campos(id, category)
@@ -30,12 +30,12 @@ export class UsersService {
     return this.httpClient.post<UsersModel>(url, user)
   }
 
-  update(id: UsersModel['id_u'], user: UpdateUsersModel):Observable<UsersModel> {
-    const url = `${this.API_URL}/${id}`;
+  update(id_u: UsersModel['id_u'], user: UpdateUsersModel):Observable<UsersModel> {
+    const url = `${this.API_URL}/${id_u}`;
     return this.httpClient.put<UsersModel>(url, user);//devuelve un observable de tipo UserModel
   }
-  destroy(id: UsersModel['id_u']):Observable<any> {
-    const url = `${this.API_URL}/${id}`;
+  destroy(id_u: UsersModel['id_u']):Observable<any> {
+    const url = `${this.API_URL}/${id_u}`;
     return this.httpClient.delete<any>(url).pipe(map((response: { rta: boolean; }) => {
     //objeto.atributo.metodo(delete)
       return response.rta;

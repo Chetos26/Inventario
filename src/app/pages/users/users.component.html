@@ -1,71 +1,82 @@
-<!-- Corrección 1: Usa una versión más actualizada de Font Awesome -->
-<div class="container p-4">
-    <div class="row">
+<div class="container">
+  <div class="container">
+      <div class="row pt-4">
 
-      <div class="d-flex justify-content-between">
-        <form class="d-flex input-group w-auto">
-          <input type="search" class="form-control" placeholder="Inicie su búsqueda" aria-label="Buscar"/>
-          <button
-            class="btn btn-outline-primary"
-            type="button"
-            data-mdb-ripple-color="dark"
-          >
-            Buscar
+        <div class="d-flex justify-content-between">
+          <form class="d-flex input-group w-auto">
+            <input type="search" class="form-control" placeholder="Inicie su búsqueda" aria-label="Buscar"/>
+            <button class="btn btn-outline-primary" type="button">
+              Buscar
+            </button>
+          </form>
+
+          <button class="btn btn-primary" type="button" [routerLink]="['/pages/hardware-register']">
+            Agregar
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              fill="currentColor"
+              class="bi bi-plus-circle-fill"
+              viewBox="0 0 16 16"
+            >
+              <path
+                d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z"
+              />
+            </svg>
           </button>
-        </form>
-
-        <button class="btn btn-primary" type="button" [routerLink]="['/pages/hardware-register']">
-          Agregar
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="16"
-            height="16"
-            fill="currentColor"
-            class="bi bi-plus-circle-fill"
-            viewBox="0 0 16 16"
-          >
-            <path
-              d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z"
-            />
-          </svg>
-        </button>
-      </div>
-
-        <div class="col-lg-4 col-sm-6 py-2">
-
-            <div class="card">
-                <div class="card-body text-center">
-                    <img src="https://bootdey.com/img/Content/avatar/avatar1.png" class="img-circle" width="150">
-                    <h4 class="card-title m-t-10">Marco Roberto</h4>
-                    <h6 class="card-subtitle">Secretaria</h6>
-                    <div class="row text-center justify-content-md-center mt-3">
-                    </div>
-                </div>
-                <hr>
-                <div class="card-body">
-                    <small class="text-muted">Cargo</small>
-                    <h6>Secretaria</h6>
-                    <small class="text-muted">Nombres</small>
-                    <h6>Marco Roberto</h6>
-                    <small class="text-muted">Apellidos</small>
-                    <h6>Cevallos Guevara</h6>
-                    <small class="text-muted">Telèfono</small>
-                    <h6>99 435 2784</h6>
-                    <small class="text-muted p-t-30 db">Correo Electronico</small>
-                    <h6>samanta@gmail.com</h6>
-                    <!-- <small class="text-muted p-t-30 db">Direcciòn</small>
-                    <h6>71 Pilgrim Avenue Chevy Chase, MD 20815</h6>-->
-
-                    <div class="d-flex justify-content-center">
-                        <div class="mr-2 p-3">
-                            <button type="button" class="btn btn-success">Editar</button>
-                        </div>
-                        <div class="ml-2 p-3">
-                            <button type="button" class="btn btn-danger">Eliminar</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
         </div>
-    </div>
+
+        <div class="row">
+          <div class="col-12 py-3">
+            <div class="d-flex flex-nowrap overflow-auto">
+              <!-- card -->
+              <div class="card mx-2" *ngFor="let users of users">
+                  <div class="card-img-top">
+                      <img src="https://kajabi-storefronts-production.global.ssl.fastly.net/kajabi-storefronts-production/themes/1239231/settings_images/m4tywxwOSa6ntwUZfk3H_Expansio_n_Imagen_Corporativa-15.png"
+                      class="img-fluid mx-auto d-block img-circle  smaller-image" alt="card image 1"  width="10" height="30">
+                  </div>
+                  <div class="widget-blog-author">
+
+                    <div class="card-body">
+                      <small class="text-muted">Cargo:</small>
+                      <h6 class="text-justify"> {{users.cargo}} </h6>
+                      <small class="text-muted">Nombre:</small>
+                      <h6 class="text-justify"> {{users.nombre_u}} {{users.apellido_u}} </h6>
+                      <small class="text-muted">Teléfono:</small>
+                      <h6 class="text-justify"> {{users.telf}} </h6>
+                      <small class="text-muted">Correo Electrónico:</small>
+                      <h6 class="text-justify"> {{users.email}} </h6>
+
+
+                      <div class="d-sm-flex  justify-content-center">
+                          <div class="mr-2 p-2">
+                              <button type="button" class="btn btn-success btn-sm">Editar</button>
+                          </div>
+                          <div class="ml-2 p-2">
+                              <button type="button" class="btn btn-danger btn-sm">Eliminar</button>
+                          </div>
+                      </div>
+                    </div>
+
+                  </div>
+              </div>
+          </div>
+        </div>
+  </div>
+
+  <!--<ul class="pagination">
+    <li class="page-item" [class.disabled]="p == 1">
+      <a class="page-link" (click)="p = p - 1">Anterior</a>
+    </li>
+    <li class="page-item" *ngFor="let page of pCollection" [class.active]="p == page">
+      <a class="page-link" (click)="p = page">{{ page }}</a>
+    </li>
+    <li class="page-item" [class.disabled]="p == pCollection.length">
+      <a class="page-link" (click)="p = p + 1">Siguiente</a>
+    </li>
+  </ul> -->
+
 </div>
+</div>
+
