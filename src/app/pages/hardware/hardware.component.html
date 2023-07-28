@@ -41,7 +41,7 @@
                             <h5 class="text-muted m-0 f-s-11"> {{hardware.categories.nombre_c}} </h5>
                         </div>
                         <small class="text-muted">Encargado:</small>
-                        <a href="users">
+                        <a href="users" [routerLink]="['/pages/users', hardware.users.id_u]">
                             <h6 class="text-justify"> {{hardware.users.nombre_u}} {{hardware.users.apellido_u}} </h6>
                         </a>
                         <small class="text-muted">Numero de serie del PC/Laptop:</small>

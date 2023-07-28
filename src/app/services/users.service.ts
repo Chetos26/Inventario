@@ -21,7 +21,7 @@ export class UsersService {
     return this.httpClient.get<UsersModel[]>(url);
     //obejeto.metodo
   }
-  getOne(id_u: UsersModel['id_u']):Observable<UsersModel> {//solo devuelve un objeto
+  getOne(id_u: string): Observable<UsersModel> {
     const url = `${this.API_URL}/${id_u}`;
     return this.httpClient.get<UsersModel>(url);
   }
