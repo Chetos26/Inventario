@@ -11,6 +11,7 @@ import { SharedModule } from '../shared/shared.module';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { CategoriesComponent } from './categories/categories.component';
 import { FormsModule } from '@angular/forms';
+import { GeneradorQrComponent } from './generador-qr/generador-qr.component';
 
 
 
@@ -22,7 +23,8 @@ import { FormsModule } from '@angular/forms';
     RegisterHardwareComponent,
     UsersRegisterComponent,
     DashboardComponent,
-    CategoriesComponent
+    CategoriesComponent,
+    GeneradorQrComponent
   ],
   imports: [
     CommonModule,

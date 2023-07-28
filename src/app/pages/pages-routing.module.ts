@@ -9,6 +9,7 @@ import { UsersRegisterComponent } from './users-register/users-register.componen
 import { AuthGuard } from '../guards/auth.guard';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { CategoriesComponent } from './categories/categories.component';
+import { GeneradorQrComponent } from './generador-qr/generador-qr.component';
 
 const routes: Routes = [
   {path:"pages", /*canActivate:[AuthGuard],*/ component: PagesComponent,
@@ -19,6 +20,7 @@ const routes: Routes = [
     {path: "categories", /*canActivate:[AuthGuard],*/component: CategoriesComponent},
     {path:"users", /*canActivate:[AuthGuard],*/ component: UsersComponent},
     {path:"users-register", /*canActivate:[AuthGuard],*/ component: UsersRegisterComponent},
+    {path:"qr-generator", /*canActivate:[AuthGuard],*/ component: GeneradorQrComponent},
   ]
 }
 ]

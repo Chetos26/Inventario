@@ -16,14 +16,17 @@ import { AuthModule } from './auth/auth.module';
 import { PagesModule } from './pages/pages.module';
 import { SharedModule } from './shared/shared.module';
 import { CategorySearchPipe } from './pipe/category-search.pipe';
+import { FormsModule } from '@angular/forms';
+import { GeneradorQrComponent } from './pages/generador-qr/generador-qr.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    CategorySearchPipe
+    CategorySearchPipe, 
   ],
   imports: [
     BrowserModule,
+    FormsModule,
     AuthRoutingModule,
     PagesRoutingModule,
     AuthModule,
