@@ -19,3 +19,7 @@
 .text-muted{
     padding: 4%;
 }
+
+.move-right {
+  margin-right: 10px; /* Ajusta el valor según tu preferencia */
+}

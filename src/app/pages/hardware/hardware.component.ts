@@ -39,7 +39,7 @@ export class HardwareComponent {
         )
     }
 
-    deleteProduct(id:HardwareModel['id_h']){
+    deleteHardware(id:HardwareModel['id_h']){
       this.hardwareService.destroyHardware(id).subscribe(
         response => {
           this.hardware= this.hardware.filter(hardware => hardware.id_h != id);
@@ -58,7 +58,8 @@ export class HardwareComponent {
        monitor_sn: '',
        teclado: false,
        mouse: false,
-       sala: ''
+       sala: '',
+       almacenamiento: ''
      }
 
      updateHardware(hardware: UpdateHardwareDto) {

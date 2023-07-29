@@ -44,33 +44,51 @@
                         <a href="users" [routerLink]="['/pages/users', hardware.users.id_u]">
                             <h6 class="text-justify"> {{hardware.users.nombre_u}} {{hardware.users.apellido_u}} </h6>
                         </a>
-                        <small class="text-muted">Numero de serie del PC/Laptop:</small>
-                        <h6 class="text-justify"> {{hardware.sn}} </h6>
-                        <small class="text-muted">Marca:</small>
-                        <h6 class="text-justify">Hp</h6>
-                        <details class="text-muted">
-                            <small class="text-muted">Procesador:</small>
-                            <h6 class="text-justify">Core i5</h6>
 
-                            <p id="desplegar" style="display:none;"></p>
+                        <details class="text-muted">
+
+                          <p id="desplegar" style="display:none;"></p>
+
+                            <small class="text-muted">SN del Monitor:</small>
+                            <h6 class="text-justify"> {{hardware.monitor_sn}} </h6>
+
+                            <div class="row mt-3">
+                              <div class="col-md-6">
+                                <small class="text-muted offset-md-1" >Teclado:</small>
+                                <h6 class="text-justify offset-md-1"> {{hardware.teclado}} </h6>
+                              </div>
+                              <div class="col-md-6">
+                                <small class="text-muted">Mouse:</small>
+                                <h6 class="text-justify"> {{hardware.mouse}} </h6>
+                              </div>
+                            </div>
+
+                            <small class="text-muted">Numero de serie del PC/Laptop:</small>
+                            <h6 class="text-justify"> {{hardware.sn}} </h6>
+
+                            <small class="text-muted">Marca:</small>
+                            <h6 class="text-justify"> {{hardware.marca}} </h6>
+
+                            <small class="text-muted">Procesador:</small>
+                            <h6 class="text-justify"> {{hardware.procesador}} </h6>
 
                             <small class="text-muted p-t-30 db">Memoria Ram:</small>
-                            <h6 class="text-justify">2 GB</h6>
+                            <h6 class="text-justify"> {{hardware.ram}} </h6>
 
                             <small class="text-muted p-t-30 db">Almacenamiento:</small>
-                            <h6 class="text-justify">1 TB</h6>
+                            <h6 class="text-justify"> {{hardware.almacenamiento}} </h6>
 
-                            <small class="text-muted p-t-30 db">Tipo de almacenamiento:</small>
-                            <h6 class="text-justify">SSD</h6>
+                            <small class="text-muted p-t-30 db">Sala:</small>
+                            <h6 class="text-justify"> {{hardware.sala }} </h6>
 
                         </details>
 
                         <div class="d-sm-flex  justify-content-center">
                             <div class="mr-2 p-2">
-                                <button type="button" class="btn btn-success btn-sm">Editar</button>
+                                <button type="button" class="btn btn-success btn-sm" [routerLink]="['/pages/hardware-register']"  [state]="hardware">Editar</button>
                             </div>
                             <div class="ml-2 p-2">
-                                <button type="button" class="btn btn-danger btn-sm">Eliminar</button>
+                                <button type="button" class="btn btn-danger btn-sm" (click)="deleteHardware(hardware.id_h)">Eliminar</button>
                             </div>
                         </div>
 
