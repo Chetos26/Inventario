@@ -12,12 +12,12 @@
   width: 100%;
   padding: 10px;
   font-size: 16px;
-  border: 1px solid #ccc;
+  border: 1px solid #175E8E;
   border-radius: 5px;
 }
 
 .btn-generate {
-  background-color: #007bff;
+  background-color: #175E8E;
   color: #fff;
   padding: 10px 20px;
   font-size: 16px;
@@ -33,6 +33,6 @@
 .qr-code {
   max-width: 100%;
   height: auto;
-  border: 1px solid #ccc;
+  border: 1px solid #175E8E;
   border-radius: 5px;
 }
