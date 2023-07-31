@@ -2,34 +2,35 @@ import { Component } from '@angular/core';
 import { CategoryModel } from 'src/app/models/category-model.entity';
 import { HardwareModel, UpdateHardwareDto } from 'src/app/models/hardware-model.entity';
 import { UsersModel } from 'src/app/models/users-model.entity,';
+import { CategoriesSearchPipe } from 'src/app/pipes/category-search.pipe';
 import { CategoryService } from 'src/app/services/category.service';
 import { HardwareService } from 'src/app/services/hardware.service';
 
 @Component({
   selector: 'app-hardware',
   templateUrl: './hardware.component.html',
-  styleUrls: ['./hardware.component.css']
+  styleUrls: ['./hardware.component.css'],
+  providers: [CategoriesSearchPipe]
 })
 export class HardwareComponent {
 
   hardware: HardwareModel[] = [];
   categories: CategoryModel[] = [];
-  users: UsersModel[]=[]
+  users: UsersModel[]=[];
+  selectedCategory: string = ''; // Variable para almacenar la categoría seleccionada
+  searchTerm: string = '';
 
-  constructor(private hardwareService: HardwareService, private categoryService: CategoryService) {}
+  constructor(private hardwareService: HardwareService, private categoryService: CategoryService, private categorySearchPipe: CategoriesSearchPipe) {}
 
   ngOnInit(): void {
     this.hardwareService.getAllHardware().subscribe(data=>{
       this.hardware = data;
-      this.categoryService.getAll().subscribe(data => {
-        this.categories = data;
+
+    this.categoryService.getAll().subscribe(data => {
+      this.categories = data;
       })
     })
   }
-
-
-    name_product: string = ''
-
 
     getHardware(){
       this.hardwareService.getAllHardware().subscribe(
@@ -38,9 +39,7 @@ export class HardwareComponent {
         )
     }
 
-
-
-    deleteProduct(id:HardwareModel['id_h']){
+    deleteHardware(id:HardwareModel['id_h']){
       this.hardwareService.destroyHardware(id).subscribe(
         response => {
           this.hardware= this.hardware.filter(hardware => hardware.id_h != id);
@@ -59,7 +58,8 @@ export class HardwareComponent {
        monitor_sn: '',
        teclado: false,
        mouse: false,
-       sala: ''
+       sala: '',
+       almacenamiento: ''
      }
 
      updateHardware(hardware: UpdateHardwareDto) {

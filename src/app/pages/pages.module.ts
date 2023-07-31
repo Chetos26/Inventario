@@ -11,7 +11,6 @@ import { SharedModule } from '../shared/shared.module';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { CategoriesComponent } from './categories/categories.component';
 import { FormsModule } from '@angular/forms';
-import { GeneradorQrComponent } from './generador-qr/generador-qr.component';
 
 
 
@@ -23,15 +22,15 @@ import { GeneradorQrComponent } from './generador-qr/generador-qr.component';
     RegisterHardwareComponent,
     UsersRegisterComponent,
     DashboardComponent,
-    CategoriesComponent,
-    GeneradorQrComponent
+    CategoriesComponent
   ],
   imports: [
     CommonModule,
     RouterModule,
     PagesRoutingModule,
     SharedModule,
-    FormsModule
+    FormsModule,
+    NgxPaginationModule
   ]
 })
 export class PagesModule { }

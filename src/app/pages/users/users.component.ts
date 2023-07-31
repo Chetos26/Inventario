@@ -19,6 +19,11 @@ export class UsersComponent implements OnInit {
     })
   }
 
+  getUser(id_u:string){
+    this.usersService.getOne(id_u).subscribe
+    (response=>{console.log(response)})
+  }
+
   editar(id_u:UsersModel['id_u']){
     this.router.navigate(['pages/users-register', id_u])
 

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { CategoryModel } from 'src/app/models/category-model.entity';
-import { CreateHardwareDto, HardwareModel } from 'src/app/models/hardware-model.entity';
+import { CreateHardwareDto, HardwareModel, UpdateHardwareDto } from 'src/app/models/hardware-model.entity';
 import { UsersModel } from 'src/app/models/users-model.entity,';
 import { CategoryService } from 'src/app/services/category.service';
 import { HardwareService } from 'src/app/services/hardware.service';
@@ -48,6 +48,23 @@ export class RegisterHardwareComponent {
     teclado: false,
     mouse: false,
     marca: '',
+    sala: '',
+    almacenamiento: ''
+  }
+
+  hardwareUpdate: UpdateHardwareDto = {
+    categories: '',
+    users: '',
+    id_h: '',
+    image: '',
+    monitor_sn: '',
+    teclado: false,
+    mouse: false,
+    sn: '',
+    marca: '',
+    procesador: '',
+    ram: '',
+    almacenamiento: '',
     sala: ''
   }
 
@@ -59,4 +76,6 @@ export class RegisterHardwareComponent {
         console.log(response);
       });
   }
+
+
 }

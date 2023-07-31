@@ -11,6 +11,7 @@ export interface HardwareModel {
   marca:  string;
   procesador:  string;
   ram: string;
+  almacenamiento: string;
   sala:string;
   users: UsersModel;
   categories: CategoryModel;

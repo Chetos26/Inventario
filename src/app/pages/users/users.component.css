@@ -3,12 +3,20 @@ body{
     margin-top:20px;
 }
 
-
+.smaller-image {
+  width: 37%; /* Cambiar este valor para ajustar el tamaño deseado */
+}
 
 .card{
-    
+
     border-color: #141414;
-    
+
+}
+
+.card1 {
+
+  padding: auto;
+
 }
 
 .icon{
