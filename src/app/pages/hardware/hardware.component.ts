@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { CategoryModel } from 'src/app/models/category-model.entity';
 import { HardwareModel, UpdateHardwareDto } from 'src/app/models/hardware-model.entity';
 import { UsersModel } from 'src/app/models/users-model.entity,';
@@ -20,7 +21,13 @@ export class HardwareComponent {
   selectedCategory: string = ''; // Variable para almacenar la categoría seleccionada
   searchTerm: string = '';
 
-  constructor(private hardwareService: HardwareService, private categoryService: CategoryService, private categorySearchPipe: CategoriesSearchPipe) {}
+  constructor(
+    private hardwareService: HardwareService,
+    private categoryService: CategoryService,
+    private categorySearchPipe: CategoriesSearchPipe,
+    private router:Router,
+    private activatedRoute:ActivatedRoute
+    ) {}
 
   ngOnInit(): void {
     this.hardwareService.getAllHardware().subscribe(data=>{
@@ -71,7 +78,16 @@ export class HardwareComponent {
     }
 
     cargar():void{
-      
+      this.activatedRoute.params.subscribe(
+        e=> {
+          let id_h=e['id_h'];
+          if(id_h){
+            this.hardwareService.getOneHardware(id_h).subscribe(
+              /*es=> this.hardware=es*/
+            )
+          }
+        }
+      )
     }
 }
 
