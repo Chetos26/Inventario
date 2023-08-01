@@ -33,4 +33,8 @@ export class UsersRegisterComponent {
         console.log(response);
       });
   }
+
+  //boton eliminar 
+  
+
 }
