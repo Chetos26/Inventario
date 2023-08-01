@@ -7,12 +7,11 @@ import { PagesRoutingModule } from './pages/pages-routing.module';
 import { AuthModule } from './auth/auth.module';
 import { PagesModule } from './pages/pages.module';
 import { SharedModule } from './shared/shared.module';
-import { CategorySearchPipe } from './pipe/category-search.pipe';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
     AppComponent,
-    CategorySearchPipe
   ],
   imports: [
     BrowserModule,
