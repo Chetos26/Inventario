@@ -2,12 +2,16 @@
     <div class="row pt-1">
 
   <h4 class="text-muted">Generador de Código QR</h4>
-  <div class="form-group"> 
-    <label for="nombreMaquina">Nombre de la máquina:</label>  
-  </div>
   <div class="form-group">
-   <input type="text" id="nombreMaquina" class="form-control" [(ngModel)]="qrData[0]" />
+    <label for="tipoMaquina">Nombre de la máquina:</label>
+    <select id="tipoMaquina" class="form-control" [(ngModel)]="qrData[1]">
+      <option value="maquina1">Maquina 1</option>
+      <option value="maquina2">Maquina 2</option>
+      <option value="maquina3">Maquina 3</option>
+      <!-- Agrega más opciones aquí si es necesario -->
+    </select>
   </div>
+  
   <div class="form-group">
     <label for="nombreEncargado">Numero de serie:</label>
     <input type="text" id="nombreEncargado" class="form-control" [(ngModel)]="qrData[1]" />
