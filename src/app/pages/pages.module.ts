@@ -12,7 +12,10 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { CategoriesComponent } from './categories/categories.component';
 import { FormsModule } from '@angular/forms';
 import { NgxPaginationModule } from 'ngx-pagination';
+<<<<<<< HEAD
+=======
 import { GeneradorQrComponent } from './generador-qr/generador-qr.component';
+>>>>>>> 064cc38206924a2c6059b90c8fd869d588e1fc99
 
 
 
