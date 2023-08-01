@@ -29,41 +29,45 @@
 
         <div class="row">
           <div class="col-12 py-3">
-            <div class="d-flex flex-nowrap overflow-auto">
+            <div class="row">
               <!-- card -->
-              <div class="card mx-2" *ngFor="let users of users">
-                  <div class="card-img-top">
+              <ng-container *ngFor="let user of users; let i = index;">
+                <div class="col-12 col-md-6 col-lg-4 col-xl-3">
+                  <div class="card mx-2">
+                    <div class="card-img-top">
                       <img src="https://kajabi-storefronts-production.global.ssl.fastly.net/kajabi-storefronts-production/themes/1239231/settings_images/m4tywxwOSa6ntwUZfk3H_Expansio_n_Imagen_Corporativa-15.png"
-                      class="img-fluid mx-auto d-block img-circle  smaller-image" alt="card image 1"  width="10" height="30">
-                  </div>
-                  <div class="widget-blog-author">
+                        class="img-fluid mx-auto d-block img-circle smaller-image" alt="card image 1" width="10" height="30">
+                    </div>
+                    <div class="widget-blog-author">
+                      <div class="card-body">
+                        <small class="text-muted">Cargo:</small>
+                        <h6 class="text-justify"> {{user.cargo}} </h6>
+                        <small class="text-muted">Nombre:</small>
+                        <h6 class="text-justify"> {{user.nombre_u}} {{user.apellido_u}} </h6>
+                        <small class="text-muted">Teléfono:</small>
+                        <h6 class="text-justify"> {{user.telf}} </h6>
+                        <small class="text-muted">Correo Electrónico:</small>
+                        <h6 class="text-justify"> {{user.email}} </h6>
 
-                    <div class="card-body">
-                      <small class="text-muted">Cargo:</small>
-                      <h6 class="text-justify"> {{users.cargo}} </h6>
-                      <small class="text-muted">Nombre:</small>
-                      <h6 class="text-justify"> {{users.nombre_u}} {{users.apellido_u}} </h6>
-                      <small class="text-muted">Teléfono:</small>
-                      <h6 class="text-justify"> {{users.telf}} </h6>
-                      <small class="text-muted">Correo Electrónico:</small>
-                      <h6 class="text-justify"> {{users.email}} </h6>
-
-
-                      <div class="d-sm-flex  justify-content-center">
+                        <div class="d-sm-flex justify-content-center">
                           <div class="mr-2 p-2">
-                              <button type="button" class="btn btn-success btn-sm">Editar</button>
+                            <button type="button" class="btn btn-success btn-sm">Editar</button>
                           </div>
                           <div class="ml-2 p-2">
-                              <button type="button" class="btn btn-danger btn-sm">Eliminar</button>
+                            <button type="button" class="btn btn-danger btn-sm">Eliminar</button>
                           </div>
+                        </div>
                       </div>
                     </div>
-
                   </div>
-              </div>
+                </div>
+                <!-- Iniciar una nueva fila después de cada 5 tarjetas -->
+                <div class="w-100" *ngIf="(i + 1) % 5 === 0"></div>
+              </ng-container>
+            </div>
           </div>
         </div>
-  </div>
+
 
   <!--<ul class="pagination">
     <li class="page-item" [class.disabled]="p == 1">

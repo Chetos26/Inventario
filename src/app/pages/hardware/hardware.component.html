@@ -28,82 +28,80 @@
           </div>
 
           <div class="row">
-  <div class="col-12 py-3">
-    <div class="row">
-      <!-- Tarjeta -->
-      <ng-container *ngFor="let hardware of hardware; let i = index;">
-        <div class="col-12 col-md-6 col-lg-4 col-xl-3">
-          <div class="card mx-2">
-            <!-- Contenido de la tarjeta -->
-            <div class="card-img-top">
-              <img src="https://www.apple.com/newsroom/images/product/imac/standard/Apple_imac-magickeyboardnum-magicmouse2-macos-wallpaper_08042020_big.jpg.large.jpg"
-                class="img-fluid mx-auto d-block" alt="card image 1">
-            </div>
-            <div class="widget-blog-author">
-              <div class="widget-blog-author-info">
-                <h5 class="text-muted m-0 f-s-11"> {{hardware.categories.nombre_c}} </h5>
-              </div>
-              <small class="text-muted">Encargado:</small>
-              <a href="users" [routerLink]="['/pages/users', hardware.users.id_u]">
-                <h6 class="text-justify"> {{hardware.users.nombre_u}} {{hardware.users.apellido_u}} </h6>
-              </a>
+            <div class="col-12 py-3">
+              <div class="row">
+                <!-- Tarjeta -->
+                <ng-container *ngFor="let hardware of hardware; let i = index;">
+                  <div class="col-12 col-md-6 col-lg-4 col-xl-3">
+                    <div class="card mx-2">
+                      <!-- Contenido de la tarjeta -->
+                      <div class="card-img-top">
+                        <img src="https://www.apple.com/newsroom/images/product/imac/standard/Apple_imac-magickeyboardnum-magicmouse2-macos-wallpaper_08042020_big.jpg.large.jpg"
+                          class="img-fluid mx-auto d-block" alt="card image 1">
+                      </div>
+                      <div class="widget-blog-author">
+                        <div class="widget-blog-author-info">
+                          <h5 class="text-muted m-0 f-s-11"> {{hardware.categories.nombre_c}} </h5>
+                        </div>
+                        <small class="text-muted">Encargado:</small>
+                        <a href="users" [routerLink]="['/pages/users', hardware.users.id_u]">
+                          <h6 class="text-justify"> {{hardware.users.nombre_u}} {{hardware.users.apellido_u}} </h6>
+                        </a>
 
-              <details class="text-muted">
+                        <details class="text-muted">
 
-                <p id="desplegar" style="display:none;"></p>
+                          <p id="desplegar" style="display:none;"></p>
 
-                <small class="text-muted">SN del Monitor:</small>
-                <h6 class="text-justify"> {{hardware.monitor_sn}} </h6>
+                          <small class="text-muted">SN del Monitor:</small>
+                          <h6 class="text-justify"> {{hardware.monitor_sn}} </h6>
 
-                <div class="row mt-3">
-                  <div class="col-md-6">
-                    <small class="text-muted offset-md-1" >Teclado:</small>
-                    <h6 class="text-justify offset-md-1"> {{hardware.teclado}} </h6>
+                          <div class="row mt-3">
+                            <div class="col-md-6">
+                              <small class="text-muted offset-md-1" >Teclado:</small>
+                              <h6 class="text-justify offset-md-1"> {{hardware.teclado}} </h6>
+                            </div>
+                            <div class="col-md-6">
+                              <small class="text-muted">Mouse:</small>
+                              <h6 class="text-justify"> {{hardware.mouse}} </h6>
+                            </div>
+                          </div>
+
+                          <small class="text-muted">Numero de serie del PC/Laptop:</small>
+                          <h6 class="text-justify"> {{hardware.sn}} </h6>
+
+                          <small class="text-muted">Marca:</small>
+                          <h6 class="text-justify"> {{hardware.marca}} </h6>
+
+                          <small class="text-muted">Procesador:</small>
+                          <h6 class="text-justify"> {{hardware.procesador}} </h6>
+
+                          <small class="text-muted p-t-30 db">Memoria Ram:</small>
+                          <h6 class="text-justify"> {{hardware.ram}} </h6>
+
+                          <small class="text-muted p-t-30 db">Almacenamiento:</small>
+                          <h6 class="text-justify"> {{hardware.almacenamiento}} </h6>
+
+                          <small class="text-muted p-t-30 db">Sala:</small>
+                          <h6 class="text-justify"> {{hardware.sala }} </h6>
+
+                        </details>
+
+                        <div class="d-sm-flex  justify-content-center">
+                          <div class="mr-2 p-2">
+                            <button type="button" class="btn btn-success btn-sm" [routerLink]="['/pages/hardware-register']"  [state]="hardware">Editar</button>
+                          </div>
+                          <div class="ml-2 p-2">
+                            <button type="button" class="btn btn-danger btn-sm" (click)="deleteHardware(hardware.id_h)">Eliminar</button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
                   </div>
-                  <div class="col-md-6">
-                    <small class="text-muted">Mouse:</small>
-                    <h6 class="text-justify"> {{hardware.mouse}} </h6>
-                  </div>
-                </div>
-
-                <small class="text-muted">Numero de serie del PC/Laptop:</small>
-                <h6 class="text-justify"> {{hardware.sn}} </h6>
-
-                <small class="text-muted">Marca:</small>
-                <h6 class="text-justify"> {{hardware.marca}} </h6>
-
-                <small class="text-muted">Procesador:</small>
-                <h6 class="text-justify"> {{hardware.procesador}} </h6>
-
-                <small class="text-muted p-t-30 db">Memoria Ram:</small>
-                <h6 class="text-justify"> {{hardware.ram}} </h6>
-
-                <small class="text-muted p-t-30 db">Almacenamiento:</small>
-                <h6 class="text-justify"> {{hardware.almacenamiento}} </h6>
-
-                <small class="text-muted p-t-30 db">Sala:</small>
-                <h6 class="text-justify"> {{hardware.sala }} </h6>
-
-              </details>
-
-              <div class="d-sm-flex  justify-content-center">
-                <div class="mr-2 p-2">
-                  <button type="button" class="btn btn-success btn-sm" [routerLink]="['/pages/hardware-register']"  [state]="hardware">Editar</button>
-                </div>
-                <div class="ml-2 p-2">
-                  <button type="button" class="btn btn-danger btn-sm" (click)="deleteHardware(hardware.id_h)">Eliminar</button>
-                </div>
+                </ng-container>
               </div>
-
             </div>
           </div>
-        </div>
-        <!-- Iniciar una nueva fila después de cada 5 tarjetas -->
 
-      </ng-container>
-    </div>
-  </div>
-</div>
 
 
 
