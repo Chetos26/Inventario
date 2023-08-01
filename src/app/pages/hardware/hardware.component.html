@@ -88,7 +88,7 @@
 
                         <div class="d-sm-flex  justify-content-center">
                           <div class="mr-2 p-2">
-                            <button type="button" class="btn btn-success btn-sm" [routerLink]="['/pages/hardware-register']"  [state]="hardware">Editar</button>
+                            <button type="button" class="btn btn-success btn-sm" [routerLink]="['/pages/hardware-register', hardware.id_h]" [state]="hardware">Editar</button>
                           </div>
                           <div class="ml-2 p-2">
                             <button type="button" class="btn btn-danger btn-sm" (click)="deleteHardware(hardware.id_h)">Eliminar</button>

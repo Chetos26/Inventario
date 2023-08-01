@@ -69,5 +69,9 @@ export class HardwareComponent {
           console.log(response);
         });
     }
+
+    cargar():void{
+      
+    }
 }
 
