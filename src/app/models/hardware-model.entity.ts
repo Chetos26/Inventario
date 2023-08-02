@@ -15,6 +15,7 @@ export interface HardwareModel {
   sala:string;
   users: UsersModel;
   categories: CategoryModel;
+  qrCodeDataUrl?: string;
 }
 
 export interface CreateHardwareDto extends Omit<HardwareModel,'id_h'| 'categories'| 'users'>{

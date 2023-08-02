@@ -43,6 +43,12 @@
                         <div class="widget-blog-author-info">
                           <h5 class="text-muted m-0 f-s-11"> {{hardware.categories.nombre_c}} </h5>
                         </div>
+
+                        <div class="mt-3">
+                          <img [src]="hardware.qrCodeDataUrl" alt="QR Code" class="img-fluid mx-auto d-block"  />
+                        </div>
+                        <div class="d-sm-flex justify-content-center"></div>
+
                         <small class="text-muted">Encargado:</small>
                         <a href="users" [routerLink]="['/pages/users', hardware.users.id_u]">
                           <h6 class="text-justify"> {{hardware.users.nombre_u}} {{hardware.users.apellido_u}} </h6>
@@ -58,11 +64,11 @@
                           <div class="row mt-3">
                             <div class="col-md-6">
                               <small class="text-muted offset-md-1" >Teclado:</small>
-                              <h6 class="text-justify offset-md-1"> {{hardware.teclado}} </h6>
+                              <h6 class="text-justify offset-md-1"> {{hardware.teclado? 'Si' : 'No'}} </h6>
                             </div>
                             <div class="col-md-6">
                               <small class="text-muted">Mouse:</small>
-                              <h6 class="text-justify"> {{hardware.mouse}} </h6>
+                              <h6 class="text-justify"> {{hardware.mouse? 'Si' : 'No'}} </h6>
                             </div>
                           </div>
 
