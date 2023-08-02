@@ -64,11 +64,11 @@
                           <div class="row mt-3">
                             <div class="col-md-6">
                               <small class="text-muted offset-md-1" >Teclado:</small>
-                              <h6 class="text-justify offset-md-1"> {{hardware.teclado}} </h6>
+                              <h6 class="text-justify offset-md-1"> {{hardware.teclado? 'Si' : 'No'}} </h6>
                             </div>
                             <div class="col-md-6">
                               <small class="text-muted">Mouse:</small>
-                              <h6 class="text-justify"> {{hardware.mouse}} </h6>
+                              <h6 class="text-justify"> {{hardware.mouse? 'Si' : 'No'}} </h6>
                             </div>
                           </div>
 
