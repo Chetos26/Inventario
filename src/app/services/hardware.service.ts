@@ -28,9 +28,9 @@ export class HardwareService {
     return this.httpClient.post<HardwareModel>(url, hardware);
   }
 
-  updateHardware(id_h: HardwareModel['id_h'],product: UpdateHardwareDto): Observable<HardwareModel> {
+  updateHardware(id_h: HardwareModel['id_h'],hardware: UpdateHardwareDto): Observable<HardwareModel> {
     const url = `${this.API_URL}/${id_h}`;
-    return this.httpClient.put<HardwareModel>(url, product);
+    return this.httpClient.patch<HardwareModel>(url, hardware);
   }
 
   destroyHardware(id_h: HardwareModel['id_h']):Observable<boolean>  {

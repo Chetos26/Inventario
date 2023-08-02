@@ -69,7 +69,7 @@ export class HardwareComponent {
        almacenamiento: ''
      }
 
-     updateHardware(hardware: UpdateHardwareDto) {
+    updateHardware(hardware: UpdateHardwareDto) {
       const response = this.hardwareService
         .updateHardware(hardware.id_h, hardware)
         .subscribe((response) => {
@@ -77,17 +77,5 @@ export class HardwareComponent {
         });
     }
 
-    cargar():void{
-      this.activatedRoute.params.subscribe(
-        e=> {
-          let id_h=e['id_h'];
-          if(id_h){
-            this.hardwareService.getOneHardware(id_h).subscribe(
-              /*es=> this.hardware=es*/
-            )
-          }
-        }
-      )
-    }
 }
 

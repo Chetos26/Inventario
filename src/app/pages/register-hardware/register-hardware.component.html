@@ -7,38 +7,38 @@
           <form>
             <div class="mb-3">
               <label for="foto" class="form-label">Foto</label>
-              <input name="foto" type="file" class="form-control" id="foto" [(ngModel)]="hardware.image">
+              <input name="foto" type="file" class="form-control" id="foto" [(ngModel)]="hardware.image" [(ngModel)]="hardwareUpdate.image">
             </div>
 
             <div class="mb-3">
               <label for="sala" class="form-label">Categorias:</label>
-              <select name="category" class="form-control" [(ngModel)]="hardware.categories">
+              <select name="category" class="form-control" [(ngModel)]="hardware.categories" [(ngModel)]="hardwareUpdate.categories" (change)="gotcategories()">
                 <option *ngFor="let opcion of category" [value]="opcion.id_c"> {{opcion.nombre_c}} </option>
               </select>
             </div>
 
             <div class="mb-3">
-              <label for="sn" class="form-label">Numero de Serie Monitor:</label>
-              <input name="m_sn" type="text" class="form-control" id="sn" [(ngModel)]="hardware.monitor_sn">
+              <label for="sn" class="form-label" *ngIf="name=='PC'">Numero de Serie Monitor:</label>
+              <input name="m_sn" type="text" class="form-control" id="sn" [(ngModel)]="hardware.monitor_sn" [(ngModel)]="hardwareUpdate.monitor_sn" *ngIf="name=='PC'">
             </div>
 
             <div class="container">
               <div class="row">
                 <div class="col-md-6">
                   <div class="mb-3">
-                    <label class="form-label">Mouse:</label>
+                    <label class="form-label" *ngIf="name=='PC'">Mouse:</label>
                     <div class="form-check">
-                      <input class="form-check-input" type="checkbox" name="siMouse" id="siMouse" [(ngModel)]="hardware.mouse">
-                      <label class="form-check-label" for="siNombre" name="mouse"> {{hardware.mouse ? 'Si': 'No'}} </label>
+                      <input class="form-check-input" type="checkbox" name="siMouse" id="siMouse" [(ngModel)]="hardware.mouse" [(ngModel)]="hardwareUpdate.mouse" *ngIf="name=='PC'">
+                      <label class="form-check-label" for="siNombre" name="mouse" *ngIf="name=='PC'"> {{hardware.mouse ? 'Si': 'No'}} </label>
                     </div>
                   </div>
                 </div>
                 <div class="col-md-6">
                   <div class="mb-3">
-                    <label class="form-label">Teclado:</label>
+                    <label class="form-label" *ngIf="name=='PC'">Teclado:</label>
                     <div class="form-check">
-                      <input class="form-check-input" type="checkbox" name="siTeclado" id="siTeclado" [(ngModel)]="hardware.teclado">
-                      <label class="form-check-label" for="siTeclado" na> {{hardware.teclado ? 'Si': 'No'}} </label>
+                      <input class="form-check-input" type="checkbox" name="siTeclado" id="siTeclado" [(ngModel)]="hardware.teclado" [(ngModel)]="hardwareUpdate.teclado" *ngIf="name=='PC'">
+                      <label class="form-check-label" for="siTeclado" na *ngIf="name=='PC'"> {{hardware.teclado ? 'Si': 'No'}} </label>
                     </div>
                   </div>
                 </div>
@@ -47,40 +47,47 @@
 
             <div class="mb-3">
               <label for="sn" class="form-label">Numero de Serie PC/Laptop:</label>
-              <input name="sn" type="text" class="form-control" id="sn" [(ngModel)]="hardware.sn">
+              <input name="sn" type="text" class="form-control" id="sn" [(ngModel)]="hardware.sn" [(ngModel)]="hardwareUpdate.sn">
             </div>
             <div class="mb-3">
               <label for="marca" class="form-label">Marca:</label>
-              <input name="marca" type="text" class="form-control" id="marca" name="marca" [(ngModel)]="hardware.marca">
+              <input name="marca" type="text" class="form-control" id="marca" name="marca" [(ngModel)]="hardware.marca" [(ngModel)]="hardwareUpdate.marca">
             </div>
             <div class="mb-3">
               <label for="procesador" class="form-label">Procesador:</label>
-              <textarea rows="2" class="form-control" maxlength="100" name="procesador" [(ngModel)]="hardware.procesador"></textarea>
+              <textarea rows="2" class="form-control" maxlength="100" name="procesador" [(ngModel)]="hardware.procesador" [(ngModel)]="hardwareUpdate.procesador"></textarea>
             </div>
             <div class="mb-3">
               <label for="ram" class="form-label">RAM:</label>
-              <textarea rows="2" class="form-control" maxlength="100" name="ram" [(ngModel)]="hardware.ram"></textarea>
+              <textarea rows="2" class="form-control" maxlength="100" name="ram" [(ngModel)]="hardware.ram" [(ngModel)]="hardwareUpdate.ram"></textarea>
             </div>
 
             <div class="mb-3">
               <label for="ram" class="form-label">Almacenamiento:</label>
-              <textarea rows="2" class="form-control" maxlength="100" name="ram" [(ngModel)]="hardware.almacenamiento"></textarea>
+              <textarea rows="2" class="form-control" maxlength="100" name="almacenamiento" [(ngModel)]="hardware.almacenamiento" [(ngModel)]="hardwareUpdate.almacenamiento"></textarea>
             </div>
 
             <div class="mb-3">
               <label for="sala" class="form-label">Sala:</label>
-              <input type="text" class="form-control" id="sala" name="sala" [(ngModel)]="hardware.sala">
+              <input type="text" class="form-control" id="sala" name="sala" [(ngModel)]="hardware.sala" [(ngModel)]="hardwareUpdate.sala">
             </div>
 
             <div class="mb-3">
               <label for="sala" class="form-label">Encargado:</label>
-              <select class="form-control" name="sala" [(ngModel)]="hardware.users">
+              <select class="form-control" name="sala" [(ngModel)]="hardware.users" [(ngModel)]="hardwareUpdate.users">
                 <option *ngFor="let opcion of users" [value]="opcion.id_u"> {{opcion.nombre_u}} </option>
               </select>
             </div>
 
             <div class="btn-group d-flex">
-              <input class="btn btn-primary me-2" type="submit" value="Registrar"  data-bs-toggle="modal" data-bs-target="#exampleModal"(click)="registerHardware()">
+              <input class="btn btn-primary me-2" type="submit" value="Registrar"
+              data-bs-toggle="modal" data-bs-target="#exampleModal"
+              (click)="registerHardware()" *ngIf="!bool">
+
+              <input class="btn btn-primary me-2" type="submit" value="Actualizar"
+              data-bs-toggle="modal" data-bs-target="#exampleModal"
+              (click)="updateHardware(hardwareUpdate)" *ngIf="bool">
+
               <!-- Modal -->
               <div class="modal" id="exampleModal" tabindex="-1" aria-hidden="true">
                 <div class="modal-dialog">
