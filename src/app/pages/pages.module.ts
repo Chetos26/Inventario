@@ -12,7 +12,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { CategoriesComponent } from './categories/categories.component';
 import { FormsModule } from '@angular/forms';
 import { NgxPaginationModule } from 'ngx-pagination';
-import { GeneradorQrComponent } from './generador-qr/generador-qr.component';
+import { QRCodeModule } from 'ngx-qrcode';
 
 
 
@@ -25,7 +25,6 @@ import { GeneradorQrComponent } from './generador-qr/generador-qr.component';
     UsersRegisterComponent,
     DashboardComponent,
     CategoriesComponent,
-    GeneradorQrComponent
   ],
   imports: [
     CommonModule,
@@ -33,7 +32,8 @@ import { GeneradorQrComponent } from './generador-qr/generador-qr.component';
     PagesRoutingModule,
     SharedModule,
     FormsModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+    QRCodeModule
   ]
 })
 export class PagesModule { }

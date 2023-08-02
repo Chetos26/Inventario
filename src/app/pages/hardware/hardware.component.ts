@@ -6,6 +6,7 @@ import { UsersModel } from 'src/app/models/users-model.entity,';
 import { CategoriesSearchPipe } from 'src/app/pipes/category-search.pipe';
 import { CategoryService } from 'src/app/services/category.service';
 import { HardwareService } from 'src/app/services/hardware.service';
+import * as QRCode from 'qrcode';
 
 @Component({
   selector: 'app-hardware',
@@ -37,6 +38,27 @@ export class HardwareComponent {
       this.categories = data;
       })
     })
+
+    this.hardwareService.getAllHardware().subscribe(data => {
+      this.hardware = data;
+      this.generateQRCodes(); // Llamar a la función para generar códigos QR
+    });
+  }
+
+  generateQRCodes(): void {
+    this.hardware.forEach((hardware) => {
+      const qrCodeData =
+      `${hardware.categories.nombre_c} -${hardware.users.nombre_u} - ${hardware.users.apellido_u}
+       ${hardware.marca} - ${hardware.sala}`
+      ; // Convertir el objeto hardware a una cadena JSON
+      QRCode.toDataURL(qrCodeData, (err, url) => {
+        if (err) {
+          console.error('Error generando código QR:', err);
+        } else {
+          hardware.qrCodeDataUrl = url; // Asignar la URL generada al hardware
+        }
+      });
+    });
   }
 
     getHardware(){
@@ -68,14 +90,6 @@ export class HardwareComponent {
        sala: '',
        almacenamiento: ''
      }
-
-    updateHardware(hardware: UpdateHardwareDto) {
-      const response = this.hardwareService
-        .updateHardware(hardware.id_h, hardware)
-        .subscribe((response) => {
-          console.log(response);
-        });
-    }
 
 }
 
