@@ -8,9 +8,9 @@ export interface UsersModel {
   email: string;
 }
 
-export interface CreateUsersModel extends  Omit<UsersModel, 'id_u'>{
+export interface CreateUsersDto extends  Omit<UsersModel, 'id_u'>{
 }
 
-export interface UpdateUsersModel extends Partial<UsersModel>{
+export interface UpdateUsersDto extends Partial<UsersModel>{
   id_u: string;
 }

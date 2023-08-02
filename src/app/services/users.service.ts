@@ -3,8 +3,8 @@ import { Injectable, inject } from '@angular/core';
 import { map, Observable } from 'rxjs';
 import {
   UsersModel,
-  CreateUsersModel,
-  UpdateUsersModel
+  CreateUsersDto,
+  UpdateUsersDto
 } from '../models/users-model.entity,';
 
 @Injectable({
@@ -25,12 +25,12 @@ export class UsersService {
     const url = `${this.API_URL}/${id_u}`;
     return this.httpClient.get<UsersModel>(url);
   }
-  store(user: CreateUsersModel):Observable<UsersModel> {//no se usaran todos o campos(id, category)
+  store(user: CreateUsersDto):Observable<UsersModel> {//no se usaran todos o campos(id, category)
     const url = `${this.API_URL}`;
     return this.httpClient.post<UsersModel>(url, user)
   }
 
-  update(id_u: UsersModel['id_u'], user: UpdateUsersModel):Observable<UsersModel> {
+  update(id_u: UsersModel['id_u'], user: UpdateUsersDto):Observable<UsersModel> {
     const url = `${this.API_URL}/${id_u}`;
     return this.httpClient.put<UsersModel>(url, user);//devuelve un observable de tipo UserModel
   }

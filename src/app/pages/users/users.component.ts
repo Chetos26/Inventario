@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { UpdateUsersModel, UsersModel } from 'src/app/models/users-model.entity,';
+import { UpdateUsersDto, UsersModel } from 'src/app/models/users-model.entity,';
 import { UsersService } from 'src/app/services/users.service';
 
 @Component({
@@ -36,25 +36,5 @@ export class UsersComponent implements OnInit {
         this.users= this.users.filter(users => users.id_u != id_u);
         console.log(response)})
    }
-
-
-  usersModel: UpdateUsersModel = {
-    id_u: '',
-    foto: '',
-    cargo: '',
-    nombre_u: '',
-    apellido_u: '',
-    telf: '',
-    email: '',
-  }
-
-  updateUsers(users: UpdateUsersModel) {
-    console.log(users)
-    console.log('update')
-    const response = this.usersService.update(users.id_u, users)
-      .subscribe((response) => {
-        console.log(response);
-      });
-  }
 
 }

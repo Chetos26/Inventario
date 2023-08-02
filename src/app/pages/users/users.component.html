@@ -51,7 +51,7 @@
 
                         <div class="d-sm-flex justify-content-center">
                           <div class="mr-2 p-2">
-                            <button type="button" class="btn btn-success btn-sm">Editar</button>
+                            <button type="button" class="btn btn-success btn-sm" [routerLink]="['/pages/users-register', user.id_u]" [state]="user">Editar</button>
                           </div>
                           <div class="ml-2 p-2">
                             <button type="button" class="btn btn-danger btn-sm" (click)="deleteUsers(user.id_u)">Eliminar</button>
