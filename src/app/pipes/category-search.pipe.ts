@@ -6,21 +6,12 @@ import { HardwareModel } from '../models/hardware-model.entity';
 })
 export class CategoriesSearchPipe implements PipeTransform {
 
-  transform(hardwareList: HardwareModel[], selectedCategories: string, searchTerm: string): HardwareModel[] {
-    if (!hardwareList) {
-      return [];
+  transform(hardware: any[], categories: string):any[]{
+    if (!hardware || !categories) {
+      return hardware;
     }
-
-    if (!selectedCategories && !searchTerm) {
-      return hardwareList;
-    }
-
-    return hardwareList.filter(hardware => {
-      const categoriesMatch = !selectedCategories || hardware.categories.nombre_c.toLowerCase().includes(selectedCategories.toLowerCase());
-      const searchTermMatch = !searchTerm || hardware.users.nombre_u.toLowerCase().includes(searchTerm.toLowerCase());
-
-      return categoriesMatch && searchTermMatch;
-    });
+    return hardware.filter(hardware =>
+      hardware.categories.nombre_c === categories)
   }
 
 }

@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CategoryModel } from 'src/app/models/category-model.entity';
-import { HardwareModel, UpdateHardwareDto } from 'src/app/models/hardware-model.entity';
+import { CreateHardwareDto, HardwareModel, UpdateHardwareDto } from 'src/app/models/hardware-model.entity';
 import { UsersModel } from 'src/app/models/users-model.entity,';
 import { CategoriesSearchPipe } from 'src/app/pipes/category-search.pipe';
 import { CategoryService } from 'src/app/services/category.service';
@@ -19,7 +19,6 @@ export class HardwareComponent {
   hardware: HardwareModel[] = [];
   categories: CategoryModel[] = [];
   users: UsersModel[]=[];
-  selectedCategory: string = ''; // Variable para almacenar la categoría seleccionada
   searchTerm: string = '';
 
   constructor(
@@ -45,7 +44,15 @@ export class HardwareComponent {
     });
   }
 
-  
+  gotcategories():void{
+    for (let i = 0; i < this.categories.length; i++) {
+      if (this.hardwares.categories == this.categories[i].id_c) {
+        this.name= this.categories[i].nombre_c;
+      }
+    }
+  }
+
+  name: string = '';
 
   generateQRCodes(): void {
     this.hardware.forEach((hardware) => {
@@ -79,6 +86,21 @@ export class HardwareComponent {
           console.log(response)})
      }
 
+     hardwares: CreateHardwareDto = {
+      categories: '',
+      sn: '',
+      procesador: '',
+      ram: '',
+      users: '',
+      image: '',
+      monitor_sn: '',
+      teclado: '',
+      mouse: '',
+      marca: '',
+      sala: '',
+      almacenamiento: ''
+    }
+
      hardwareModel: UpdateHardwareDto={
        id_h: '',
        sn: '',
@@ -89,11 +111,17 @@ export class HardwareComponent {
        users: '',
        image: '',
        monitor_sn: '',
-       teclado: false,
-       mouse: false,
+       teclado: '',
+       mouse: '',
        sala: '',
        almacenamiento: ''
      }
 
+     categoriesSearch: string='';
+     selectedCategory(categories:string):void{
+      this.categoriesSearch = categories
+     }
+
+     
 }
 

@@ -5,8 +5,8 @@ export interface HardwareModel {
   id_h: string;
   image: string;
   monitor_sn: string;
-  teclado: boolean;
-  mouse: boolean;
+  teclado: string;
+  mouse: string;
   sn: string;
   marca:  string;
   procesador:  string;
@@ -16,6 +16,7 @@ export interface HardwareModel {
   users: UsersModel;
   categories: CategoryModel;
   qrCodeDataUrl?: string;
+  name?:string
 }
 
 export interface CreateHardwareDto extends Omit<HardwareModel,'id_h'| 'categories'| 'users'>{
