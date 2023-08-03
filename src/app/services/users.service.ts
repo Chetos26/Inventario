@@ -32,7 +32,7 @@ export class UsersService {
 
   update(id_u: UsersModel['id_u'], user: UpdateUsersDto):Observable<UsersModel> {
     const url = `${this.API_URL}/${id_u}`;
-    return this.httpClient.put<UsersModel>(url, user);//devuelve un observable de tipo UserModel
+    return this.httpClient.patch<UsersModel>(url, user);//devuelve un observable de tipo UserModel
   }
   destroy(id_u: UsersModel['id_u']):Observable<any> {
     const url = `${this.API_URL}/${id_u}`;

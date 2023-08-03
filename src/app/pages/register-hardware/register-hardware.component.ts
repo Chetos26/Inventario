@@ -13,7 +13,8 @@ import { UsersService } from 'src/app/services/users.service';
   styleUrls: ['./register-hardware.component.css']
 })
 export class RegisterHardwareComponent {
-  constructor(private hardwareService: HardwareService,
+  constructor(
+    private hardwareService: HardwareService,
     private categoryService: CategoryService,
     private usersService: UsersService,
     private activatedRoute: ActivatedRoute) { }
