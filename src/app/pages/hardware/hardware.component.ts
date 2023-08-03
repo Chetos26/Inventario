@@ -7,6 +7,7 @@ import { CategoriesSearchPipe } from 'src/app/pipes/category-search.pipe';
 import { CategoryService } from 'src/app/services/category.service';
 import { HardwareService } from 'src/app/services/hardware.service';
 import * as QRCode from 'qrcode';
+import { ImpresionService } from 'src/app/services/impresion.service';
 
 @Component({
   selector: 'app-hardware',
@@ -27,7 +28,8 @@ export class HardwareComponent {
     private categoryService: CategoryService,
     private categorySearchPipe: CategoriesSearchPipe,
     private router:Router,
-    private activatedRoute:ActivatedRoute
+    private activatedRoute:ActivatedRoute,
+    private srvImpresion: ImpresionService
     ) {}
 
   ngOnInit(): void {
@@ -43,6 +45,8 @@ export class HardwareComponent {
       this.hardware = data;
       this.generateQRCodes(); // Llamar a la función para generar códigos QR
     });
+
+    this.onImprimir()
   }
 
   
@@ -71,6 +75,10 @@ export class HardwareComponent {
           this.hardware= response}
         )
     }
+    getOne(id_h:string){
+      this.hardwareService.getOneHardware(id_h).subscribe
+      (response=>{console.log(response)})
+    }
 
     deleteHardware(id:HardwareModel['id_h']){
       this.hardwareService.destroyHardware(id).subscribe(
@@ -95,5 +103,37 @@ export class HardwareComponent {
        almacenamiento: ''
      }
 
+     //impresion
+     onImprimir(){
+      //alert("imiprimir");  //despues se lo borra
+      const encabezado  = ["id","Usuario","sn", "Marca", "Sala" ] //nombre de las tablas
+      /*const cuerpo =[ [ "111", "90876", "Toshiba", "MediaLab"],
+                      [ "111", "90876", "Toshiba", "MediaLab"]
+                    ];*/
+      this.hardwareService.getAllHardware()
+      .subscribe(
+        (data: any) => {
+          const cuerpo = data.map(
+            (hardware : any ) => {
+              const datos = [
+                hardware.id_h,
+                hardware.users.nombre_u,
+                hardware.sn,
+                hardware.marca,
+                hardware.sala
+              ]
+              return datos;
+            }
+          )
+          console.log(cuerpo)
+          this.srvImpresion.imprimir(encabezado, cuerpo, "Equipos Ciespal", true );
+        //  this.clientes = Object(data)['datos'];
+        //  this.numRegs = Object(data)['cant'];
+         // console.log(data)
+        }
+      )
+
+     
+     }
 }
 
