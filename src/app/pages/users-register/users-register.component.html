@@ -7,33 +7,36 @@
           <form>
             <div class="mb-3">
               <label for="foto" class="form-label">Foto</label>
-              <input name="foto" type="file" class="form-control" id="foto" [(ngModel)]="users.foto">
+              <input name="foto" type="file" class="form-control" id="foto" [(ngModel)]="users.foto" [(ngModel)]="usersUpdate.foto">
             </div>
             <div class="mb-3">
               <label for="cargo" class="form-label">Cargo</label>
-              <input name="cargo" type="text" class="form-control" id="cargo" [(ngModel)]="users.cargo">
+              <input name="cargo" type="text" class="form-control" id="cargo" [(ngModel)]="users.cargo" [(ngModel)]="usersUpdate.cargo">
             </div>
             <div class="mb-3">
               <label for="nombre" class="form-label">Nombre</label>
-              <input name="nombre" type="text" class="form-control" id="nombre" [(ngModel)]="users.nombre_u">
+              <input name="nombre" type="text" class="form-control" id="nombre" [(ngModel)]="users.nombre_u" [(ngModel)]="usersUpdate.nombre_u">
             </div>
             <div class="mb-3">
               <label for="apellido" class="form-label">Apellido</label>
-              <input name="apellido" type="text" class="form-control" id="apellido" [(ngModel)]="users.apellido_u">
+              <input name="apellido" type="text" class="form-control" id="apellido" [(ngModel)]="users.apellido_u" [(ngModel)]="usersUpdate.apellido_u">
             </div>
             <div class="mb-3">
               <label for="telf" class="form-label">Teléfono</label>
-              <input maxlength="10" name="tel" type="text" class="form-control" class="form-control" id="telf" [(ngModel)]="users.telf">
+              <input maxlength="10" name="tel" type="text" class="form-control" class="form-control" id="telf" [(ngModel)]="users.telf" [(ngModel)]="usersUpdate.telf">
             </div>
             <div class="mb-3">
               <label for="email" class="form-label">Correo electrónico</label>
-              <input name="email" type="text" class="form-controlemail" class="form-control" id="email" [(ngModel)]="users.email">
+              <input name="email" type="text" class="form-controlemail" class="form-control" id="email" [(ngModel)]="users.email" [(ngModel)]="usersUpdate.email">
             </div>
 
             <div class="btn-group d-flex">
-              <input class="btn btn-primary me-2" type="submit" value="Registrar"  data-bs-toggle="modal" data-bs-target="#exampleModal"(click)="registerUsers()">
+              <input class="btn btn-primary me-2" type="submit" value="Registrar"
+              data-bs-toggle="modal" data-bs-target="#exampleModal"  *ngIf="!bool" (click)="registerUsers()">
 
-              <input class="btn btn-primary me-2" type="submit" value="Actualizar"  data-bs-toggle="modal" data-bs-target="#exampleModal"(click)="registerUsers()">
+              <input class="btn btn-primary me-2" type="submit" value="Actualizar"
+              data-bs-toggle="modal" data-bs-target="#exampleModal"
+              *ngIf="bool" (click)="update(usersUpdate)">
 
               <!-- Modal -->
               <div class="modal" id="exampleModal" tabindex="-1" aria-hidden="true">

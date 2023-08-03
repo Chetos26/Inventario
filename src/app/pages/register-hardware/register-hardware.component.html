@@ -50,8 +50,9 @@
               <input name="sn" type="text" class="form-control" id="sn" [(ngModel)]="hardware.sn" [(ngModel)]="hardwareUpdate.sn" *ngIf="name=='Laptops'">
             </div>
             <div class="mb-3">
-              <label for="marca" class="form-label">Marca:</label>
-              <input name="marca" type="text" class="form-control" id="marca" name="marca" [(ngModel)]="hardware.marca" [(ngModel)]="hardwareUpdate.marca">
+              <label for="marca" class="form-label" *ngIf="name=='Laptops'">Marca:</label>
+              <input name="marca" type="text" class="form-control" id="marca" name="marca"
+              [(ngModel)]="hardware.marca" [(ngModel)]="hardwareUpdate.marca" *ngIf="name=='Laptops'">
             </div>
             <div class="mb-3">
               <label for="procesador" class="form-label">Procesador:</label>

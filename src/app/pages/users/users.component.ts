@@ -20,6 +20,13 @@ export class UsersComponent implements OnInit {
     })
   }
 
+  getUsers(){
+    this.usersService.getAll().subscribe(
+      response=>{
+        this.users= response}
+      )
+  }
+
   getUser(id_u:string){
     this.usersService.getOne(id_u).subscribe
     (response=>{console.log(response)})
