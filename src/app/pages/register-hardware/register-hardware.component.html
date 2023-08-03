@@ -17,14 +17,14 @@
               </select>
             </div>
 
-            <div class="mb-3">
+            <div class="mb-3" *ngIf="name=='PC'">
               <label for="sn" class="form-label" *ngIf="name=='PC'">Numero de Serie Monitor:</label>
               <input name="m_sn" type="text" class="form-control" id="sn" [(ngModel)]="hardware.monitor_sn" [(ngModel)]="hardwareUpdate.monitor_sn" *ngIf="name=='PC'">
             </div>
 
             <div class="container">
               <div class="row">
-                <div class="col-md-6">
+                <div class="col-md-6" *ngIf="name=='PC'">
                   <div class="mb-3">
                     <label class="form-label" *ngIf="name=='PC'">Mouse:</label>
                     <div class="form-check">
@@ -33,21 +33,21 @@
                     </div>
                   </div>
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-6" *ngIf="name=='PC'">
                   <div class="mb-3">
                     <label class="form-label" *ngIf="name=='PC'">Teclado:</label>
                     <div class="form-check">
-                      <input class="form-check-input" type="checkbox" name="siTeclado" id="siTeclado" [(ngModel)]="hardware.teclado" [(ngModel)]="hardwareUpdate.teclado" *ngIf="name=='PC'">
-                      <label class="form-check-label" for="siTeclado" na *ngIf="name=='PC'"> {{hardware.teclado ? 'Si': 'No'}} </label>
+                      <input class="form-check-input" type="checkbox" name="siTeclado" id="siTeclado" [(ngModel)]="hardware.teclado" [(ngModel)]="hardwareUpdate.teclado" >
+                      <label class="form-check-label" for="siTeclado" name="teclado" *ngIf="name=='PC'"> {{hardware.teclado ? 'Si': 'No'}} </label>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
 
-            <div class="mb-3">
-              <label for="sn" class="form-label">Numero de Serie PC/Laptop:</label>
-              <input name="sn" type="text" class="form-control" id="sn" [(ngModel)]="hardware.sn" [(ngModel)]="hardwareUpdate.sn">
+            <div class="mb-3" *ngIf="name=='Laptops'">
+              <label for="sn" class="form-label" *ngIf="name=='Laptops'">Numero de Serie Laptop:</label>
+              <input name="sn" type="text" class="form-control" id="sn" [(ngModel)]="hardware.sn" [(ngModel)]="hardwareUpdate.sn" *ngIf="name=='Laptops'">
             </div>
             <div class="mb-3">
               <label for="marca" class="form-label">Marca:</label>

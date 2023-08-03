@@ -14,8 +14,16 @@ export class UsersRegisterComponent {
   constructor(private usersService: UsersService, private activatedRoute:ActivatedRoute) { }
 
   ngOnInit(): void {
-
+    this.bool=false
+    this.cargar()
+    console.log(history.state)
+    if (history.state.id_h) {
+      this.cargar()
+      this.bool=true
+    }
   }
+
+  bool: boolean = false;
 
   users: CreateUsersDto={
     foto: '',
@@ -45,7 +53,7 @@ export class UsersRegisterComponent {
       });
 
   }
-  
+
   cargar():void{
     this.activatedRoute.params.subscribe(
       e=> {
@@ -65,7 +73,7 @@ export class UsersRegisterComponent {
       }
     )
   }
-  
+
   update(users:UpdateUsersDto){
     const response = this.usersService.update(users.id_u, users).subscribe((response)=> {
       console.log(response);

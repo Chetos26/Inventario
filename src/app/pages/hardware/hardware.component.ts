@@ -45,10 +45,14 @@ export class HardwareComponent {
     });
   }
 
+  
+
   generateQRCodes(): void {
     this.hardware.forEach((hardware) => {
       const qrCodeData =
-      `${hardware.categories.nombre_c} -${hardware.users.nombre_u} - ${hardware.users.apellido_u}
+      `Identificador de equipo:
+      ${hardware.id_h}
+      ${hardware.categories.nombre_c} -${hardware.users.nombre_u} - ${hardware.users.apellido_u}
        ${hardware.marca} - ${hardware.sala}`
       ; // Convertir el objeto hardware a una cadena JSON
       QRCode.toDataURL(qrCodeData, (err, url) => {

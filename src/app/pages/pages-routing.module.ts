@@ -20,8 +20,7 @@ const routes: Routes = [
     {path:"hardware-register/:id_h", /*canActivate:[AuthGuard],*/ component: RegisterHardwareComponent},
     {path: "categories", /*canActivate:[AuthGuard],*/component: CategoriesComponent},
     {path:"users", /*canActivate:[AuthGuard],*/ component: UsersComponent},
-    {path:"users/:id_u", /*canActivate:[AuthGuard],*/ component: UsersComponent},
-    {path:"users-register", /*canActivate:[AuthGuard],*/ component: UsersRegisterComponent}
+    {path:"users-register/:id_u", /*canActivate:[AuthGuard],*/ component: UsersRegisterComponent}
   ]
 }
 ]
