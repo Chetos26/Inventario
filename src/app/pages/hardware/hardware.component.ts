@@ -8,6 +8,8 @@ import { CategoryService } from 'src/app/services/category.service';
 import { HardwareService } from 'src/app/services/hardware.service';
 import * as QRCode from 'qrcode';
 import { ImpresionService } from 'src/app/services/impresion.service';
+import jsPDF from 'jspdf';
+import 'jspdf-autotable';
 
 @Component({
   selector: 'app-hardware',
@@ -44,8 +46,6 @@ export class HardwareComponent {
       this.hardware = data;
       this.generateQRCodes(); // Llamar a la función para generar códigos QR
     });
-
-    this.onImprimir()
   }
 
   gotcategories():void{
@@ -130,38 +130,31 @@ export class HardwareComponent {
       this.categoriesSearch = categories
      }
 
-     
-     //impresion
-     onImprimir(){
-      //alert("imiprimir");  //despues se lo borra
-      const encabezado  = ["id","Usuario","sn", "Marca", "Sala" ] //nombre de las tablas
-      /*const cuerpo =[ [ "111", "90876", "Toshiba", "MediaLab"],
-                      [ "111", "90876", "Toshiba", "MediaLab"]
-                    ];*/
-      this.hardwareService.getAllHardware()
-      .subscribe(
-        (data: any) => {
-          const cuerpo = data.map(
-            (hardware : any ) => {
-              const datos = [
-                hardware.id_h,
-                hardware.users.nombre_u,
-                hardware.sn,
-                hardware.marca,
-                hardware.sala
-              ]
-              return datos;
-            }
-          )
-          console.log(cuerpo)
-          this.srvImpresion.imprimir(encabezado, cuerpo, "Equipos Ciespal", true );
-        //  this.clientes = Object(data)['datos'];
-        //  this.numRegs = Object(data)['cant'];
-         // console.log(data)
-        }
-      )
 
-     
-     }
+     onImprimir() {
+      this.hardwareService.getAllHardware().subscribe((data: any) => {
+        data.forEach((hardware: any) => {
+          const doc = new jsPDF();
+          const encabezado = ["id", "Usuario", "sn", "Marca", "Sala"];
+          const cuerpo = [[
+            hardware.id_h,
+            hardware.users.nombre_u,
+            hardware.sn,
+            hardware.marca,
+            hardware.sala
+          ]];
+
+          doc.text("Equipos Ciespal", 10, 10);
+          (doc as any).autoTable({
+            head: [encabezado],
+            body: cuerpo,
+            startY: 20,
+          });
+
+          doc.save(`Equipo_${hardware.id_h}.pdf`);
+        });
+      });
+    }
+
 }
 
