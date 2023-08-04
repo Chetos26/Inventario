@@ -151,7 +151,7 @@ export class HardwareComponent {
             startY: 20,
           });
 
-          doc.save(`Equipo_${hardware.id_h}.pdf`);
+          doc.save(`Equipo_${hardware.users.nombre_u}.pdf`);
         });
       });
     }
