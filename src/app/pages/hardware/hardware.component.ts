@@ -62,15 +62,29 @@ export class HardwareComponent {
     this.hardware.forEach((hardware) => {
       const qrCodeData =
       `Identificador de equipo:
-      ${hardware.id_h}
-      ${hardware.categories.nombre_c} -${hardware.users.nombre_u} - ${hardware.users.apellido_u}
-       ${hardware.marca} - ${hardware.sala}`
-      ; // Convertir el objeto hardware a una cadena JSON
-      QRCode.toDataURL(qrCodeData, (err, url) => {
+        ${hardware.id_h}
+        ${hardware.categories.nombre_c}
+        Encargado:
+        ${hardware.users.nombre_u} - ${hardware.users.apellido_u}
+        Detalles:
+        ${hardware.marca} - ${hardware.sala}`
+        ; // Convertir el objeto hardware a una cadena JSON
+
+      // Crear un objeto de opciones para el tamaño del código QR
+      const qrOptions: QRCode.QRCodeRenderersOptions = {
+        errorCorrectionLevel: 'H',
+        width: 150, // Ajustar el ancho del código QR (tamaño en píxeles)
+        margin: 1, // Margen del código QR (tamaño en módulos)
+      };
+
+      // Crear un elemento canvas para generar el código QR
+      const canvas = document.createElement('canvas');
+      QRCode.toCanvas(canvas, qrCodeData, qrOptions, (err) => {
         if (err) {
           console.error('Error generando código QR:', err);
         } else {
-          hardware.qrCodeDataUrl = url; // Asignar la URL generada al hardware
+          // Convertir el canvas a una imagen en formato de datos URL
+          hardware.qrCodeDataUrl = canvas.toDataURL();
         }
       });
     });
