@@ -46,10 +46,17 @@
                           <h5 class="text-muted m-0 f-s-11"> {{hardware.categories.nombre_c}} </h5>
                         </div>
 
-                        <div class="mt-3">
-                          <img [src]="hardware.qrCodeDataUrl" alt="QR Code" class="img-fluid mx-auto d-block"  />
-                        </div>
-                        <div class="d-sm-flex justify-content-center"></div>
+                        <details class="text-muted" alt="Mostrar QR" [open]="false">
+                          <summary>Mostrar QR</summary>
+
+                          <p id="CÓdigo QR" style="display:none;"></p>
+
+                          <div class="mt-3">
+                            <img [src]="hardware.qrCodeDataUrl" alt="QR Code" class="img-fluid mx-auto d-block"  />
+                          </div>
+                          <div class="d-sm-flex justify-content-center"></div>
+
+                        </details>
 
                         <small class="text-muted">Encargado:</small>
                         <a href="users" [routerLink]="['/pages/users', hardware.users.id_u]">
