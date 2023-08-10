@@ -10,7 +10,7 @@
   },
   "private": true,
   "dependencies": {
-    "@angular/animations": "^16.1.0",
+    "@angular/animations": "^16.2.0",
     "@angular/cdk": "^16.1.5",
     "@angular/common": "^16.1.0",
     "@angular/compiler": "^16.1.0",
@@ -27,6 +27,7 @@
     "jspdf-autotable": "^3.5.31",
     "ngx-pagination": "^6.0.3",
     "ngx-qrcode": "^0.1.0-rc.1",
+    "ngx-toastr": "^17.0.2",
     "qrcode": "^1.5.3",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",

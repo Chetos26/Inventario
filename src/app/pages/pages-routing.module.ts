@@ -12,16 +12,16 @@ import { CategoriesComponent } from './categories/categories.component';
 
 
 const routes: Routes = [
-  {path:"pages", /*canActivate:[AuthGuard],*/ component: PagesComponent,
+  {path:"pages", canActivate:[AuthGuard], component: PagesComponent,
   children:[
     {path: "", component: DashboardComponent},
-    {path:"hardware", /*canActivate:[AuthGuard],*/ component: HardwareComponent},
-    {path:"hardware-register", /*canActivate:[AuthGuard],*/ component: RegisterHardwareComponent},
-    {path:"hardware-register/:id_h", /*canActivate:[AuthGuard],*/ component: RegisterHardwareComponent},
-    {path: "categories", /*canActivate:[AuthGuard],*/component: CategoriesComponent},
-    {path:"users", /*canActivate:[AuthGuard],*/ component: UsersComponent},
-    {path:"users-register", /*canActivate:[AuthGuard],*/ component: UsersRegisterComponent},
-    {path:"users-register/:id_u", /*canActivate:[AuthGuard],*/ component: UsersRegisterComponent}
+    {path:"hardware", canActivate:[AuthGuard], component: HardwareComponent},
+    {path:"hardware-register", canActivate:[AuthGuard], component: RegisterHardwareComponent},
+    {path:"hardware-register/:id_h", canActivate:[AuthGuard], component: RegisterHardwareComponent},
+    {path: "categories", canActivate:[AuthGuard],component: CategoriesComponent},
+    {path:"users", canActivate:[AuthGuard], component: UsersComponent},
+    {path:"users-register", canActivate:[AuthGuard], component: UsersRegisterComponent},
+    {path:"users-register/:id_u", canActivate:[AuthGuard], component: UsersRegisterComponent}
   ]
 }
 ]

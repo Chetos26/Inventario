@@ -45,7 +45,6 @@ export class HardwareComponent {
       this.generateQRCodes(); // Llamar a la función para generar códigos QR
     });
 
-    this.onImprimir()
   }
 
   gotcategories():void{
@@ -125,12 +124,15 @@ export class HardwareComponent {
        almacenamiento: ''
      }
 
-     categoriesSearch: string='';
-     selectedCategory(categories:string):void{
-      this.categoriesSearch = categories
-     }
+    targetCategory: string='';
+     applyCategoryFilter(category: string): void {
+      this.targetCategory = category;
+    }
+    targetUsers: string='';
+     applyUsersFilter(users: string): void {
+      this.targetUsers = users;
+    }
 
-     
      //impresion
      onImprimir(){
       //alert("imiprimir");  //despues se lo borra
@@ -160,8 +162,6 @@ export class HardwareComponent {
          // console.log(data)
         }
       )
-
-     
      }
 }
 

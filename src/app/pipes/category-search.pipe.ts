@@ -6,12 +6,16 @@ import { HardwareModel } from '../models/hardware-model.entity';
 })
 export class CategoriesSearchPipe implements PipeTransform {
 
-  transform(hardware: any[], categories: string):any[]{
-    if (!hardware || !categories) {
-      return hardware;
+  transform(hardwareItems: HardwareModel[], targetCategory: string): HardwareModel[] {
+    if (!hardwareItems || !targetCategory) {
+      return hardwareItems;
     }
-    return hardware.filter(hardware =>
-      hardware.categories.nombre_c === categories)
+
+    const search = hardwareItems.filter(item =>
+      item.categories.nombre_c.toLowerCase().includes(targetCategory.toLowerCase())
+      || item.users.nombre_u.toLowerCase().includes(targetCategory.toLowerCase()));
+
+    return search
   }
 
 }

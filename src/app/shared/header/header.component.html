@@ -25,6 +25,14 @@
         </li>
       </ul>
 
+      <div class="d-flex flex-column justify-content-center align-items-center mt-3 mt-lg-0">
+        <ul class="list-unstyled">
+          <li class="nav-item" role="group" *ngIf="isLogged">
+            <a type="button" class="btn btn-danger" href="/" (click)="logOut()">Cerrar Sesión</a>
+          </li>
+        </ul>
+      </div>
+
     </div>
   </div>
 </nav>

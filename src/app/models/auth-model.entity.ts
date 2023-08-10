@@ -1,9 +1,10 @@
-export class UserAuthModel {
-  username: string;
-  contrasenia: string;
+export class LoginUsuarioModel {
+  password = '';
+  email = '';
 
-  constructor(username: string, contrasenia: string) {
-      this.username = username;
-      this.contrasenia = contrasenia;
+
+  constructor(email: string, password: string) {
+    this.password = password;
+    this.email = email
   }
 }

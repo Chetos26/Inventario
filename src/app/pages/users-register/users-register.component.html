@@ -27,7 +27,8 @@
             </div>
             <div class="mb-3">
               <label for="email" class="form-label">Correo electrónico</label>
-              <input name="email" type="text" class="form-controlemail" class="form-control" id="email" [(ngModel)]="users.email" [(ngModel)]="usersUpdate.email">
+              <input name="email" type="text" class="form-controlemail" [maxLength]="30"
+              class="form-control" id="email" [(ngModel)]="users.email" [(ngModel)]="usersUpdate.email">
             </div>
 
             <div class="btn-group d-flex">

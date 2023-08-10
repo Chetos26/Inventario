@@ -44,4 +44,9 @@ export class UsersComponent implements OnInit {
         console.log(response)})
    }
 
+   targetUsers: string='';
+     applyUsersFilter(users: string): void {
+      this.targetUsers = users;
+    }
+
 }

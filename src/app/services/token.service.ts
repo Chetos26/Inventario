@@ -1,15 +1,11 @@
 import { Injectable } from '@angular/core';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class TokenService {
+  constructor() { /* TODO document why this constructor is empty */ }
 
-  public isAuthenticated: boolean = false;
-
-  constructor() { }
-
-  //Verifica si hay un token almacenado
   isLogged(): boolean {
     if (this.getToken()) {
       return true;
@@ -17,59 +13,44 @@ export class TokenService {
     return false;
   }
 
-  //Verifica si el usuario esta autenticado
-  getIsAuthenticated(): boolean {
-    if(!this.isLogged()){
-      return false
-     }else {
-      this.isAuthenticated = true;
-     }
-    return this.isAuthenticated;
+  setToken(token: string): void {
+    localStorage.setItem('token', token);
   }
 
-
-//Almacena el Token en el localStorage del navegador
-  setToken(accessToke: string): void {
-    localStorage.setItem('accessToke', accessToke);
-    console.log('accessToke', accessToke);
+  getToken(): string | null {
+    return localStorage.getItem('token');
   }
 
-//Obtiene el token del navegador
-  getToken(): string {
-    return localStorage.getItem('accessToke')!;
-  }
-
-
-//Extrae el nombre del token
-  getUserNameFromToken(): string | null{
-    const nombreToke = this.getToken();
-
-    if(!this.isLogged()){
-     return null
+  getInfoUser(): string | null {
+    const token = this.getToken();
+    if (!token) {
+      return null;
     }
-
-    const payload = nombreToke.split('.')[1];
+    const payload = token.split('.')[1];
     const values = atob(payload);
     const valuesJson = JSON.parse(values);
-    const name =  valuesJson.name;
-    return name;
+    const username = valuesJson?.email;
+    return username || null;
   }
 
-  //Extrae el id del token
-  getUserIdFromToken(): string | null{
-    const idToke = this.getToken();
-
-    if(!this.isLogged()){
-     return null
+  isAdmin(): boolean | null {
+    const token = this.getToken();
+    if (!token) {
+      return null;
     }
-
-    const payload = idToke.split('.')[1];
+    const payload = token.split('.')[1];
     const values = atob(payload);
     const valuesJson = JSON.parse(values);
-    const userId =  valuesJson.sub;
-    console.log('id:', userId);
-    return userId;
+    const roles = valuesJson?.roles
+    console.log(roles);
+
+    if (roles && roles.indexOf('admin') >= 0) {
+      return true;
+    }
+    return false;
+  }
+
+  logOut(): void {
+    localStorage.clear();
   }
 }
-
-

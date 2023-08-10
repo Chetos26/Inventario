@@ -6,7 +6,8 @@
             <form class="d-flex input-group w-auto">
               <input type="search" class="form-control"
               placeholder="Inicie su búsqueda"
-              aria-label="Buscar"/>
+              aria-label="Buscar" [(ngModel)]="targetCategory"
+              name="search"/>
               <button class="btn btn-outline-primary" type="button">
                 Buscar
               </button>
@@ -33,12 +34,12 @@
             <div class="col-12 py-5">
               <div class="row">
                 <!-- Tarjeta -->
-                <ng-container *ngFor="let hardware of hardware; let i = index;">
+                <ng-container *ngFor="let hardware of hardware | categoriesSearch:targetCategory; let i = index">
                   <div class="col-12 col-md-6 col-lg-4 col-xl-3 mb-3">
                     <div class="card mx-2">
                       <!-- Contenido de la tarjeta -->
                       <div class="card-img-top">
-                        <img src="https://www.apple.com/newsroom/images/product/imac/standard/Apple_imac-magickeyboardnum-magicmouse2-macos-wallpaper_08042020_big.jpg.large.jpg"
+                        <img src="https://think-ecuador.com/wp-content/uploads/2021/01/mbp-silver-select-202206.png"
                           class="img-fluid mx-auto d-block" alt="card image 1">
                       </div>
                       <div class="widget-blog-author">

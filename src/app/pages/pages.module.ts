@@ -13,6 +13,9 @@ import { CategoriesComponent } from './categories/categories.component';
 import { FormsModule } from '@angular/forms';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { QRCodeModule } from 'ngx-qrcode';
+import { CategoriesSearchPipe } from '../pipes/category-search.pipe';
+import { UserSearchPipe } from '../pipes/user-search.pipe';
+import { UsersComponentPipe } from '../pipes/users-component.pipe';
 
 
 
@@ -25,6 +28,9 @@ import { QRCodeModule } from 'ngx-qrcode';
     UsersRegisterComponent,
     DashboardComponent,
     CategoriesComponent,
+    CategoriesSearchPipe,
+    UserSearchPipe,
+    UsersComponentPipe
   ],
   imports: [
     CommonModule,

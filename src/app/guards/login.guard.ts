@@ -13,7 +13,7 @@ import { TokenService } from "../services/token.service";
 
 
     canActivate(): boolean {
-        if (this.tokenService.getIsAuthenticated()) {
+        if (this.tokenService.isLogged()) {
             this.router.navigateByUrl('/pages');
           return false;
         }else {
