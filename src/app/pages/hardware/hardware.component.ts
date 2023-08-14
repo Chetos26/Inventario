@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CategoryModel } from 'src/app/models/category-model.entity';
 import { CreateHardwareDto, HardwareModel, UpdateHardwareDto } from 'src/app/models/hardware-model.entity';
@@ -190,6 +190,25 @@ export class HardwareComponent {
     doc.save(`Equipos_Ciespal ${nombreUsuario}.pdf`);
     this.currentIndex++;
   }
+
+
+  @ViewChild('confirmDeleteModal') confirmDeleteModal!: ElementRef; // Acceso al modal
+
+  hardwareToDeleteId: string | null = null;
+
+  showDeleteConfirmationModal(id: string): void {
+    this.hardwareToDeleteId = id;
+    this.confirmDeleteModal.nativeElement.classList.add('show'); // Mostrar el modal
+  }
+
+  confirmDelete(): void {
+    if (this.hardwareToDeleteId) {
+      this.deleteHardware(this.hardwareToDeleteId);
+    }
+    this.hardwareToDeleteId = null;
+    this.confirmDeleteModal.nativeElement.classList.remove('show'); // Ocultar el modal
+  }
+
 }
 
 

@@ -23,3 +23,12 @@
 .move-right {
   margin-right: 10px; /* Ajusta el valor según tu preferencia */
 }
+
+.modal {
+  display: none;
+  /* ... Otros estilos ... */
+}
+
+.modal.show {
+  display: block;
+}

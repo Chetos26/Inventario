@@ -107,12 +107,31 @@
                             <button type="button" class="btn btn-success btn-sm" [routerLink]="['/pages/hardware-register', hardware.id_h]" [state]="hardware">Editar</button>
                           </div>
                           <div class="ml-2 p-2">
-                            <button type="button" class="btn btn-danger btn-sm" (click)="deleteHardware(hardware.id_h)">Eliminar</button>
+                            <button type="button" class="btn btn-danger btn-sm" (click)="showDeleteConfirmationModal(hardware.id_h)">Eliminar</button>
                           </div>
                         </div>
 
                         <div class="d-flex justify-content-center p-3">
                           <button type="button" class="btn btn-warning" (click)=" onImprimir()">Generar Reporte</button>
+                        </div>
+
+                        <!-- Modal de Confirmación de Eliminación -->
+                        <div class="modal fade" #confirmDeleteModal tabindex="-1" role="dialog" aria-labelledby="confirmDeleteModalLabel" aria-hidden="true">
+                          <div class="modal-dialog modal-dialog-centered" role="document">
+                            <div class="modal-content">
+                              <div class="modal-header">
+                                <h5 class="modal-title" id="confirmDeleteModalLabel">Confirmar Eliminación</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                              </div>
+                              <div class="modal-body">
+                                ¿Estás seguro de que deseas eliminar este registro?
+                              </div>
+                              <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                                <button type="button" class="btn btn-danger" (click)="confirmDelete()">Eliminar</button>
+                              </div>
+                            </div>
+                          </div>
                         </div>
 
                       </div>
