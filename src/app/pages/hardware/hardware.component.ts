@@ -147,49 +147,42 @@ export class HardwareComponent {
       this.targetCategory = category;
     }
 
-     onImprimir() {
+    onImprimir() {
       if (this.currentIndex < this.hardware.length) {
         this.http.get('assets/images/logo.png', { responseType: 'blob' }).subscribe((logoBlob: Blob) => {
           const reader = new FileReader();
           reader.onloadend = () => {
             const logoBase64 = reader.result?.toString();
             const hardware = this.hardware[this.currentIndex];
-            const nombreCompleto = `${hardware.users.nombre_u} ${hardware.users.apellido_u}`;
-            this.generatePdf(logoBase64, nombreCompleto);
+            this.generatePdf(logoBase64, hardware);
           };
           reader.readAsDataURL(logoBlob);
         });
       }
     }
+  
+    generatePdf(logoBase64: string | undefined, hardware: any): void {
+      const doc = new jsPDF();
+  
+      if (logoBase64) {
+        doc.addImage(logoBase64, 'PNG', 15, 1, 35, 30);
+      }
+      doc.setFontSize(16);
+      doc.text('Equipo de Ciespal', 90, 20);
+  
+      doc.text(`ID: ${hardware.id_h}`, 20, 40);
+      doc.text(`Usuario: ${hardware.users.nombre_u}`, 20, 50);
+      doc.text(`Serial Number: ${hardware.sn}`, 20, 60);
+      doc.text(`Marca: ${hardware.marca}`, 20, 70);
+      doc.text(`Sala: ${hardware.sala}`, 20, 80);
+  
+      const espacioParaFirmaY = 260; // Espacio para la firma
+      doc.text('Atentamente', 145, espacioParaFirmaY);
 
-  generatePdf(logoBase64: string | undefined, nombreUsuario: string): void {
-    const doc = new jsPDF();
-
-    // Agregar encabezado con el logotipo
-    if (logoBase64) {
-      doc.addImage(logoBase64, 'PNG', 10, 10, 30, 30); // Coloca el logotipo en las coordenadas (10, 10) con un tamaño de 30x30
+      const espacioLinea = 280; // Espacio
+      doc.text('_________________', 135, espacioLinea);
+  
+      doc.save(`Equipo_Ciespal_${hardware.users.nombre_u}.pdf`);
+      this.currentIndex++;
     }
-    doc.setFontSize(16);
-    doc.text('Equipo de Ciespal', 50, 20); // Texto del encabezado
-
-    // Agregar los datos como lista hacia abajo
-    let y = 40; // Posición vertical para comenzar la lista
-    this.hardware.forEach((hardware) => {
-      doc.text(`ID: ${hardware.id_h}`, 20, y);
-      doc.text(`Usuario: ${hardware.users.nombre_u}`, 20, y + 10);
-      doc.text(`Serial Number: ${hardware.sn}`, 20, y + 20);
-      doc.text(`Marca: ${hardware.marca}`, 20, y + 30);
-      doc.text(`Sala: ${hardware.sala}`, 20, y + 40);
-      y += 60; // Incrementa la posición vertical para el siguiente conjunto de datos
-    });
-
-    // Espacio para firmar
-    const espacioParaFirmaY = y + 30; // Agrega un espacio para la firma 30 unidades debajo de los datos
-    doc.text('Espacio para Firmar', 20, espacioParaFirmaY);
-
-    doc.save(`Equipos_Ciespal ${nombreUsuario}.pdf`);
-    this.currentIndex++;
   }
-}
-
-
