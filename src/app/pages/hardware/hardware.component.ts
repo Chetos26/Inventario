@@ -168,21 +168,52 @@ export class HardwareComponent {
         doc.addImage(logoBase64, 'PNG', 15, 1, 35, 30);
       }
       doc.setFontSize(16);
-      doc.text('Equipo de Ciespal', 90, 20);
+      doc.text('EQUIPO DE CIESPAL', 80, 20);
   
       doc.text(`ID: ${hardware.id_h}`, 20, 40);
       doc.text(`Usuario: ${hardware.users.nombre_u}`, 20, 50);
       doc.text(`Serial Number: ${hardware.sn}`, 20, 60);
       doc.text(`Marca: ${hardware.marca}`, 20, 70);
       doc.text(`Sala: ${hardware.sala}`, 20, 80);
-  
+
+      //doc.text(`QR: generateQRCodes()`,20, 90)
+
+         // Generar el código QR y agregarlo al PDF
+    this.generateQRCode((qrCodeBase64: string) => {
+      if (qrCodeBase64) {
+        doc.addImage(qrCodeBase64, 'PNG', 160, 40, 30, 30);
+      }
+
       const espacioParaFirmaY = 260; // Espacio para la firma
-      doc.text('Atentamente', 145, espacioParaFirmaY);
+      doc.text('Firmado por', 145, espacioParaFirmaY);
 
       const espacioLinea = 280; // Espacio
       doc.text('_________________', 135, espacioLinea);
-  
+
       doc.save(`Equipo_Ciespal_${hardware.users.nombre_u}.pdf`);
       this.currentIndex++;
-    }
+    });
   }
+
+  // QR EN PDF
+
+  generateQRCode(callback: (base64: string) => void): void {
+    const hardware = this.hardware[this.currentIndex];
+    const qrCodeData = `ID: ${hardware.id_h}\nUsuario: ${hardware.users.nombre_u}\nSerial Number: ${hardware.sn}\nMarca: ${hardware.marca}\nSala: ${hardware.sala}`;
+
+    const qrOptions: QRCode.QRCodeRenderersOptions = {
+      errorCorrectionLevel: 'H',
+      width: 100, // Ajustar el tamaño del código QR
+      margin: 1,
+    };
+
+    QRCode.toDataURL(qrCodeData, qrOptions, (err, url) => {
+      if (err) {
+        console.error('Error generando código QR:', err);
+        callback('');
+      } else {
+        callback(url);
+      }
+    });
+  }
+}
