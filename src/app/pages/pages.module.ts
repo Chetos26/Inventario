@@ -10,7 +10,7 @@ import { PagesComponent } from './pages.component';
 import { SharedModule } from '../shared/shared.module';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { CategoriesComponent } from './categories/categories.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { QRCodeModule } from 'ngx-qrcode';
 import { CategoriesSearchPipe } from '../pipes/category-search.pipe';
@@ -30,7 +30,7 @@ import { UsersComponentPipe } from '../pipes/users-component.pipe';
     CategoriesComponent,
     CategoriesSearchPipe,
     UserSearchPipe,
-    UsersComponentPipe
+    UsersComponentPipe,
   ],
   imports: [
     CommonModule,
@@ -39,7 +39,8 @@ import { UsersComponentPipe } from '../pipes/users-component.pipe';
     SharedModule,
     FormsModule,
     NgxPaginationModule,
-    QRCodeModule
+    QRCodeModule,
+    ReactiveFormsModule
   ]
 })
 export class PagesModule { }

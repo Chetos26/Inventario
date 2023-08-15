@@ -26,9 +26,18 @@ export class LoginComponent{
     private router: Router
   ) { }
 
+  camposVacios: boolean = false;
+
 
   onLogin(): void {
-    this.usuario = new LoginUsuarioModel(this.email,this.password);
+    if (this.email === '' || this.password === '') {
+      this.camposVacios = true;
+      return; // No continuar si los campos están vacíos
+    }
+
+    this.camposVacios = false; // Reiniciar la variable de campos vacíos
+
+    this.usuario = new LoginUsuarioModel(this.email, this.password);
     this.authService.login(this.usuario).subscribe({
       next: (data: any) => {
         if (!data.token) {
@@ -47,4 +56,5 @@ export class LoginComponent{
       }
     });
   }
+
 }

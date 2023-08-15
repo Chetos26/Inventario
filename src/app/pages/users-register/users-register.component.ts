@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { CreateUsersDto, UpdateUsersDto, UsersModel } from 'src/app/models/users-model.entity,';
 import { UsersService } from 'src/app/services/users.service';
@@ -10,14 +11,27 @@ import { UsersService } from 'src/app/services/users.service';
   styleUrls: ['./users-register.component.css']
 })
 export class UsersRegisterComponent {
+  usersForm: FormGroup;
 
   constructor(
     private usersService: UsersService,
-    private activatedRoute: ActivatedRoute
-  ) {}
-
+    private activatedRoute: ActivatedRoute,
+    private formBuilder: FormBuilder,
+  ) {
+    this.usersForm = this.formBuilder.group({
+      foto: [''],
+      nombre_u: ['', [Validators.required, Validators.pattern(this.naPattern)]],
+      apellido_u: ['', [Validators.required, Validators.pattern(this.naPattern)]],
+      telf: ['', [Validators.required, Validators.minLength(10)]],
+      email: ['', [Validators.required, Validators.pattern(this.emailPattern)]],
+      cargo: ['', Validators.required],
+    });
+  }
+  naPattern: any = /^[a-zA-Z]/;
+  emailPattern: any = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
   usersModel: UsersModel[]=[];
   bool: boolean = false;
+  showModal: boolean = false;
 
   ngOnInit(): void {
     this.bool = false;
@@ -49,12 +63,31 @@ export class UsersRegisterComponent {
   };
 
   registerUsers() {
-    console.log(this.users);
-    const response = this.usersService
-      .store(this.users)
-      .subscribe((response) => {
+    if (this.usersForm.valid) {
+      const formData = this.usersForm.value;
+      const response = this.usersService.store(formData).subscribe((response) => {
         console.log(response);
+        this.showModal = true;
+        console.log(this.showModal)
       });
+    } else {
+      this.validateAllFormFields(this.usersForm);
+    }
+  }
+
+  validateAllFormFields(formGroup: FormGroup) {
+    Object.keys(formGroup.controls).forEach((field) => {
+      const control = formGroup.get(field);
+      if (control instanceof FormGroup) {
+        this.validateAllFormFields(control);
+      } else {
+        if (control) {
+          control.markAsTouched({ onlySelf: true });
+          control.markAsDirty({ onlySelf: true });
+          this.formErrors[field] = control.hasError('required') ? 'Campo requerido' : '';
+        }
+      }
+    });
   }
 
   cargar(): void {
@@ -78,8 +111,21 @@ export class UsersRegisterComponent {
   }
 
   update(users: UpdateUsersDto) {
-    const response = this.usersService.update(users.id_u, users).subscribe((response) => {
-      console.log(response);
-    });
+    if (this.usersForm.valid) {
+      const response = this.usersService.update(users.id_u, users).subscribe((response) => {
+        console.log(response);
+      });
+    } else {
+      this.validateAllFormFields(this.usersForm);
+    }
   }
+
+  formErrors:any = {
+    nombre_u: '',
+    apellido_u: '',
+    telf: '',
+    email: '',
+    cargo: '',
+  };
+
 }

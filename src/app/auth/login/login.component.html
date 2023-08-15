@@ -22,21 +22,24 @@
 
                   <div class="form-outline mb-4">
                     <input type="email" id="form2Example17" class="form-control form-control-lg"
-                    id="email" name="email" placeholder="Ingrese su correo" [(ngModel)]="email"/>
-                    <label class="form-label" for="form2Example17">Email</label>
+                      name="email" placeholder="Ingrese su correo o usuario" [(ngModel)]="email"/>
+                    <label class="form-label" for="form2Example17">Username/Email</label>
                   </div>
 
                   <div class="form-outline mb-4">
                     <input type="password" id="form2Example27" class="form-control form-control-lg"
-                    id="password" name="password" placeholder="Ingrese su contraseña" [(ngModel)]="password"/>
+                      name="password" placeholder="Ingrese su contraseña" [(ngModel)]="password"/>
                     <label class="form-label" for="form2Example27">Contraseña</label>
                   </div>
 
                   <div class="pt-1 mb-4">
-                    <button
-                    class="btn btn-dark btn-lg btn-block"
-                    type="button" (click)="onLogin()">Ingresar
+                    <button class="btn btn-dark btn-lg btn-block"
+                      type="button" (click)="onLogin()">Ingresar
                     </button>
+                  </div>
+
+                  <div *ngIf="camposVacios && (email === '' || password === '')" class="text-danger mb-2">
+                    Llene todos los campos por favor.
                   </div>
 
                 </form>

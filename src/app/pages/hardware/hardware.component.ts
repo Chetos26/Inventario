@@ -194,20 +194,13 @@ export class HardwareComponent {
       this.currentIndex++;
     });
 
+
+
     const qrOptions: QRCode.QRCodeRenderersOptions = {
       errorCorrectionLevel: 'H',
       width: 100, // Ajustar el tamaño del código QR
       margin: 1,
     };
-
-    QRCode.toDataURL(qrCodeData, qrOptions, (err, url) => {
-      if (err) {
-        console.error('Error generando código QR:', err);
-        callback('');
-      } else {
-        callback(url);
-      }
-    });
   }
 
   // QR EN PDF

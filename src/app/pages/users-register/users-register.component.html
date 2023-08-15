@@ -4,60 +4,62 @@
       <div class="card">
         <div class="card-body">
           <h5 class="card-title">Formulario</h5>
-          <form>
+          <form [formGroup]="usersForm">
             <div class="mb-3">
               <label for="foto" class="form-label">Foto</label>
-              <input name="foto" type="file" class="form-control" id="foto" [(ngModel)]="users.foto" [(ngModel)]="usersUpdate.foto">
+              <input name="foto" type="file" class="form-control" id="foto" formControlName="foto">
             </div>
             <div class="mb-3">
               <label for="cargo" class="form-label">Cargo</label>
-              <input name="cargo" type="text" class="form-control" id="cargo" [(ngModel)]="users.cargo" [(ngModel)]="usersUpdate.cargo">
+              <input name="cargo" type="text" class="form-control" id="cargo" formControlName="cargo">
+              <div *ngIf="usersForm.get('cargo')?.hasError('required') && usersForm.get('cargo')?.touched" class="error-message">
+                Cargo es requerido.
+              </div>
             </div>
             <div class="mb-3">
               <label for="nombre" class="form-label">Nombre</label>
-              <input name="nombre" type="text" class="form-control" id="nombre" [(ngModel)]="users.nombre_u" [(ngModel)]="usersUpdate.nombre_u">
+              <input name="nombre" type="text" class="form-control" id="nombre" formControlName="nombre_u" maxlength="15">
+              <div *ngIf="usersForm.get('nombre_u')?.hasError('required') && usersForm.get('nombre_u')?.touched" class="error-message">
+                Nombre es requerido.
+              </div>
+              <div *ngIf="usersForm.get('nombre_u')?.dirty && usersForm.get('nombre_u')?.hasError('pattern')" class="error-message">
+                Solo se admiten letras.
+              </div>
             </div>
             <div class="mb-3">
               <label for="apellido" class="form-label">Apellido</label>
-              <input name="apellido" type="text" class="form-control" id="apellido" [(ngModel)]="users.apellido_u" [(ngModel)]="usersUpdate.apellido_u">
+              <input name="apellido" type="text" class="form-control" id="apellido" formControlName="apellido_u" maxlength="15">
+              <div *ngIf="usersForm.get('apellido_u')?.hasError('required') && usersForm.get('apellido_u')?.touched" class="error-message">
+                Apellido es requerido.
+              </div>
+              <div *ngIf="usersForm.get('apellido_u')?.dirty && usersForm.get('apellido_u')?.hasError('pattern')" class="error-message">
+                Solo se admiten letras.
+              </div>
             </div>
             <div class="mb-3">
               <label for="telf" class="form-label">Teléfono</label>
-              <input maxlength="10" name="tel" type="text" class="form-control" class="form-control" id="telf" [(ngModel)]="users.telf" [(ngModel)]="usersUpdate.telf">
+              <input maxlength="10" name="tel" type="text" class="form-control" id="telf" formControlName="telf">
+              <div *ngIf="usersForm.get('telf')?.hasError('required') && usersForm.get('telf')?.touched" class="error-message">
+                Teléfono es requerido.
+              </div>
+              <div *ngIf="usersForm.get('telf')?.dirty && usersForm.get('telf')?.hasError('minlength')" class="error-message">
+                El teléfono debe contener 10 dígitos.
+              </div>
             </div>
             <div class="mb-3">
               <label for="email" class="form-label">Correo electrónico</label>
-              <input name="email" type="text" class="form-controlemail" [maxLength]="30"
-              class="form-control" id="email" [(ngModel)]="users.email" [(ngModel)]="usersUpdate.email">
-            </div>
-
-            <div class="btn-group d-flex">
-              <input class="btn btn-primary me-2" type="submit" value="Registrar"
-              data-bs-toggle="modal" data-bs-target="#exampleModal"  *ngIf="!bool" (click)="registerUsers()">
-
-              <input class="btn btn-primary me-2" type="submit" value="Actualizar"
-              data-bs-toggle="modal" data-bs-target="#exampleModal"
-              *ngIf="bool" (click)="update(usersUpdate)">
-
-              <!-- Modal -->
-              <div class="modal" id="exampleModal" tabindex="-1" aria-hidden="true">
-                <div class="modal-dialog">
-                  <div class="modal-content">
-                    <div class="modal-header">
-                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                      Usuario Registrado con Exito!!
-                    </div>
-                    <div class="modal-footer">
-                      <input class="btn btn-primary" data-bs-dismiss="modal" type="reset" value="Listo"  [routerLink]="['/pages/users']">
-                    </div>
-                  </div>
-                </div>
+              <input name="email" type="text" class="form-control email" [maxLength]="30" id="email" formControlName="email">
+              <div *ngIf="usersForm.get('email')?.hasError('required') && usersForm.get('email')?.touched" class="error-message">
+                Correo electrónico es requerido.
               </div>
-                  <input class="btn btn-primary" type="reset" value="LIMPIAR">
+              <div *ngIf="usersForm.get('email')?.hasError('pattern') && usersForm.get('email')?.touched" class="error-message">
+                Por favor, ingresa un correo electrónico válido.
+              </div>
             </div>
-
+            <div class="btn-group d-flex">
+              <button class="btn btn-primary me-2" type="button" *ngIf="!bool" (click)="registerUsers()">Registrar</button>
+              <button class="btn btn-primary me-2" type="button" *ngIf="bool" (click)="update(usersUpdate)">Actualizar</button>
+            </div>
           </form>
         </div>
       </div>
@@ -65,7 +67,20 @@
   </div>
 </div>
 
-<div class="mb-4">
+<div class="mb-4"></div>
 
-</div>
+<div class="modal" id="exampleModal" tabindex="-1" aria-hidden="true" *ngIf="showModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        Usuario Registrado con Éxito!!
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-primary" data-bs-dismiss="modal" type="reset" value="Listo" [routerLink]="['/pages/users']">Listo</button>
+      </div>
+    </div>
+  </div>
 
