@@ -56,7 +56,9 @@
                             <button type="button" class="btn btn-success btn-sm" [routerLink]="['/pages/users-register', users.id_u]" [state]="users">Editar</button>
                           </div>
                           <div class="ml-2 p-2">
-                            <button type="button" class="btn btn-danger btn-sm" (click)="deleteUsers(users.id_u)">Eliminar</button>
+                            <button type="button" class="btn btn-danger btn-sm"
+                            data-bs-toggle="modal" data-bs-target="#confirmDeleteModal"
+                            (click)="showDeleteConfirmationModal(users.id_u)">Eliminar</button>
                           </div>
                         </div>
                       </div>
@@ -64,24 +66,32 @@
                   </div>
                 </div>
                 <!-- Iniciar una nueva fila después de cada 5 tarjetas -->
-                <div class="w-100" *ngIf="(i + 1) % 5 === 0"></div>
+
               </ng-container>
             </div>
           </div>
         </div>
 
-
-  <!--<ul class="pagination">
-    <li class="page-item" [class.disabled]="p == 1">
-      <a class="page-link" (click)="p = p - 1">Anterior</a>
-    </li>
-    <li class="page-item" *ngFor="let page of pCollection" [class.active]="p == page">
-      <a class="page-link" (click)="p = page">{{ page }}</a>
-    </li>
-    <li class="page-item" [class.disabled]="p == pCollection.length">
-      <a class="page-link" (click)="p = p + 1">Siguiente</a>
-    </li>
-  </ul> -->
+        <!-- Modal de Confirmación de Eliminación -->
+        <div class="modal fade" id="confirmDeleteModal" tabindex="-1" role="dialog" aria-labelledby="confirmDeleteModalLabel" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="confirmDeleteModalLabel">Confirmar Eliminación</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+              </div>
+              <div class="modal-body">
+                ¿Estás seguro de que deseas eliminar este registro?
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn btn-danger" data-bs-dismiss="modal"
+                (click)="confirmDelete()">Eliminar
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
 
 </div>
 </div>
