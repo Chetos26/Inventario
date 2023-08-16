@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { CategoryModel } from 'src/app/models/category-model.entity';
 import { CreateHardwareDto, HardwareModel, UpdateHardwareDto } from 'src/app/models/hardware-model.entity';
@@ -14,31 +13,11 @@ import { UsersService } from 'src/app/services/users.service';
   styleUrls: ['./register-hardware.component.css']
 })
 export class RegisterHardwareComponent {
-
-  hardwareForm: FormGroup;
   constructor(
     private hardwareService: HardwareService,
     private categoryService: CategoryService,
     private usersService: UsersService,
-    private activatedRoute: ActivatedRoute,
-    private formBuilder:FormBuilder)
-    {
-
-      this.hardwareForm = this.formBuilder.group({
-        categories: ['', Validators.required], // Campo de categoría requerido
-        users: ['', Validators.required],      // Campo de usuario requerido
-        sn: [''],
-        procesador: [''],
-        ram: [''],
-        image: [''],
-        monitor_sn: [''],
-        teclado: [''],
-        mouse: [''],
-        marca: [''],
-        sala: [''],
-        almacenamiento: ['']
-      });
-    }
+    private activatedRoute: ActivatedRoute) { }
 
   hardwareModel: HardwareModel[] = [];
   category: CategoryModel[] = [];
@@ -111,14 +90,14 @@ export class RegisterHardwareComponent {
     sala: ''
   }
 
-  /*registerHardware() {
+  registerHardware() {
     console.log(this.hardware)
     const response = this.hardwareService
       .createHardware(this.hardware)
       .subscribe((response) => {
         console.log(response);
       });
-  }*/
+  }
 
   cargar():void{
     this.activatedRoute.params.subscribe(
@@ -147,49 +126,12 @@ export class RegisterHardwareComponent {
     )
   }
 
-  /*updateHardware(hardware: UpdateHardwareDto) {
+  updateHardware(hardware: UpdateHardwareDto) {
     const response = this.hardwareService
       .updateHardware(hardware.id_h, hardware)
       .subscribe((response) => {
         console.log(response);
       });
-  }*/
-
-
-  registerHardware() {
-    if (this.hardwareForm.valid) {
-      const hardwareData = this.hardwareForm.value;
-      const response = this.hardwareService.createHardware(hardwareData).subscribe((response) => {
-        console.log(response);
-      });
-    } else {
-      this.validateAllFormFields(this.hardwareForm);
-    }
   }
-
-  updateHardware(hardware: UpdateHardwareDto) {
-    if (this.hardwareForm.valid) {
-      const response = this.hardwareService.updateHardware(hardware.id_h, hardware).subscribe((response) => {
-        console.log(response);
-      });
-    } else {
-      this.validateAllFormFields(this.hardwareForm);
-    }
-  }
-
-  validateAllFormFields(formGroup: FormGroup) {
-    Object.keys(formGroup.controls).forEach((field) => {
-      const control = formGroup.get(field);
-      if (control instanceof FormGroup) {
-        this.validateAllFormFields(control);
-      } else {
-        if (control) {
-          control.markAsTouched({ onlySelf: true });
-          control.markAsDirty({ onlySelf: true });
-        }
-      }
-    });
-  }
-
 
 }
