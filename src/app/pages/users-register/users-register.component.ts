@@ -36,7 +36,6 @@ export class UsersRegisterComponent {
   ngOnInit(): void {
     this.bool = false;
     this.cargar();
-    console.log(history.state);
     if (history.state.id_u) {
       this.cargar();
       this.bool = true;
