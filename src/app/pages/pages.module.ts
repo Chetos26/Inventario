@@ -16,10 +16,6 @@ import { QRCodeModule } from 'ngx-qrcode';
 import { CategoriesSearchPipe } from '../pipes/category-search.pipe';
 import { UserSearchPipe } from '../pipes/user-search.pipe';
 import { UsersComponentPipe } from '../pipes/users-component.pipe';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-
-
-
 @NgModule({
   declarations: [
     PagesComponent,
@@ -41,8 +37,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     FormsModule,
     NgxPaginationModule,
     QRCodeModule,
-    ReactiveFormsModule,
-    NgbModule
+    ReactiveFormsModule
   ]
 })
 export class PagesModule { }
