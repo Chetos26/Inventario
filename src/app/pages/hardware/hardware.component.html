@@ -107,7 +107,9 @@
                             <button type="button" class="btn btn-success btn-sm" [routerLink]="['/pages/hardware-register', hardware.id_h]" [state]="hardware">Editar</button>
                           </div>
                           <div class="ml-2 p-2">
-                            <button type="button" class="btn btn-danger btn-sm" (click)="showDeleteConfirmationModal(hardware.id_h)">Eliminar</button>
+                            <button type="button" class="btn btn-danger btn-sm"
+                            data-bs-toggle="modal" data-bs-target="#confirmDeleteModal"
+                            (click)="showDeleteConfirmationModal(hardware.id_h)">Eliminar</button>
                           </div>
                         </div>
 
@@ -116,7 +118,7 @@
                         </div>
 
                         <!-- Modal de Confirmación de Eliminación -->
-                        <div class="modal fade" #confirmDeleteModal tabindex="-1" role="dialog" aria-labelledby="confirmDeleteModalLabel" aria-hidden="true">
+                        <div class="modal fade" id="confirmDeleteModal" tabindex="-1" role="dialog" aria-labelledby="confirmDeleteModalLabel" aria-hidden="true">
                           <div class="modal-dialog modal-dialog-centered" role="document">
                             <div class="modal-content">
                               <div class="modal-header">
@@ -128,7 +130,9 @@
                               </div>
                               <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                                <button type="button" class="btn btn-danger" (click)="confirmDelete()">Eliminar</button>
+                                <button type="button" class="btn btn-danger" data-bs-dismiss="modal"
+                                (click)="confirmDelete()">Eliminar
+                                </button>
                               </div>
                             </div>
                           </div>

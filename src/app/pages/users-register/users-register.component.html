@@ -45,6 +45,12 @@
               <div *ngIf="usersForm.get('telf')?.dirty && usersForm.get('telf')?.hasError('minlength')" class="error-message">
                 El teléfono debe contener 10 dígitos.
               </div>
+              <div *ngIf="usersForm.get('telf')?.dirty && usersForm.get('telf')?.hasError('maxlength')" class="error-message">
+                El teléfono debe contener 10 dígitos.
+              </div>
+              <div *ngIf="usersForm.get('telf')?.dirty && usersForm.get('telf')?.hasError('pattern')" class="error-message">
+                El teléfono debe contener solo números.
+              </div>
             </div>
             <div class="mb-3">
               <label for="email" class="form-label">Correo electrónico</label>
@@ -57,7 +63,7 @@
               </div>
             </div>
             <div class="btn-group d-flex">
-              <button class="btn btn-primary me-2" type="button" *ngIf="!bool" (click)="registerUsers()">Registrar</button>
+              <button class="btn btn-primary me-2" type="button" *ngIf="!bool" (click)="registerUsers()">Registrar </button>
               <button class="btn btn-primary me-2" type="button" *ngIf="bool" (click)="update(usersUpdate)">Actualizar</button>
             </div>
           </form>
@@ -69,18 +75,19 @@
 
 <div class="mb-4"></div>
 
-<div class="modal" id="exampleModal" tabindex="-1" aria-hidden="true" *ngIf="showModal">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        Usuario Registrado con Éxito!!
-      </div>
-      <div class="modal-footer">
-        <button class="btn btn-primary" data-bs-dismiss="modal" type="reset" value="Listo" [routerLink]="['/pages/users']">Listo</button>
-      </div>
-    </div>
+
+<!-- Modal -->
+<ng-template #successModalContent let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title">Registro Exitoso</h4>
+    <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss()"></button>
   </div>
+  <div class="modal-body">
+    Equipo Registrado con Éxito!!
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-primary" (click)="modal.dismiss()">Listo</button>
+  </div>
+</ng-template>
+
 

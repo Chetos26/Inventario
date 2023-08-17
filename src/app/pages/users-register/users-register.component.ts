@@ -22,11 +22,12 @@ export class UsersRegisterComponent {
       foto: [''],
       nombre_u: ['', [Validators.required, Validators.pattern(this.naPattern)]],
       apellido_u: ['', [Validators.required, Validators.pattern(this.naPattern)]],
-      telf: ['', [Validators.required, Validators.minLength(10)]],
+      telf: ['', [Validators.required, Validators.minLength(10), Validators.pattern(this.num),Validators.maxLength(10)]],
       email: ['', [Validators.required, Validators.pattern(this.emailPattern)]],
       cargo: ['', Validators.required],
     });
   }
+  num:any = /^[0-9]+$/;
   naPattern: any = /^[a-zA-Z]/;
   emailPattern: any = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
   usersModel: UsersModel[]=[];
