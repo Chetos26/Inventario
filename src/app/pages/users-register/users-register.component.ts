@@ -12,6 +12,10 @@ import { UsersService } from 'src/app/services/users.service';
 })
 export class UsersRegisterComponent {
   usersForm: FormGroup;
+  showRegisterModal = false;
+  showUpdateModal = false;
+  showErrorModal = false;
+  errorMessage = '';
 
   constructor(
     private usersService: UsersService,
@@ -37,6 +41,7 @@ export class UsersRegisterComponent {
   ngOnInit(): void {
     this.bool = false;
     this.cargar();
+    console.log(history.state)
     if (history.state.id_u) {
       this.cargar();
       this.bool = true;
@@ -62,17 +67,73 @@ export class UsersRegisterComponent {
     id_u: ''
   };
 
-  registerUsers() {
+  async registerUsers() {
     if (this.usersForm.valid) {
       const formData = this.usersForm.value;
-      const response = this.usersService.store(formData).subscribe((response) => {
-        console.log(response);
-        this.showModal = true;
-        console.log(this.showModal)
-      });
+
+      const email = formData.email;
+      const telf = formData.telf;
+
+      // Check for duplicate email and phone
+      try {
+        const isDuplicateEmail = await this.usersService.checkDuplicateEmail(email);
+        const isDuplicatePhone = await this.usersService.checkDuplicatePhone(telf);
+
+        if (isDuplicateEmail) {
+          // Handle duplicate email
+          this.showErrorModal = true;
+          this.errorMessage = 'El email ya está registrado';
+          return;
+        }
+
+        if (isDuplicatePhone) {
+          // Handle duplicate phone
+          this.showErrorModal = true;
+          this.errorMessage = 'El número de teléfono ya está registrado';
+          return;
+        }
+
+        const response = this.usersService.store(formData).subscribe(() => {
+          console.log(response);
+          this.showRegisterModal = false; // Cerrar modal de registro
+          this.showRegisterModal = true; // Mostrar modal de actualización exitosa
+        });
+      } catch (error) {
+        console.error(error);
+      }
     } else {
+      this.showModal = true; // Mostrar modal de validación
       this.validateAllFormFields(this.usersForm);
     }
+  }
+
+
+  openRegisterModal() {
+    this.showRegisterModal = true;
+  }
+
+  closeRegisterModal() {
+    this.showRegisterModal = false;
+  }
+
+  update(users: UpdateUsersDto) {
+    if (this.usersForm.valid) {
+      const response = this.usersService.update(users.id_u, users).subscribe(() => {
+        console.log(response);
+        this.showUpdateModal = true; // Mostrar modal de actualización exitosa
+      });
+    } else {
+      this.showModal = true; // Mostrar modal de validación
+      this.validateAllFormFields(this.usersForm);
+    }
+  }
+
+  closeModal() {
+    this.showModal = false;
+  }
+
+  closeUpdateModal() {
+    this.showUpdateModal = false;
   }
 
   validateAllFormFields(formGroup: FormGroup) {
@@ -103,21 +164,13 @@ export class UsersRegisterComponent {
               this.usersUpdate.apellido_u = es.apellido_u;
               this.usersUpdate.telf = es.telf;
               this.usersUpdate.email = es.email;
+
+              console.log(this.usersUpdate)
             }
           )
         }
       }
     )
-  }
-
-  update(users: UpdateUsersDto) {
-    if (this.usersForm.valid) {
-      const response = this.usersService.update(users.id_u, users).subscribe((response) => {
-        console.log(response);
-      });
-    } else {
-      this.validateAllFormFields(this.usersForm);
-    }
   }
 
   formErrors:any = {
@@ -128,4 +181,8 @@ export class UsersRegisterComponent {
     cargo: '',
   };
 
+  closeErrorModal() {
+    this.showErrorModal = false;
+    this.errorMessage = '';
+  }
 }

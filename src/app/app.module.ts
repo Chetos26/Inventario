@@ -8,8 +8,6 @@ import { AuthModule } from './auth/auth.module';
 import { PagesModule } from './pages/pages.module';
 import { SharedModule } from './shared/shared.module';
 import { FormsModule } from '@angular/forms';
-import { UserSearchPipe } from './pipes/user-search.pipe';
-import { UsersComponentPipe } from './pipes/users-component.pipe';
 
 @NgModule({
   declarations: [
