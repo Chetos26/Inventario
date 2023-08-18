@@ -202,9 +202,7 @@ export class HardwareComponent {
       margin: 1,
     };
   }
-
   // QR EN PDF
-
   generateQRCode(callback: (base64: string) => void): void {
     const hardware = this.hardware[this.currentIndex];
     const qrCodeData = `ID: ${hardware.id_h}\nUsuario: ${hardware.users.nombre_u}\nSerial Number: ${hardware.sn}\nMarca: ${hardware.marca}\nSala: ${hardware.sala}`;

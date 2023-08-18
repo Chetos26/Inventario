@@ -16,6 +16,26 @@ export class UsersService {
 
   constructor(private httpClient: HttpClient) { }
 
+  async checkDuplicateEmail(email: string): Promise<boolean> {
+    try {
+      const users = await this.httpClient.get<UsersModel[]>(`${this.API_URL}?email=${email}`).toPromise();
+      return users !== undefined && users.length > 0;
+    } catch (error) {
+      console.error('Error checking duplicate email:', error);
+      throw error; // Relanzar el error para que sea manejado en el componente
+    }
+  }
+
+  async checkDuplicatePhone(phone: string): Promise<boolean> {
+    try {
+      const users = await this.httpClient.get<UsersModel[]>(`${this.API_URL}?telf=${phone}`).toPromise();
+      return users !== undefined && users.length > 0;
+    } catch (error) {
+      console.error('Error checking duplicate phone:', error);
+      throw error; // Relanzar el error para que sea manejado en el componente
+    }
+  }
+
   getAll():Observable<UsersModel[]> {
     const url = `${this.API_URL}`;
     return this.httpClient.get<UsersModel[]>(url);

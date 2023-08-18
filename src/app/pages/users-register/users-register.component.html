@@ -79,19 +79,80 @@
 
 <div class="mb-4"></div>
 
-
-<!-- Modal -->
-<ng-template #successModalContent let-modal>
-  <div class="modal-header">
-    <h4 class="modal-title">Registro Exitoso</h4>
-    <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss()"></button>
+  <!-- Modal de Validación -->
+  <div class="modal" tabindex="-1" role="dialog" [class.show]="showModal" (click)="closeModal()">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">El formulario no es Válido</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="closeModal()">
+          </button>
+        </div>
+        <div class="modal-body">
+          Por favor, completa correctamente el formulario antes de continuar.
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" (click)="closeModal()">Cerrar</button>
+        </div>
+      </div>
+    </div>
   </div>
-  <div class="modal-body">
-    Equipo Registrado con Éxito!!
-  </div>
-  <div class="modal-footer">
-    <button type="button" class="btn btn-primary" (click)="modal.dismiss()">Listo</button>
-  </div>
-</ng-template>
 
+  <!-- Modal de Registro Exitoso -->
+  <div class="modal" tabindex="-1" role="dialog" [class.show]="showRegisterModal" (click)="closeRegisterModal()">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Registro Exitoso</h5>
+          <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close" (click)="closeRegisterModal()">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          ¡El usuario se ha registrado exitosamente!
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" (click)="closeRegisterModal()">Cerrar</button>
+        </div>
+      </div>
+    </div>
+  </div>
 
+    <!-- Modal de Actualización Exitosa -->
+    <div class="modal" tabindex="-1" role="dialog" [class.show]="showUpdateModal" (click)="closeUpdateModal()">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Actualización Exitosa</h5>
+            <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close" (click)="closeUpdateModal()">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            ¡El usuario se ha actualizado exitosamente!
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" (click)="closeUpdateModal()">Cerrar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal de Error -->
+<div class="modal" tabindex="-1" role="dialog" [class.show]="showErrorModal" (click)="closeErrorModal()">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Error</h5>
+        <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close" (click)="closeErrorModal()">
+        </button>
+      </div>
+      <div class="modal-body">
+        {{ errorMessage }}
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" (click)="closeErrorModal()">Cerrar</button>
+      </div>
+    </div>
+  </div>
+</div>
