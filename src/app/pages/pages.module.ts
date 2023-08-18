@@ -16,6 +16,7 @@ import { QRCodeModule } from 'ngx-qrcode';
 import { CategoriesSearchPipe } from '../pipes/category-search.pipe';
 import { UserSearchPipe } from '../pipes/user-search.pipe';
 import { UsersComponentPipe } from '../pipes/users-component.pipe';
+
 @NgModule({
   declarations: [
     PagesComponent,

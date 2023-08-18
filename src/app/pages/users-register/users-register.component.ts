@@ -74,32 +74,29 @@ export class UsersRegisterComponent {
       const email = formData.email;
       const telf = formData.telf;
 
-      // Check for duplicate email and phone
+      console.log('Form data:', formData);
+
       try {
         const isDuplicateEmail = await this.usersService.checkDuplicateEmail(email);
+        console.log('Is duplicate email:', isDuplicateEmail);
         const isDuplicatePhone = await this.usersService.checkDuplicatePhone(telf);
+        console.log('Is duplicate phone:', isDuplicatePhone);
 
         if (isDuplicateEmail) {
-          // Handle duplicate email
           this.showErrorModal = true;
           this.errorMessage = 'El email ya está registrado';
-          return;
-        }
-
-        if (isDuplicatePhone) {
-          // Handle duplicate phone
+        } else if (isDuplicatePhone) {
           this.showErrorModal = true;
           this.errorMessage = 'El número de teléfono ya está registrado';
-          return;
+        } else {
+          const response = this.usersService.store(formData).subscribe(() => {
+            console.log('Registration successful:', response);
+            this.showRegisterModal = false; // Cerrar modal de registro
+            this.showRegisterModal = true; // Mostrar modal de registro exitoso
+          });
         }
-
-        const response = this.usersService.store(formData).subscribe(() => {
-          console.log(response);
-          this.showRegisterModal = false; // Cerrar modal de registro
-          this.showRegisterModal = true; // Mostrar modal de actualización exitosa
-        });
       } catch (error) {
-        console.error(error);
+        console.error('Error during registration:', error);
       }
     } else {
       this.showModal = true; // Mostrar modal de validación
@@ -174,11 +171,11 @@ export class UsersRegisterComponent {
   }
 
   formErrors:any = {
+    cargo: '',
     nombre_u: '',
     apellido_u: '',
     telf: '',
     email: '',
-    cargo: '',
   };
 
   closeErrorModal() {

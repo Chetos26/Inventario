@@ -18,23 +18,26 @@ export class UsersService {
 
   async checkDuplicateEmail(email: string): Promise<boolean> {
     try {
-      const users = await this.httpClient.get<UsersModel[]>(`${this.API_URL}?email=${email}`).toPromise();
+      const users = await this.httpClient.get<UsersModel[]>(this.API_URL, { params: { email } }).toPromise();
+      console.log('Response from checkDuplicateEmail:', users);
       return users !== undefined && users.length > 0;
     } catch (error) {
       console.error('Error checking duplicate email:', error);
-      throw error; // Relanzar el error para que sea manejado en el componente
+      throw error;
     }
   }
 
-  async checkDuplicatePhone(phone: string): Promise<boolean> {
+  async checkDuplicatePhone(telf: string): Promise<boolean> {
     try {
-      const users = await this.httpClient.get<UsersModel[]>(`${this.API_URL}?telf=${phone}`).toPromise();
+      const users = await this.httpClient.get<UsersModel[]>(this.API_URL, { params: { telf: telf } }).toPromise();
+      console.log('Response from checkDuplicatePhone:', users);
       return users !== undefined && users.length > 0;
     } catch (error) {
       console.error('Error checking duplicate phone:', error);
-      throw error; // Relanzar el error para que sea manejado en el componente
+      throw error;
     }
   }
+
 
   getAll():Observable<UsersModel[]> {
     const url = `${this.API_URL}`;
@@ -54,9 +57,11 @@ export class UsersService {
     const url = `${this.API_URL}/${id_u}`;
     return this.httpClient.patch<UsersModel>(url, user);//devuelve un observable de tipo UserModel
   }
+
   destroy(id_u: UsersModel['id_u']):Observable<any> {
     const url = `${this.API_URL}/${id_u}`;
-    return this.httpClient.delete<any>(url).pipe(map((response: { rta: boolean; }) => {
+    return this.httpClient.delete<any>(url).pipe(
+      map((response: { rta: boolean; }) => {
     //objeto.atributo.metodo(delete)
       return response.rta;
       })

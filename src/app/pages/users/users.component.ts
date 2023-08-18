@@ -42,7 +42,7 @@ export class UsersComponent implements OnInit {
       response => {
         this.users= this.users.filter(users => users.id_u != id_u);
         console.log(response)})
-   }
+  }
 
    targetUsers: string='';
      applyUsersFilter(users: string): void {
