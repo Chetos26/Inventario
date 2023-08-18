@@ -7,18 +7,19 @@
           <form [formGroup]="usersForm">
             <div class="mb-3">
               <label for="foto" class="form-label">Foto</label>
-              <input name="foto" type="file" class="form-control" id="foto" formControlName="foto">
+              <input name="foto" type="file" class="form-control" id="foto" formControlName="foto" [(ngModel)]="usersUpdate.foto">
             </div>
             <div class="mb-3">
               <label for="cargo" class="form-label">Cargo</label>
-              <input name="cargo" type="text" class="form-control" id="cargo" formControlName="cargo">
+              <input name="cargo" type="text" class="form-control" id="cargo" formControlName="cargo" [(ngModel)]="usersUpdate.cargo">
               <div *ngIf="usersForm.get('cargo')?.hasError('required') && usersForm.get('cargo')?.touched" class="error-message">
                 Cargo es requerido.
               </div>
             </div>
             <div class="mb-3">
               <label for="nombre" class="form-label">Nombre</label>
-              <input name="nombre" type="text" class="form-control" id="nombre" formControlName="nombre_u" maxlength="15">
+              <input name="nombre" type="text" class="form-control"
+              id="nombre" formControlName="nombre_u" maxlength="15" [(ngModel)]="usersUpdate.nombre_u">
               <div *ngIf="usersForm.get('nombre_u')?.hasError('required') && usersForm.get('nombre_u')?.touched" class="error-message">
                 Nombre es requerido.
               </div>
@@ -28,7 +29,8 @@
             </div>
             <div class="mb-3">
               <label for="apellido" class="form-label">Apellido</label>
-              <input name="apellido" type="text" class="form-control" id="apellido" formControlName="apellido_u" maxlength="15">
+              <input name="apellido" type="text" class="form-control"
+              id="apellido" formControlName="apellido_u" maxlength="15" [(ngModel)]="usersUpdate.apellido_u">
               <div *ngIf="usersForm.get('apellido_u')?.hasError('required') && usersForm.get('apellido_u')?.touched" class="error-message">
                 Apellido es requerido.
               </div>
@@ -38,7 +40,8 @@
             </div>
             <div class="mb-3">
               <label for="telf" class="form-label">Teléfono</label>
-              <input maxlength="10" name="tel" type="text" class="form-control" id="telf" formControlName="telf">
+              <input maxlength="10" name="tel" type="text" class="form-control"
+              id="telf" formControlName="telf" [(ngModel)]="usersUpdate.telf">
               <div *ngIf="usersForm.get('telf')?.hasError('required') && usersForm.get('telf')?.touched" class="error-message">
                 Teléfono es requerido.
               </div>
@@ -54,7 +57,8 @@
             </div>
             <div class="mb-3">
               <label for="email" class="form-label">Correo electrónico</label>
-              <input name="email" type="text" class="form-control email" [maxLength]="30" id="email" formControlName="email">
+              <input name="email" type="text" class="form-control email"
+              [maxLength]="30" id="email" formControlName="email" [(ngModel)]="usersUpdate.email">
               <div *ngIf="usersForm.get('email')?.hasError('required') && usersForm.get('email')?.touched" class="error-message">
                 Correo electrónico es requerido.
               </div>
