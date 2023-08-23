@@ -96,7 +96,7 @@ export class UsersRegisterComponent {
 
 
   openRegisterModal() {
-    this.showRegisterModal = true;
+    this.showRegisterModal = false;
   }
 
   closeRegisterModal() {

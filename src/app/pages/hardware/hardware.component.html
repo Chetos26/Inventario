@@ -62,7 +62,7 @@
                         </details>
 
                         <small class="text-muted">Encargado:</small>
-                        <a href="users" [routerLink]="['/pages/users', hardware.users.id_u]">
+                        <a href="users" [routerLink]="['/pages/users']">
                           <h6 class="text-justify"> {{hardware.users.nombre_u}} {{hardware.users.apellido_u}} </h6>
                         </a>
 
@@ -70,10 +70,10 @@
 
                           <p id="desplegar" style="display:none;"></p>
 
-                          <small class="text-muted">SN del Monitor:</small>
-                          <h6 class="text-justify"> {{hardware.monitor_sn}} </h6>
+                          <small class="text-muted" *ngIf="hardware.categories.nombre_c == 'PC' ">SN del Monitor:</small>
+                          <h6 class="text-justify" *ngIf="hardware.categories.nombre_c == 'PC' "> {{hardware.monitor_sn}} </h6>
 
-                          <div class="row mt-3">
+                          <div class="row mt-3" *ngIf="hardware.categories.nombre_c == 'PC' ">
                             <div class="col-md-6">
                               <small class="text-muted offset-md-1">Teclado:</small>
                               <h6 class="text-justify offset-md-1"> {{hardware.teclado}} </h6>

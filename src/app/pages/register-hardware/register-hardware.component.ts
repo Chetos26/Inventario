@@ -115,16 +115,29 @@ export class RegisterHardwareComponent {
 
     } else {
       this.showModal = true; // Mostrar modal de validación
+      console.log(this.showModal);
       this.validateAllFormFields(this.hardwareForm);
     }
   }
 
+  openRegisterModal() {
+    this.showRegisterModal = true;
+    console.log(this.showRegisterModal)
+  }
+
+  closeRegisterModal() {
+    this.showRegisterModal = false;
+    console.log(this.showRegisterModal)
+  }
+
   closeModal() {
     this.showModal = false;
+    console.log(this.showModal)
   }
 
   closeUpdateModal() {
     this.showUpdateModal = false;
+    console.log(this.showUpdateModal)
   }
 
   validateAllFormFields(formGroup: FormGroup) {
@@ -233,12 +246,4 @@ export class RegisterHardwareComponent {
     almacenamiento: '',
     sala: ''
   };
-
-  openRegisterModal() {
-    this.showRegisterModal = true;
-  }
-
-  closeRegisterModal() {
-    this.showRegisterModal = false;
-  }
 }

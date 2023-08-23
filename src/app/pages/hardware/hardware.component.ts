@@ -172,14 +172,16 @@ export class HardwareComponent {
       doc.text(`Categoria: ${hardware.categories.nombre_c}`, 20, 50);
       doc.text(`Nombre: ${hardware.users.nombre_u}`, 20, 60);
       doc.text(`Apellido: ${hardware.users.apellido_u}`, 20, 70);
-      doc.text(`Serial Number Monitor: ${hardware.monitor_sn}`, 20, 80);
-      doc.text(`Serial Number: ${hardware.sn}`, 20, 90);
-      doc.text(`Marca: ${hardware.marca}`, 20, 100);
-      doc.text(`Procesador: ${hardware.procesador}`, 20, 110);
-      doc.text(`Almacenamiento: ${hardware.almacenamiento}`, 20, 120);
-      doc.text(`Sala: ${hardware.sala}`, 20, 130);
-
-      //doc.text(`QR: generateQRCodes()`,20, 90)
+      if (hardware.categories.nombre_c == 'PC' ) {
+        doc.text(`Serial Number Monitor: ${hardware.monitor_sn}`, 20, 130);
+        doc.text(`Mouse: ${hardware.mouse}`, 20, 140);
+        doc.text(`Teclado: ${hardware.teclado}`, 20, 150);
+      }
+      doc.text(`Serial Number: ${hardware.sn}`, 20, 80);
+      doc.text(`Marca: ${hardware.marca}`, 20, 90);
+      doc.text(`Procesador: ${hardware.procesador}`, 20, 100);
+      doc.text(`Almacenamiento: ${hardware.almacenamiento}`, 20, 110);
+      doc.text(`Sala: ${hardware.sala}`, 20, 120);
 
          // Generar el código QR y agregarlo al PDF
     this.generateQRCode((qrCodeBase64: string) => {
