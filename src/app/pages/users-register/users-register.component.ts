@@ -77,27 +77,17 @@ export class UsersRegisterComponent {
       console.log('Form data:', formData);
 
       try {
-        const isDuplicateEmail = await this.usersService.checkDuplicateEmail(email);
-        console.log('Is duplicate email:', isDuplicateEmail);
-        const isDuplicatePhone = await this.usersService.checkDuplicatePhone(telf);
-        console.log('Is duplicate phone:', isDuplicatePhone);
-
-        if (isDuplicateEmail) {
-          this.showErrorModal = true;
-          this.errorMessage = 'El email ya está registrado';
-        } else if (isDuplicatePhone) {
-          this.showErrorModal = true;
-          this.errorMessage = 'El número de teléfono ya está registrado';
-        } else {
           const response = this.usersService.store(formData).subscribe(() => {
             console.log('Registration successful:', response);
             this.showRegisterModal = false; // Cerrar modal de registro
             this.showRegisterModal = true; // Mostrar modal de registro exitoso
+            this.clearForm();
           });
         }
-      } catch (error) {
-        console.error('Error during registration:', error);
+      catch (error) {
+        console.error(error);
       }
+
     } else {
       this.showModal = true; // Mostrar modal de validación
       this.validateAllFormFields(this.usersForm);
@@ -181,5 +171,9 @@ export class UsersRegisterComponent {
   closeErrorModal() {
     this.showErrorModal = false;
     this.errorMessage = '';
+  }
+
+  clearForm() {
+    this.usersForm.reset();
   }
 }

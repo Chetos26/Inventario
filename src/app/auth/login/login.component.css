@@ -1,3 +1,34 @@
 .btn{
   background-color: #175E8E;
 }
+
+
+.btn-full-width {
+  width: 50%; /* Hace que el botón ocupe todo el ancho del contenedor */
+}
+
+/* Centrar verticalmente el texto del botón */
+.btn-full-width span {
+  display: inline-block;
+  vertical-align: middle;
+  line-height: normal;
+}
+
+
+/* Estilos para los iconos de redes sociales */
+.social-icon {
+  font-size: 24px;
+  margin: 0 10px;
+  color: #175E8E; /* Cambia el color según tus preferencias */
+  transition: color 0.3s;
+}
+
+.social-icon:hover {
+  color: #000; /* Cambia el color al pasar el cursor sobre el icono */
+}
+
+/* Estilos para el texto "Síguenos en redes sociales" */
+.text-center p {
+  margin-bottom: 10px;
+  font-size: 14px;
+}

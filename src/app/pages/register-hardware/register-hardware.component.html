@@ -4,22 +4,39 @@
       <div class="card">
         <div class="card-body">
           <h5 class="card-title">Formulario</h5>
-          <form>
-            <div class="mb-3">
+          <form [formGroup]="hardwareForm">
+            <!-- <div class="mb-3">
               <label for="foto" class="form-label">Foto</label>
-              <input name="foto" type="file" class="form-control" id="foto" [(ngModel)]="hardware.image" [(ngModel)]="hardwareUpdate.image">
-            </div>
+              <input name="foto" type="file" class="form-control" id="foto" formControlName="image"
+              [(ngModel)]="hardware.image" [(ngModel)]="hardwareUpdate.image">
+            </div> -->
 
             <div class="mb-3">
               <label for="sala" class="form-label">Categorias:</label>
-              <select name="category" class="form-control" [(ngModel)]="hardware.categories" [(ngModel)]="hardwareUpdate.categories" (change)="gotcategories()">
+              <select name="category" class="form-control" formControlName="categories"
+              [(ngModel)]="hardware.categories" [(ngModel)]="hardwareUpdate.categories" (change)="gotcategories()">
                 <option *ngFor="let opcion of category" [value]="opcion.id_c"> {{opcion.nombre_c}} </option>
               </select>
+              <div *ngIf="hardwareForm.get('categories')?.hasError('required') && hardwareForm.get('categories')?.touched" class="text-danger">
+                Categoría es requerida.
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <label for="encargado" class="form-label">Encargado:</label>
+              <select class="form-control" name="encargado" formControlName="users"
+              [(ngModel)]="hardware.users" [(ngModel)]="hardwareUpdate.users">
+                <option *ngFor="let opcion of users" [value]="opcion.id_u"> {{opcion.nombre_u}} </option>
+              </select>
+              <div *ngIf="hardwareForm.get('users')?.hasError('required') && hardwareForm.get('users')?.touched" class="text-danger">
+                Encargado es requerido.
+              </div>
             </div>
 
             <div class="mb-3" *ngIf="name=='PC'">
               <label for="sn" class="form-label" *ngIf="name=='PC'">Numero de Serie Monitor:</label>
-              <input name="m_sn" type="text" class="form-control" id="sn" [(ngModel)]="hardware.monitor_sn" [(ngModel)]="hardwareUpdate.monitor_sn" *ngIf="name=='PC'">
+              <input name="m_sn" type="text" class="form-control" id="sn" formControlName="monitor_sn"
+              [(ngModel)]="hardware.monitor_sn" [(ngModel)]="hardwareUpdate.monitor_sn" *ngIf="name=='PC'">
             </div>
 
             <div class="container">
@@ -28,7 +45,8 @@
                   <div class="mb-3">
                     <label class="form-label" *ngIf="name=='PC'">Mouse:</label>
                     <div class="form-check">
-                      <input class="form-check-input" type="checkbox" name="siMouse" id="siMouse" [(ngModel)]="hardware.mouse" [(ngModel)]="hardwareUpdate.mouse" *ngIf="name=='PC'">
+                      <input class="form-check-input" type="checkbox" name="siMouse" id="siMouse" formControlName="mouse"
+                      [(ngModel)]="hardware.mouse" [(ngModel)]="hardwareUpdate.mouse" *ngIf="name=='PC'">
                       <label class="form-check-label" for="siNombre" name="mouse" *ngIf="name=='PC'"> {{hardware.mouse ? 'Si': 'No'}} </label>
                     </div>
                   </div>
@@ -37,7 +55,8 @@
                   <div class="mb-3">
                     <label class="form-label" *ngIf="name=='PC'">Teclado:</label>
                     <div class="form-check">
-                      <input class="form-check-input" type="checkbox" name="siTeclado" id="siTeclado" [(ngModel)]="hardware.teclado" [(ngModel)]="hardwareUpdate.teclado" >
+                      <input class="form-check-input" type="checkbox" name="siTeclado" id="siTeclado" formControlName="teclado"
+                      [(ngModel)]="hardware.teclado" [(ngModel)]="hardwareUpdate.teclado" >
                       <label class="form-check-label" for="siTeclado" name="teclado" *ngIf="name=='PC'"> {{hardware.teclado ? 'Si': 'No'}} </label>
                     </div>
                   </div>
@@ -47,67 +66,46 @@
 
             <div class="mb-3" *ngIf="name=='Laptops'">
               <label for="sn" class="form-label" *ngIf="name=='Laptops'">Numero de Serie Laptop:</label>
-              <input name="sn" type="text" class="form-control" id="sn" [(ngModel)]="hardware.sn" [(ngModel)]="hardwareUpdate.sn" *ngIf="name=='Laptops'">
+              <input name="sn" type="text" class="form-control" id="sn" formControlName="sn"
+              [(ngModel)]="hardware.sn" [(ngModel)]="hardwareUpdate.sn" *ngIf="name=='Laptops'">
             </div>
             <div class="mb-3">
               <label for="marca" class="form-label" *ngIf="name=='Laptops'">Marca:</label>
-              <input name="marca" type="text" class="form-control" id="marca" name="marca"
+              <input name="marca" type="text" class="form-control" id="marca" name="marca" formControlName="marca"
               [(ngModel)]="hardware.marca" [(ngModel)]="hardwareUpdate.marca" *ngIf="name=='Laptops'">
             </div>
             <div class="mb-3">
               <label for="procesador" class="form-label">Procesador:</label>
-              <textarea rows="2" class="form-control" maxlength="100" name="procesador" [(ngModel)]="hardware.procesador" [(ngModel)]="hardwareUpdate.procesador"></textarea>
+              <textarea rows="2" class="form-control" maxlength="100" name="procesador" formControlName="procesador"
+              [(ngModel)]="hardware.procesador" [(ngModel)]="hardwareUpdate.procesador"></textarea>
             </div>
             <div class="mb-3">
               <label for="ram" class="form-label">RAM:</label>
-              <textarea rows="2" class="form-control" maxlength="100" name="ram" [(ngModel)]="hardware.ram" [(ngModel)]="hardwareUpdate.ram"></textarea>
+              <textarea rows="2" class="form-control" maxlength="100" name="ram" formControlName="ram"
+              [(ngModel)]="hardware.ram" [(ngModel)]="hardwareUpdate.ram"></textarea>
             </div>
 
             <div class="mb-3">
               <label for="ram" class="form-label">Almacenamiento:</label>
-              <textarea rows="2" class="form-control" maxlength="100" name="almacenamiento" [(ngModel)]="hardware.almacenamiento" [(ngModel)]="hardwareUpdate.almacenamiento"></textarea>
+              <textarea rows="2" class="form-control" maxlength="100" name="almacenamiento" formControlName="almacenamiento"
+              [(ngModel)]="hardware.almacenamiento" [(ngModel)]="hardwareUpdate.almacenamiento"></textarea>
             </div>
 
             <div class="mb-3">
               <label for="sala" class="form-label">Sala:</label>
-              <input type="text" class="form-control" id="sala" name="sala" [(ngModel)]="hardware.sala" [(ngModel)]="hardwareUpdate.sala">
+              <input type="text" class="form-control" id="sala" name="sala" formControlName="sala"
+              [(ngModel)]="hardware.sala" [(ngModel)]="hardwareUpdate.sala">
             </div>
 
-            <div class="mb-3">
-              <label for="sala" class="form-label">Encargado:</label>
-              <select class="form-control" name="sala" [(ngModel)]="hardware.users" [(ngModel)]="hardwareUpdate.users">
-                <option *ngFor="let opcion of users" [value]="opcion.id_u"> {{opcion.nombre_u}} </option>
-              </select>
-            </div>
+
 
             <div class="btn-group d-flex">
-              <input class="btn btn-primary me-2" type="submit" value="Registrar"
-              data-bs-toggle="modal" data-bs-target="#exampleModal"
-              (click)="registerHardware()" *ngIf="!bool">
+              <input class="btn btn-primary me-2" type="button" value="Registrar"
+              (click)="registerHardware()"*ngIf="!bool">
 
-              <input class="btn btn-primary me-2" type="submit" value="Actualizar"
-              data-bs-toggle="modal" data-bs-target="#exampleModal"
+              <input class="btn btn-primary me-2" type="button" value="Actualizar"
               (click)="updateHardware(hardwareUpdate)" *ngIf="bool">
-
-              <!-- Modal -->
-              <div class="modal" id="exampleModal" tabindex="-1" aria-hidden="true">
-                <div class="modal-dialog">
-                  <div class="modal-content">
-                    <div class="modal-header">
-                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                      Equipo Registrado con Exito!!
-                    </div>
-                    <div class="modal-footer">
-                      <input class="btn btn-primary" data-bs-dismiss="modal" type="reset" value="Listo"  [routerLink]="['/pages/hardware']">
-                    </div>
-                  </div>
-                </div>
-              </div>
-                  <input class="btn btn-primary" type="reset" value="LIMPIAR">
             </div>
-
           </form>
         </div>
       </div>
@@ -117,3 +115,59 @@
 
 <div class="mb-4"></div>
 
+  <!-- Modal de Validación -->
+  <div class="modal" tabindex="-1" role="dialog" [class.show]="showModal" (click)="closeModal()">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">El formulario no es Válido</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="closeModal()">
+          </button>
+        </div>
+        <div class="modal-body">
+          Por favor, selecciona una categoria y encargado antes de continuar.
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" (click)="closeModal()">Cerrar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Modal de Registro Exitoso -->
+  <div class="modal" tabindex="-1" role="dialog" [class.show]="showRegisterModal" (click)="closeRegisterModal()">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Registro Exitoso</h5>
+          <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close" (click)="closeRegisterModal()">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          ¡El equipo se ha registrado exitosamente!
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" (click)="closeRegisterModal()">Cerrar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Modal de Actualización Exitosa -->
+  <div class="modal" tabindex="-1" role="dialog" [class.show]="showUpdateModal" (click)="closeUpdateModal()">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Actualización Exitosa</h5>
+          <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close" (click)="closeUpdateModal()">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          ¡El usuario se ha actualizado exitosamente!
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" (click)="closeUpdateModal()">Cerrar</button>
+        </div>
+      </div>
+    </div>
+  </div>

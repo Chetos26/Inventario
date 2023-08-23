@@ -32,3 +32,8 @@
 .modal.show {
   display: block;
 }
+
+.img-size {
+  max-width: auto; /* Cambia este valor según tus necesidades */
+  height: 200px; /* Esto permite que la imagen mantenga su relación de aspecto */
+}

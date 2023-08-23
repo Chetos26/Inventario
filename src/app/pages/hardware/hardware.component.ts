@@ -117,7 +117,7 @@ export class HardwareComponent {
       procesador: '',
       ram: '',
       users: '',
-      image: '',
+      /* image: '', */
       monitor_sn: '',
       teclado: '',
       mouse: '',
@@ -134,7 +134,7 @@ export class HardwareComponent {
        ram: '',
        categories: '',
        users: '',
-       image: '',
+       /* image: '', */
        monitor_sn: '',
        teclado: '',
        mouse: '',
@@ -147,21 +147,19 @@ export class HardwareComponent {
       this.targetCategory = category;
     }
 
-    onImprimir() {
-      if (this.currentIndex < this.hardware.length) {
-        this.http.get('assets/images/logo.png', { responseType: 'blob' }).subscribe((logoBlob: Blob) => {
-          const reader = new FileReader();
-          reader.onloadend = () => {
-            const logoBase64 = reader.result?.toString();
-            const hardware = this.hardware[this.currentIndex];
-            this.generatePdf(logoBase64, hardware);
-          };
-          reader.readAsDataURL(logoBlob);
-        });
-      }
+    onImprimir(hardware: any) {
+      this.http.get('assets/images/logo.png', { responseType: 'blob' }).subscribe((logoBlob: Blob) => {
+        const reader = new FileReader();
+        reader.onloadend = () => {
+          const logoBase64 = reader.result?.toString();
+          this.generatePdf(logoBase64, hardware);
+        };
+        reader.readAsDataURL(logoBlob);
+      });
     }
 
-    generatePdf(logoBase64: string | undefined, hardware: any): void {
+
+  generatePdf(logoBase64: string | undefined, hardware: any): void {
       const doc = new jsPDF();
 
       if (logoBase64) {
@@ -171,10 +169,15 @@ export class HardwareComponent {
       doc.text('EQUIPO DE CIESPAL', 80, 20);
 
       doc.text(`ID: ${hardware.id_h}`, 20, 40);
-      doc.text(`Usuario: ${hardware.users.nombre_u}`, 20, 50);
-      doc.text(`Serial Number: ${hardware.sn}`, 20, 60);
-      doc.text(`Marca: ${hardware.marca}`, 20, 70);
-      doc.text(`Sala: ${hardware.sala}`, 20, 80);
+      doc.text(`Categoria: ${hardware.categories.nombre_c}`, 20, 50);
+      doc.text(`Nombre: ${hardware.users.nombre_u}`, 20, 60);
+      doc.text(`Apellido: ${hardware.users.apellido_u}`, 20, 70);
+      doc.text(`Serial Number Monitor: ${hardware.monitor_sn}`, 20, 80);
+      doc.text(`Serial Number: ${hardware.sn}`, 20, 90);
+      doc.text(`Marca: ${hardware.marca}`, 20, 100);
+      doc.text(`Procesador: ${hardware.procesador}`, 20, 110);
+      doc.text(`Almacenamiento: ${hardware.almacenamiento}`, 20, 120);
+      doc.text(`Sala: ${hardware.sala}`, 20, 130);
 
       //doc.text(`QR: generateQRCodes()`,20, 90)
 
@@ -205,11 +208,18 @@ export class HardwareComponent {
   // QR EN PDF
   generateQRCode(callback: (base64: string) => void): void {
     const hardware = this.hardware[this.currentIndex];
-    const qrCodeData = `ID: ${hardware.id_h}\nUsuario: ${hardware.users.nombre_u}\nSerial Number: ${hardware.sn}\nMarca: ${hardware.marca}\nSala: ${hardware.sala}`;
+    const qrCodeData =
+    `ID: ${hardware.id_h}
+    \nUsuario: ${hardware.users.nombre_u}
+    \nUsuario: ${hardware.users.apellido_u}
+    \nSerial Number Monitor: ${hardware.monitor_sn}
+    \nSerial Number: ${hardware.sn}
+    \nMarca: ${hardware.marca}
+    \nSala: ${hardware.sala}`;
 
     const qrOptions: QRCode.QRCodeRenderersOptions = {
       errorCorrectionLevel: 'H',
-      width: 100, // Ajustar el tamaño del código QR
+      width: 200, // Ajustar el tamaño del código QR
       margin: 1,
     };
 
@@ -241,4 +251,13 @@ export class HardwareComponent {
     this.confirmDeleteModal.nativeElement.classList.remove('show'); // Ocultar el modal
   }
 
+  getImageUrl(categoryName: string): string {
+    if (categoryName === 'Laptops') {
+      return 'assets/images/laptop.png';
+    } else if (categoryName === 'PC') {
+      return 'assets/images/pc.jpg';
+    } else {
+      return 'URL_DE_LA_IMAGEN_POR_DEFECTO';
+    }
+  }
 }

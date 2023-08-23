@@ -3,7 +3,7 @@ import { UsersModel } from "./users-model.entity,";
 
 export interface HardwareModel {
   id_h: string;
-  image: string;
+  /* image: string; */
   monitor_sn: string;
   teclado: string;
   mouse: string;

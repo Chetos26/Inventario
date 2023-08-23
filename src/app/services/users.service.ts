@@ -19,7 +19,7 @@ export class UsersService {
   async checkDuplicateEmail(email: string): Promise<boolean> {
     try {
       const users = await this.httpClient.get<UsersModel[]>(this.API_URL, { params: { email } }).toPromise();
-      console.log('Response from checkDuplicateEmail:', users);
+      console.log(users);
       return users !== undefined && users.length > 0;
     } catch (error) {
       console.error('Error checking duplicate email:', error);
@@ -30,7 +30,7 @@ export class UsersService {
   async checkDuplicatePhone(telf: string): Promise<boolean> {
     try {
       const users = await this.httpClient.get<UsersModel[]>(this.API_URL, { params: { telf: telf } }).toPromise();
-      console.log('Response from checkDuplicatePhone:', users);
+      console.log(users);
       return users !== undefined && users.length > 0;
     } catch (error) {
       console.error('Error checking duplicate phone:', error);

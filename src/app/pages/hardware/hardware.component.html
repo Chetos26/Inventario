@@ -39,9 +39,11 @@
                     <div class="card mx-2">
                       <!-- Contenido de la tarjeta -->
                       <div class="card-img-top">
-                        <img src="https://think-ecuador.com/wp-content/uploads/2021/01/mbp-silver-select-202206.png"
-                          class="img-fluid mx-auto d-block" alt="card image 1">
+                        <img [src]="getImageUrl(hardware.categories.nombre_c)"
+                          class="img-fluid mx-auto d-block img-size"
+                          alt="card image">
                       </div>
+
                       <div class="widget-blog-author">
                         <div class="widget-blog-author-info">
                           <h5 class="text-muted m-0 f-s-11"> {{hardware.categories.nombre_c}} </h5>
@@ -82,7 +84,7 @@
                             </div>
                           </div>
 
-                          <small class="text-muted">Numero de serie del PC/Laptop:</small>
+                          <small class="text-muted">Numero de serie Laptop:</small>
                           <h6 class="text-justify"> {{hardware.sn}} </h6>
 
                           <small class="text-muted">Marca:</small>
@@ -114,7 +116,7 @@
                         </div>
 
                         <div class="d-flex justify-content-center p-3">
-                          <button type="button" class="btn btn-warning" (click)=" onImprimir()">Generar Reporte</button>
+                          <button type="button" class="btn btn-warning" (click)=" onImprimir(hardware)">Generar Reporte</button>
                         </div>
 
                         <!-- Modal de Confirmación de Eliminación -->

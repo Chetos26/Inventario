@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { Component } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { LoginUsuarioModel } from 'src/app/models/auth-model.entity';
@@ -55,6 +55,13 @@ export class LoginComponent{
         });
       }
     });
+  }
+
+  @HostListener('document:keypress', ['$event'])
+  handleKeyboardEvent(event: KeyboardEvent): void {
+    if (event.key === 'Enter') {
+      this.onLogin();
+    }
   }
 
 }

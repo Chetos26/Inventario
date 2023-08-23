@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { CategoryModel } from 'src/app/models/category-model.entity';
 import { CreateHardwareDto, HardwareModel, UpdateHardwareDto } from 'src/app/models/hardware-model.entity';
@@ -13,11 +14,40 @@ import { UsersService } from 'src/app/services/users.service';
   styleUrls: ['./register-hardware.component.css']
 })
 export class RegisterHardwareComponent {
+
+  hardwareForm: FormGroup;
+  showRegisterModal = false;
+  showUpdateModal = false;
+  showErrorModal = false;
+  showModal: boolean = false;
+  bool: boolean = false;
+  clearForm() {
+    this.hardwareForm.reset();
+  }
+
   constructor(
     private hardwareService: HardwareService,
     private categoryService: CategoryService,
     private usersService: UsersService,
-    private activatedRoute: ActivatedRoute) { }
+    private activatedRoute: ActivatedRoute,
+    private formBuilder: FormBuilder,)
+    {
+      this.hardwareForm = this.formBuilder.group({
+        categories: ['', Validators.required],
+        users: ['', Validators.required],
+        image: [''],
+        monitor_sn: [''],
+        teclado: [''],
+        mouse: [''],
+        sn: [''],
+        marca: [''],
+        procesador: [''],
+        ram: [''],
+        almacenamiento: [''],
+        sala: ['']
+      });
+
+    }
 
   hardwareModel: HardwareModel[] = [];
   category: CategoryModel[] = [];
@@ -35,12 +65,18 @@ export class RegisterHardwareComponent {
     }
   }
 
-  bool: boolean = false;
-
   gotcategories():void{
     for (let i = 0; i < this.category.length; i++) {
       if (this.hardware.categories == this.category[i].id_c || this.hardwareUpdate.categories == this.category[i].id_c) {
         this.name= this.category[i].nombre_c;
+      }
+    }
+  }
+
+  gotusers():void{
+    for (let i = 0; i < this.users.length; i++) {
+      if (this.hardware.users == this.users[i].id_u || this.hardwareUpdate.categories == this.users[i].id_u) {
+        this.name= this.users[i].nombre_u;
       }
     }
   }
@@ -59,44 +95,51 @@ export class RegisterHardwareComponent {
     })
   }
 
-  hardware: CreateHardwareDto = {
-    categories: '',
-    sn: '',
-    procesador: '',
-    ram: '',
-    users: '',
-    image: '',
-    monitor_sn: '',
-    teclado: '',
-    mouse: '',
-    marca: '',
-    sala: '',
-    almacenamiento: ''
-  }
-
-  hardwareUpdate: UpdateHardwareDto = {
-    categories: '',
-    users: '',
-    id_h: '',
-    image: '',
-    monitor_sn: '',
-    teclado: '',
-    mouse: '',
-    sn: '',
-    marca: '',
-    procesador: '',
-    ram: '',
-    almacenamiento: '',
-    sala: ''
-  }
-
   registerHardware() {
-    console.log(this.hardware)
-    const response = this.hardwareService
-      .createHardware(this.hardware)
-      .subscribe((response) => {
-        console.log(response);
-      });
+    if (this.hardwareForm.valid) {
+      const formData = this.hardwareForm.value;
+
+      console.log('Form data:', formData);
+
+      try {
+          const response = this.hardwareService.createHardware(formData).subscribe(() => {
+            console.log('Registration successful:', response);
+            this.showRegisterModal = false; // Cerrar modal de registro
+            this.showRegisterModal = true; // Mostrar modal de registro exitoso
+            this.clearForm();
+          });
+        }
+      catch (error) {
+        console.error(error);
+      }
+
+    } else {
+      this.showModal = true; // Mostrar modal de validación
+      this.validateAllFormFields(this.hardwareForm);
+    }
+  }
+
+  closeModal() {
+    this.showModal = false;
+  }
+
+  closeUpdateModal() {
+    this.showUpdateModal = false;
+  }
+
+  validateAllFormFields(formGroup: FormGroup) {
+    Object.keys(formGroup.controls).forEach((field) => {
+      const control = formGroup.get(field);
+      if (control instanceof FormGroup) {
+        this.validateAllFormFields(control);
+      } else {
+        if (control) {
+          control.markAsTouched({ onlySelf: true });
+          control.markAsDirty({ onlySelf: true });
+          this.formErrors[field] = control.hasError('required') ? 'Campo requerido' : '';
+        }
+      }
+    });
   }
 
   cargar():void{
@@ -126,12 +169,76 @@ export class RegisterHardwareComponent {
     )
   }
 
-  updateHardware(hardware: UpdateHardwareDto) {
+  /* updateHardware(hardware: UpdateHardwareDto) {
     const response = this.hardwareService
       .updateHardware(hardware.id_h, hardware)
       .subscribe((response) => {
         console.log(response);
       });
+  } */
+  updateHardware(hardware: UpdateHardwareDto) {
+    if (this.hardwareForm.valid) {
+      const response = this.hardwareService.updateHardware(hardware.id_h, hardware).subscribe(() => {
+        console.log(response);
+        this.showUpdateModal = true; // Mostrar modal de actualización exitosa
+      });
+    } else {
+      this.showModal = true; // Mostrar modal de validación
+      this.validateAllFormFields(this.hardwareForm);
+    }
   }
 
+  hardware: CreateHardwareDto = {
+    categories: '',
+    sn: '',
+    procesador: '',
+    ram: '',
+    users: '',
+    /* image: '', */
+    monitor_sn: '',
+    teclado: '',
+    mouse: '',
+    marca: '',
+    sala: '',
+    almacenamiento: ''
+  }
+
+  hardwareUpdate: UpdateHardwareDto = {
+    categories: '',
+    users: '',
+    id_h: '',
+    /* image: '', */
+    monitor_sn: '',
+    teclado: '',
+    mouse: '',
+    sn: '',
+    marca: '',
+    procesador: '',
+    ram: '',
+    almacenamiento: '',
+    sala: ''
+  }
+
+  formErrors:any = {
+    categories: '',
+    users: '',
+    image: '',
+    monitor_sn: '',
+    teclado: '',
+    mouse: '',
+    sn: '',
+    marca: '',
+    procesador: '',
+    ram: '',
+    almacenamiento: '',
+    sala: ''
+  };
+
+  openRegisterModal() {
+    this.showRegisterModal = true;
+  }
+
+  closeRegisterModal() {
+    this.showRegisterModal = false;
+  }
 }

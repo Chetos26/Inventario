@@ -13,12 +13,12 @@
 
                 <form>
 
-                  <div class="d-flex align-items-center mb-3 pb-1">
+                  <div class="d-flex align-items-center mb-4 pb-1">
                     <i class="fas fa-cubes fa-2x me-3" style="color: #175E8E;"></i>
                     <span class="h1 fw-bold mb-0">Inventario Ciespal</span>
                   </div>
 
-                  <h5 class="fw-normal mb-3 pb-3" style="letter-spacing: 1px;">Ingresa a tu Cuenta</h5>
+                  <h5 class="fw-normal mb-4 pb-4" style="letter-spacing: 1px;">Ingresa a tu Cuenta</h5>
 
                   <div class="form-outline mb-4">
                     <input type="email" id="form2Example17" class="form-control form-control-lg"
@@ -32,10 +32,20 @@
                     <label class="form-label" for="form2Example27">Contraseña</label>
                   </div>
 
-                  <div class="pt-1 mb-4">
-                    <button class="btn btn-dark btn-lg btn-block"
-                      type="button" (click)="onLogin()">Ingresar
-                    </button>
+                  <div class="form-outline mb-4 row">
+                    <div class="col text-center">
+                      <button class="btn btn-dark btn-lg btn-full-width" type="button" (click)="onLogin()">Iniciar Sesión</button>
+                    </div>
+                  </div>
+
+                  <div class="text-center mb">
+                    <p>Síguenos en redes sociales:</p>
+                    <a href="https://www.instagram.com/ciespal/" class="social-icon" target="_blank">
+                      <i class="fab fa-instagram"></i></a>
+                    <a href="https://www.facebook.com/ciespal.org" class="social-icon" target="_blank">
+                      <i class="fab fa-facebook"></i></a>
+                    <a href="https://twitter.com/ciespal" class="social-icon" target="_blank">
+                      <i class="fab fa-twitter"></i></a>
                   </div>
 
                   <div *ngIf="camposVacios && (email === '' || password === '')" class="text-danger mb-2">
