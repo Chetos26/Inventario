@@ -35,16 +35,16 @@ export class RegisterHardwareComponent {
       this.hardwareForm = this.formBuilder.group({
         categories: ['', Validators.required],
         users: ['', Validators.required],
-        image: [''],
-        monitor_sn: [''],
+        /* image: [''], */
+        monitor_sn: ['', Validators.maxLength(20)],
         teclado: [''],
         mouse: [''],
-        sn: [''],
-        marca: [''],
-        procesador: [''],
-        ram: [''],
-        almacenamiento: [''],
-        sala: ['']
+        sn: ['', Validators.maxLength(20)],
+        marca: ['', Validators.maxLength(15)],
+        procesador: ['', Validators.maxLength(100)],
+        ram: ['', Validators.maxLength(100)],
+        almacenamiento: ['', Validators.maxLength(100)],
+        sala: ['', Validators.maxLength(15)]
       });
 
     }
@@ -161,7 +161,8 @@ export class RegisterHardwareComponent {
         let id_h=e['id_h'];
         if(id_h){
           this.hardwareService.getOneHardware(id_h).subscribe(
-            es=>{this.hardwareUpdate.id_h=es.id_h
+            es=>{
+              this.hardwareUpdate.id_h=es.id_h
               this.hardwareUpdate.monitor_sn=es.monitor_sn
               this.hardwareUpdate.teclado=es.teclado
               this.hardwareUpdate.mouse=es.mouse
@@ -235,7 +236,7 @@ export class RegisterHardwareComponent {
   formErrors:any = {
     categories: '',
     users: '',
-    image: '',
+    /* image: '', */
     monitor_sn: '',
     teclado: '',
     mouse: '',
@@ -246,4 +247,15 @@ export class RegisterHardwareComponent {
     almacenamiento: '',
     sala: ''
   };
+
+  /* updateCounter(event: any) {
+    const textLength = event.target.value.length;
+    this.charCount = textLength <= 100 ? textLength : 100;
+
+    // Update textarea value if it exceeds 100 characters
+    if (textLength > 100) {
+      event.target.value = event.target.value.slice(0, 100);
+    }
+  }
+  charCount = 0; */
 }

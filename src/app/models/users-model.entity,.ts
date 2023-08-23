@@ -1,6 +1,6 @@
 export interface UsersModel {
   id_u: string;
-  foto: string;
+  /* foto: string; */
   cargo: string;
   nombre_u: string;
   apellido_u: string;

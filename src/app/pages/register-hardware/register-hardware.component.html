@@ -14,7 +14,7 @@
             <div class="mb-3">
               <label for="sala" class="form-label">Categorias:</label>
               <select name="category" class="form-control" formControlName="categories"
-              [(ngModel)]="hardware.categories"  (change)="gotcategories()">
+              [(ngModel)]="hardware.categories" [(ngModel)]="hardwareUpdate.categories" (change)="gotcategories()">
                 <option *ngFor="let opcion of category" [value]="opcion.id_c"> {{opcion.nombre_c}} </option>
               </select>
               <div *ngIf="hardwareForm.get('categories')?.hasError('required') && hardwareForm.get('categories')?.touched" class="text-danger">
@@ -37,6 +37,9 @@
               <label for="sn" class="form-label" *ngIf="name=='PC'">Numero de Serie Monitor:</label>
               <input name="m_sn" type="text" class="form-control" id="sn" formControlName="monitor_sn"
               [(ngModel)]="hardware.monitor_sn" [(ngModel)]="hardwareUpdate.monitor_sn" *ngIf="name=='PC'">
+              <div *ngIf="hardwareForm.get('monitor_sn')?.dirty && hardwareForm.get('monitor_sn')?.hasError('maxlength')" class="text-danger">
+                El campo puede contener un máximo de 20 caracteres.
+              </div>
             </div>
 
             <div class="container">
@@ -68,33 +71,52 @@
               <label for="sn" class="form-label" *ngIf="name=='Laptops'">Numero de Serie Laptop:</label>
               <input name="sn" type="text" class="form-control" id="sn" formControlName="sn"
               [(ngModel)]="hardware.sn" [(ngModel)]="hardwareUpdate.sn" *ngIf="name=='Laptops'">
+              <div *ngIf="hardwareForm.get('sn')?.dirty && hardwareForm.get('sn')?.hasError('maxlength')" class="text-danger">
+                El campo puede contener un máximo de 20 caracteres.
+              </div>
             </div>
             <div class="mb-3">
               <label for="marca" class="form-label" *ngIf="name=='Laptops'">Marca:</label>
               <input name="marca" type="text" class="form-control" id="marca" name="marca" formControlName="marca"
               [(ngModel)]="hardware.marca" [(ngModel)]="hardwareUpdate.marca" *ngIf="name=='Laptops'">
+              <div *ngIf="hardwareForm.get('marca')?.dirty && hardwareForm.get('marca')?.hasError('maxlength')" class="text-danger">
+                La marca puede contener un máximo de 15 caracteres.
+              </div>
             </div>
+
             <div class="mb-3">
               <label for="procesador" class="form-label">Procesador:</label>
-              <textarea rows="2" class="form-control" maxlength="100" name="procesador" formControlName="procesador"
+              <textarea rows="2" class="form-control"  name="procesador" formControlName="procesador"
               [(ngModel)]="hardware.procesador" [(ngModel)]="hardwareUpdate.procesador"></textarea>
+              <div *ngIf="hardwareForm.get('procesador')?.dirty && hardwareForm.get('procesador')?.hasError('maxlength')" class="text-danger">
+                El campo puede contener un máximo de 100 caracteres.
+              </div>
             </div>
             <div class="mb-3">
               <label for="ram" class="form-label">RAM:</label>
-              <textarea rows="2" class="form-control" maxlength="100" name="ram" formControlName="ram"
+              <textarea rows="2" class="form-control"  name="ram" formControlName="ram"
               [(ngModel)]="hardware.ram" [(ngModel)]="hardwareUpdate.ram"></textarea>
+              <div *ngIf="hardwareForm.get('ram')?.dirty && hardwareForm.get('ram')?.hasError('maxlength')" class="text-danger">
+                El campo puede contener un máximo de 100 caracteres.
+              </div>
             </div>
 
             <div class="mb-3">
               <label for="ram" class="form-label">Almacenamiento:</label>
-              <textarea rows="2" class="form-control" maxlength="100" name="almacenamiento" formControlName="almacenamiento"
+              <textarea rows="2" class="form-control" name="almacenamiento" formControlName="almacenamiento"
               [(ngModel)]="hardware.almacenamiento" [(ngModel)]="hardwareUpdate.almacenamiento"></textarea>
+              <div *ngIf="hardwareForm.get('almacenamiento')?.dirty && hardwareForm.get('almacenamiento')?.hasError('maxlength')" class="text-danger">
+                El campo puede contener un máximo de 100 caracteres.
+              </div>
             </div>
 
             <div class="mb-3">
               <label for="sala" class="form-label">Sala:</label>
               <input type="text" class="form-control" id="sala" name="sala" formControlName="sala"
               [(ngModel)]="hardware.sala" [(ngModel)]="hardwareUpdate.sala">
+              <div *ngIf="hardwareForm.get('sala')?.dirty && hardwareForm.get('sala')?.hasError('maxlength')" class="text-danger">
+                El campo puede contener un máximo de 15 caracteres.
+              </div>
             </div>
 
 
@@ -125,7 +147,7 @@
             </button>
           </div>
           <div class="modal-body">
-            Por favor, seleccione una categoria y un encargado antes de continuar.
+            Por favor, completa correctamente el formulario antes de continuar.
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" (click)="closeModal()">Cerrar</button>

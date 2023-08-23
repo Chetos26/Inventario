@@ -49,7 +49,7 @@ export class UsersRegisterComponent {
   }
 
   users: CreateUsersDto = {
-    foto: '',
+    /* foto: '', */
     nombre_u: '',
     apellido_u: '',
     telf: '',
@@ -58,7 +58,7 @@ export class UsersRegisterComponent {
   };
 
   usersUpdate: UpdateUsersDto = {
-    foto: '',
+    /* foto: '', */
     nombre_u: '',
     apellido_u: '',
     telf: '',
