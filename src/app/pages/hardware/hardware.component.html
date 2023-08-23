@@ -84,11 +84,11 @@
                             </div>
                           </div>
 
-                          <small class="text-muted">Numero de serie Laptop:</small>
-                          <h6 class="text-justify"> {{hardware.sn}} </h6>
+                          <small class="text-muted" *ngIf="hardware.categories.nombre_c == 'Laptops' ">Numero de serie Laptop:</small>
+                          <h6 class="text-justify" *ngIf="hardware.categories.nombre_c == 'Laptops' "> {{hardware.sn}} </h6>
 
-                          <small class="text-muted">Marca:</small>
-                          <h6 class="text-justify"> {{hardware.marca}} </h6>
+                          <small class="text-muted" *ngIf="hardware.categories.nombre_c == 'Laptops' ">Marca:</small>
+                          <h6 class="text-justify" *ngIf="hardware.categories.nombre_c == 'Laptops' "> {{hardware.marca}} </h6>
 
                           <small class="text-muted">Procesador:</small>
                           <h6 class="text-justify"> {{hardware.procesador}} </h6>
