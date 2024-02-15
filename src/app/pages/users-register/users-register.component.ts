@@ -12,10 +12,10 @@ import { UsersService } from 'src/app/services/users.service';
 })
 export class UsersRegisterComponent {
   usersForm: FormGroup;
-  showRegisterModal = false;
-  showUpdateModal = false;
-  showErrorModal = false;
-  errorMessage = '';
+    showRegisterModal = false;
+    showUpdateModal = false;
+    showErrorModal = false;
+    errorMessage = '';
 
   constructor(
     private usersService: UsersService,

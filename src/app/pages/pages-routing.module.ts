@@ -1,5 +1,4 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
 import { HardwareComponent } from './hardware/hardware.component';
 import { RegisterHardwareComponent } from './register-hardware/register-hardware.component';
