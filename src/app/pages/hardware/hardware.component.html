@@ -55,7 +55,8 @@
                           <p id="CÓdigo QR" style="display:none;"></p>
 
                           <div class="mt-3">
-                            <img [src]="hardware.qrCodeDataUrl" alt="QR Code" class="img-fluid mx-auto d-block"  />
+                            <img id="mouse" [src]="hardware.qrCodeDataUrl" alt="QR Code" class="img-fluid mx-auto d-block qr-image"
+                            (click)="hardware.qrCodeDataUrl && downloadQR(hardware.qrCodeDataUrl)" />
                           </div>
                           <div class="d-sm-flex justify-content-center"></div>
 

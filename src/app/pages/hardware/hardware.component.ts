@@ -88,10 +88,24 @@ export class HardwareComponent {
         } else {
           // Convertir el canvas a una imagen en formato de datos URL
           hardware.qrCodeDataUrl = canvas.toDataURL();
+          //
+
         }
       });
     });
   }
+
+  downloadQR(qrCodeDataUrl: string): void {
+    // Crear un enlace temporal para descargar el código QR
+    const link = document.createElement('a');
+    link.href = qrCodeDataUrl;
+    link.download = 'codigo_qr.png'; // Puedes cambiar el nombre del archivo según tus necesidades
+
+    // Simular un clic en el enlace para iniciar la descarga
+    const clickEvent = new MouseEvent('click');
+    link.dispatchEvent(clickEvent);
+  }
+
 
     getHardware(){
       this.hardwareService.getAllHardware().subscribe(

@@ -37,3 +37,26 @@
   max-width: auto; /* Cambia este valor según tus necesidades */
   height: 200px; /* Esto permite que la imagen mantenga su relación de aspecto */
 }
+
+
+.qr-link {
+  display: inline-block;
+  margin: 10px;
+  padding: 5px 10px;
+  background-color: #007bff;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 5px;
+}
+
+#mouse {
+  cursor: pointer;
+}
+
+.qr-image {
+  transition: transform 0.3s ease-in-out; /* Agrega una transición para suavizar el cambio de tamaño */
+}
+
+.qr-image:hover {
+  transform: scale(1.2); /* Cambia el tamaño al pasar el cursor */
+}
